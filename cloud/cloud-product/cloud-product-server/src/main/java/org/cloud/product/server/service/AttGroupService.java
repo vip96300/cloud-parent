@@ -11,5 +11,11 @@ public interface AttGroupService {
 	 * @param catId
 	 * @return
 	 */
-	public List<Map<AttGroup,List<Object>>> listAttributesAttValuesByCatId(long catId);
+	public List<Map<AttGroup,List<Object>>> listAttributesAttValuesByCatid(long catid);
+	
+	/**
+	 * 添加属性组
+	 * @param attGroup
+	 */
+	public void add(AttGroup attGroup);
 }

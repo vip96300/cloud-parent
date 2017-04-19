@@ -19,9 +19,9 @@ public class PictureController {
 	@Autowired
 	private PictureService pictureService;
 	
-	@RequestMapping(value="/list_proId",method=RequestMethod.GET)
-	public List<Picture> list_proId(@RequestParam(value="proId",required=true)long proId){
-		List<Picture> pictures=pictureService.listByProId(proId);
+	@RequestMapping(value="/list_proid",method=RequestMethod.GET)
+	public List<Picture> list_proId(@RequestParam(value="proid",required=true)long proid){
+		List<Picture> pictures=pictureService.listByProid(proid);
 		return pictures;
 	}
 }

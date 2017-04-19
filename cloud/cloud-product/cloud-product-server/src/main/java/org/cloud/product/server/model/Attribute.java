@@ -16,34 +16,35 @@ public class Attribute implements Serializable{
 	
 	@Id
 	@GeneratedValue
-	private Long attId;//编号
+	private Long attid;//编号
 	@Column(nullable=false)
-	private Long groId;//属性组编号
+	private Long groid;//属性组编号
 	@Column(nullable=false)
-	private Long catId;//类目编号
+	private Long catid;//类目编号
 	@Column(nullable=false)
 	private String name;//属性名称
 	@Column(nullable=false)
 	private Integer type;//属性类型/0：输入框，1：单选框，2：多选框
 	@Column(nullable=false)
 	private Long time;//创建时间
-	public Long getAttId() {
-		return attId;
+	
+	public Long getAttid() {
+		return attid;
 	}
-	public void setAttId(Long attId) {
-		this.attId = attId;
+	public void setAttid(Long attid) {
+		this.attid = attid;
 	}
-	public Long getGroId() {
-		return groId;
+	public Long getGroid() {
+		return groid;
 	}
-	public void setGroId(Long groId) {
-		this.groId = groId;
+	public void setGroid(Long groid) {
+		this.groid = groid;
 	}
-	public Long getCatId() {
-		return catId;
+	public Long getCatid() {
+		return catid;
 	}
-	public void setCatId(Long catId) {
-		this.catId = catId;
+	public void setCatid(Long catid) {
+		this.catid = catid;
 	}
 	public String getName() {
 		return name;

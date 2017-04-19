@@ -8,5 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AttValueRepository extends JpaRepository<AttValue, Serializable>{
 	
-	public List<AttValue> findByCatId(long catId);
+	public List<AttValue> findByCatid(long catid);
+
 }

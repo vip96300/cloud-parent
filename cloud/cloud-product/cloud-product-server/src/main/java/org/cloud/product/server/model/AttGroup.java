@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="product_category_attGroup")
+@Table(name="product_category_attgroup")
 public class AttGroup implements Serializable{
 
 	private static final long serialVersionUID = -8871759945813635178L;
@@ -18,24 +18,24 @@ public class AttGroup implements Serializable{
 	 */
 	@Id
 	@GeneratedValue
-	private Long groId;
+	private Long groid;
 	@Column(nullable=false)
-	private Long catId;//类目编号
+	private Long catid;//类目编号
 	@Column(nullable=false)
 	private String name;//名称
 	@Column(nullable=false)
 	private Long time;//创建时间
-	public Long getGroId() {
-		return groId;
+	public Long getGroid() {
+		return groid;
 	}
-	public void setGroId(Long groId) {
-		this.groId = groId;
+	public void setGroid(Long groid) {
+		this.groid = groid;
 	}
-	public Long getCatId() {
-		return catId;
+	public Long getCatid() {
+		return catid;
 	}
-	public void setCatId(Long catId) {
-		this.catId = catId;
+	public void setCatid(Long catid) {
+		this.catid = catid;
 	}
 	public String getName() {
 		return name;
@@ -49,6 +49,7 @@ public class AttGroup implements Serializable{
 	public void setTime(Long time) {
 		this.time = time;
 	}
+	
 
 	
 }

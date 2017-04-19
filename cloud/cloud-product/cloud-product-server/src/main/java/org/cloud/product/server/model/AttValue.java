@@ -9,39 +9,39 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="product_category_attribute_attValue")
+@Table(name="product_category_attribute_attvalue")
 public class AttValue implements Serializable{
 
 	private static final long serialVersionUID = -8871759945813635178L;
 	
 	@Id
 	@GeneratedValue
-	private Long valId;
+	private Long valid;
 	@Column(nullable=false)
-	private Long catId;//类目编号
+	private Long catid;//类目编号
 	@Column(nullable=false)
-	private Long attId;//属性编号
+	private Long attid;//属性编号
 	@Column(nullable=false)
 	private String name;//值名称
 	@Column(nullable=false)
 	private Long time;//创建时间
-	public Long getValId() {
-		return valId;
+	public Long getValid() {
+		return valid;
 	}
-	public void setValId(Long valId) {
-		this.valId = valId;
+	public void setValid(Long valid) {
+		this.valid = valid;
 	}
-	public Long getCatId() {
-		return catId;
+	public Long getCatid() {
+		return catid;
 	}
-	public void setCatId(Long catId) {
-		this.catId = catId;
+	public void setCatid(Long catid) {
+		this.catid = catid;
 	}
-	public Long getAttId() {
-		return attId;
+	public Long getAttid() {
+		return attid;
 	}
-	public void setAttId(Long attId) {
-		this.attId = attId;
+	public void setAttid(Long attid) {
+		this.attid = attid;
 	}
 	public String getName() {
 		return name;
@@ -55,6 +55,5 @@ public class AttValue implements Serializable{
 	public void setTime(Long time) {
 		this.time = time;
 	}
-
 	
 }

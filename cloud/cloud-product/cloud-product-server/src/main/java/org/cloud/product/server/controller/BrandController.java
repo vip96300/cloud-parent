@@ -23,10 +23,10 @@ public class BrandController {
 	@Autowired
 	private BrandService brandService;
 	
-	@RequestMapping(value="list_catId",method=RequestMethod.GET)
-    public List<Brand> list_catId(@RequestParam(value="catId",required=true) long catId,@RequestParam(value="page",required=true) int page,@RequestParam(value="size",required=true) int size){
+	@RequestMapping(value="list_catid",method=RequestMethod.GET)
+    public List<Brand> list_catId(@RequestParam(value="catid",required=true) long catid,@RequestParam(value="page",required=true) int page,@RequestParam(value="size",required=true) int size){
 		logger.debug(this.getClass().getName());
-    	List<Brand> brands=brandService.listByCatId(catId,new PageRequest(page, size));
+    	List<Brand> brands=brandService.listByCatid(catid,new PageRequest(page, size));
     	return brands;
     }
 	

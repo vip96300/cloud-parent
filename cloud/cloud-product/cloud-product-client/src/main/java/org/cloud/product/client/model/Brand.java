@@ -2,9 +2,9 @@ package org.cloud.product.client.model;
 
 public class Brand{
 
-	private Long braId;
+	private Long braid;
 
-	private Long catId;//类目编号
+	private Long catid;//类目编号
 
 	private String name;//品牌名称
 
@@ -12,20 +12,20 @@ public class Brand{
 
 	private Long time;
 
-	public Long getBraId() {
-		return braId;
+	public Long getBraid() {
+		return braid;
 	}
 
-	public void setBraId(Long braId) {
-		this.braId = braId;
+	public void setBraid(Long braid) {
+		this.braid = braid;
 	}
 
-	public Long getCatId() {
-		return catId;
+	public Long getCatid() {
+		return catid;
 	}
 
-	public void setCatId(Long catId) {
-		this.catId = catId;
+	public void setCatid(Long catid) {
+		this.catid = catid;
 	}
 
 	public String getName() {
@@ -52,5 +52,5 @@ public class Brand{
 		this.time = time;
 	}
 
-
+	
 }

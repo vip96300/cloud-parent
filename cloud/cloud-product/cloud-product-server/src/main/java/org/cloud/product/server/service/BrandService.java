@@ -11,7 +11,7 @@ public interface BrandService {
 	 * @param catId
 	 * @return
 	 */
-	public List<Brand> listByCatId(long catId,Pageable pageable);
+	public List<Brand> listByCatid(long catid,Pageable pageable);
 	/**
 	 * 添加品牌
 	 * @param brand

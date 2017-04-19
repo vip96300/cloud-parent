@@ -26,9 +26,9 @@ public class AttributeController {
 
 	@ApiOperation(value="添加属性")
     @ApiImplicitParams({
-        @ApiImplicitParam(name = "catId", value = "类目编号", required = true, dataType = "long"),
+        @ApiImplicitParam(name = "catid", value = "类目编号", required = true, dataType = "long"),
         @ApiImplicitParam(name = "name", value = "属性名称", required = true, dataType = "String"),
-        @ApiImplicitParam(name = "isOpt", value = "是否可选", required = true, dataType = "int")
+        @ApiImplicitParam(name = "type", value = "属性类型，0输入，1单选，2多选", required = true, dataType = "int")
     })
     @RequestMapping(value="/add",method=RequestMethod.POST)
     public void add(@ModelAttribute Attribute attribute){

@@ -21,10 +21,10 @@ public class PictureController {
 	@Autowired
 	private PictureService pictureService;
 	
-	@RequestMapping(value="/list_proId",method=RequestMethod.GET)
-	public List<Picture> list_proId(@RequestParam(value="proId",required=true)long proId){
+	@RequestMapping(value="/list_proid",method=RequestMethod.GET)
+	public List<Picture> list_proid(@RequestParam(value="proid",required=true)long proid){
 		logger.debug(this.getClass().getName());
-		List<Picture> pictures=pictureService.listByProId(proId);
+		List<Picture> pictures=pictureService.listByProId(proid);
 		return pictures;
 	}
 }

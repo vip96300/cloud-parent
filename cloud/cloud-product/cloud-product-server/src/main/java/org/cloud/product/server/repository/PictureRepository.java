@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PictureRepository extends JpaRepository<Picture, Serializable>{
 	
-	public List<Picture> findByProId(long proId);
+	public List<Picture> findByProid(long proid);
 }

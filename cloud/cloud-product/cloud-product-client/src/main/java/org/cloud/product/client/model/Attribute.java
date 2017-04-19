@@ -2,11 +2,11 @@ package org.cloud.product.client.model;
 
 public class Attribute{
 
-	private Long attId;//编号
+	private Long attid;//编号
 
-	private Long groId;//属性组编号
+	private Long groid;//属性组编号
 	
-	private long catId;//类目编号
+	private long catid;//类目编号
 
 	private String name;//属性名称
 
@@ -14,20 +14,28 @@ public class Attribute{
 
 	private Long time;//创建时间
 
-	public Long getAttId() {
-		return attId;
+	public Long getAttid() {
+		return attid;
 	}
 
-	public void setAttId(Long attId) {
-		this.attId = attId;
+	public void setAttid(Long attid) {
+		this.attid = attid;
 	}
 
-	public Long getGroId() {
-		return groId;
+	public Long getGroid() {
+		return groid;
 	}
 
-	public void setGroId(Long groId) {
-		this.groId = groId;
+	public void setGroid(Long groid) {
+		this.groid = groid;
+	}
+
+	public long getCatid() {
+		return catid;
+	}
+
+	public void setCatid(long catid) {
+		this.catid = catid;
 	}
 
 	public String getName() {
@@ -53,6 +61,8 @@ public class Attribute{
 	public void setTime(Long time) {
 		this.time = time;
 	}
+
+	
 
 	
 }

@@ -12,5 +12,5 @@ public interface AttGroupRepository extends JpaRepository<AttGroup, Serializable
 	 * @param catId
 	 * @return
 	 */
-	public List<AttGroup> findByCatId(long catId);
+	public List<AttGroup> findByCatid(long catid);
 }

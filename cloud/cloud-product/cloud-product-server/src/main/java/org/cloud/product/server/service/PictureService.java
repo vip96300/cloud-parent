@@ -11,5 +11,5 @@ public interface PictureService {
 	 * @param proId
 	 * @return
 	 */
-	public List<Picture> listByProId(long proId);
+	public List<Picture> listByProId(long proid);
 }

@@ -16,15 +16,45 @@ public class Brand implements Serializable{
 	
 	@Id
 	@GeneratedValue
-	private Long braId;
+	private Long braid;
 	@Column(nullable=false)
-	private Long catId;//类目编号
+	private Long catid;//类目编号
 	@Column(nullable=false)
 	private String name;//品牌名称
 	@Column(nullable=false)
 	private String logo;
 	@Column(nullable=false)
 	private Long time;
-
+	public Long getBraid() {
+		return braid;
+	}
+	public void setBraid(Long braid) {
+		this.braid = braid;
+	}
+	public Long getCatid() {
+		return catid;
+	}
+	public void setCatid(Long catid) {
+		this.catid = catid;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getLogo() {
+		return logo;
+	}
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+	public Long getTime() {
+		return time;
+	}
+	public void setTime(Long time) {
+		this.time = time;
+	}
+	
 
 }

@@ -15,7 +15,9 @@ import org.cloud.product.server.service.AttGroupService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AttGroupServiceImpl implements AttGroupService{
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
@@ -27,16 +29,16 @@ public class AttGroupServiceImpl implements AttGroupService{
 	private AttValueRepository attValueRepository;
 	
 	@Override
-	public List<Map<AttGroup, List<Object>>> listAttributesAttValuesByCatId(long catId) {
-		List<AttGroup> attGroups=attGroupRepository.findByCatId(catId);
+	public List<Map<AttGroup, List<Object>>> listAttributesAttValuesByCatid(long catid) {
+		List<AttGroup> attGroups=attGroupRepository.findByCatid(catid);
 		if(attGroups.isEmpty()){
 			return null;
 		}
-		List<Attribute> attributes=attributeRepository.findByCatId(catId);
+		List<Attribute> attributes=attributeRepository.findByCatid(catid);
 		if(attributes.isEmpty()){
 			return null;
 		}
-		List<AttValue> attValues=attValueRepository.findByCatId(catId);
+		List<AttValue> attValues=attValueRepository.findByCatid(catid);
 		//属性组集合<属性组名称：属性集合<属性：属性值集合>>
 		List<Map<AttGroup,List<Object>>> attGroupsAttributes=new ArrayList<Map<AttGroup,List<Object>>>();
 		for(AttGroup attGroup:attGroups){
@@ -47,12 +49,12 @@ public class AttGroupServiceImpl implements AttGroupService{
 			//属性：属性值
 			Map<Attribute,List<AttValue>> attributeAttValues=new HashMap<Attribute,List<AttValue>>();
 			for(Attribute attribute:attributes){
-				if(attribute.getGroId()==attGroup.getGroId()){
+				if(attribute.getGroid()==attGroup.getGroid()){
 					List<AttValue> attValuesByAttribute=null;
 					if(attribute.getType()!=Attribute.T0){
 						attValuesByAttribute=new ArrayList<AttValue>();
 						for(AttValue attValue:attValues){
-							if(attValue.getAttId()==attribute.getAttId()){
+							if(attValue.getAttid()==attribute.getAttid()){
 								attValuesByAttribute.add(attValue);
 							}
 						}
@@ -65,5 +67,11 @@ public class AttGroupServiceImpl implements AttGroupService{
 			attGroupsAttributes.add(attGroupAttributesMap);
 		}
 		return attGroupsAttributes;
+	}
+
+	@Override
+	public void add(AttGroup attGroup) {
+		attGroup.setTime(System.currentTimeMillis());
+		attGroupRepository.save(attGroup);
 	}
 }

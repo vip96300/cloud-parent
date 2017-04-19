@@ -2,21 +2,21 @@ package org.cloud.product.client.model;
 
 public class Picture{
 	
-	private Long picId;
-	private Long proId;//产品编号
+	private Long picid;
+	private Long proid;//产品编号
 	private String url;//地址
 	private Long time;
-	public Long getPicId() {
-		return picId;
+	public Long getPicid() {
+		return picid;
 	}
-	public void setPicId(Long picId) {
-		this.picId = picId;
+	public void setPicid(Long picid) {
+		this.picid = picid;
 	}
-	public Long getProId() {
-		return proId;
+	public Long getProid() {
+		return proid;
 	}
-	public void setProId(Long proId) {
-		this.proId = proId;
+	public void setProid(Long proid) {
+		this.proid = proid;
 	}
 	public String getUrl() {
 		return url;
@@ -30,6 +30,6 @@ public class Picture{
 	public void setTime(Long time) {
 		this.time = time;
 	}
-
+	
 
 }

@@ -18,12 +18,12 @@ public interface BrandService {
 	 * @param catId
 	 * @return
 	 */
-	@RequestMapping(value = "/product/category/brand/list_catId",method=RequestMethod.GET)
-	public List<Brand> listByCatId(@RequestParam(value="catId",required=true) long catId,@RequestParam(value="page",required=true)int page,@RequestParam(value="size",required=true)int size);
+	@RequestMapping(value = "/product/category/brand/list_catid",method=RequestMethod.GET)
+	public List<Brand> listByCatid(@RequestParam(value="catid",required=true) long catid,@RequestParam(value="page",required=true)int page,@RequestParam(value="size",required=true)int size);
 	/**
 	 * 添加品牌
 	 * @param brand
 	 */
-	@RequestMapping(value = "/product/category/brand/list_catId",method=RequestMethod.POST)
+	@RequestMapping(value = "/product/category/brand/list_catid",method=RequestMethod.POST)
 	public void add(@ModelAttribute Brand brand);
 }

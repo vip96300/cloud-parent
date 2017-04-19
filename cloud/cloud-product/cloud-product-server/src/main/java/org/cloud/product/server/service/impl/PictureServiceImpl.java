@@ -16,9 +16,9 @@ public class PictureServiceImpl implements PictureService{
 	private PictureRepository pictureRepository;
 	
 	@Override
-	public List<Picture> listByProId(long proId) {
+	public List<Picture> listByProId(long proid) {
 		logger.debug(this.getClass().getName());
-		List<Picture> pictures=pictureRepository.findByProId(proId);
+		List<Picture> pictures=pictureRepository.findByProid(proid);
 		return pictures;
 	}
 

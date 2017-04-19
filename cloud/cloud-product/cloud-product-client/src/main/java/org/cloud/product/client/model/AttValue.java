@@ -2,28 +2,28 @@ package org.cloud.product.client.model;
 
 public class AttValue{
 
-	private Long valId;
-	private Long catId;//类目编号
-	private Long attId;//属性编号
+	private Long valid;
+	private Long catid;//类目编号
+	private Long attid;//属性编号
 	private String name;//值名称
 	private Long time;//创建时间
-	public Long getValId() {
-		return valId;
+	public Long getValid() {
+		return valid;
 	}
-	public void setValId(Long valId) {
-		this.valId = valId;
+	public void setValid(Long valid) {
+		this.valid = valid;
 	}
-	public Long getCatId() {
-		return catId;
+	public Long getCatid() {
+		return catid;
 	}
-	public void setCatId(Long catId) {
-		this.catId = catId;
+	public void setCatid(Long catid) {
+		this.catid = catid;
 	}
-	public Long getAttId() {
-		return attId;
+	public Long getAttid() {
+		return attid;
 	}
-	public void setAttId(Long attId) {
-		this.attId = attId;
+	public void setAttid(Long attid) {
+		this.attid = attid;
 	}
 	public String getName() {
 		return name;
@@ -37,5 +37,5 @@ public class AttValue{
 	public void setTime(Long time) {
 		this.time = time;
 	}
-
+	
 }

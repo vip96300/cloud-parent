@@ -29,21 +29,21 @@ public class BrandController {
 	
 	@ApiOperation(value="根据类目编号获取品牌列表")
     @ApiImplicitParams({
-        @ApiImplicitParam(name = "catId", value = "类目编号", required = true, dataType = "long"),
+        @ApiImplicitParam(name = "catid", value = "类目编号", required = true, dataType = "long"),
         @ApiImplicitParam(name = "page", value = "当前页码", required = true, dataType = "int"),
         @ApiImplicitParam(name = "size", value = "每页数量", required = true, dataType = "int")
     })
-	@RequestMapping(value="/list_catId",method=RequestMethod.GET)
-    public List<Brand> list_catId(@RequestParam(value="catId",required=true) long catId,@RequestParam(value="page") int page,@RequestParam(value="size") int size){
-    	List<Brand> brands=brandService.listByCatId(catId,page, size);
+	@RequestMapping(value="/list_catid",method=RequestMethod.GET)
+    public List<Brand> list_catid(@RequestParam(value="catid",required=true) long catid,@RequestParam(value="page") int page,@RequestParam(value="size") int size){
+    	List<Brand> brands=brandService.listByCatid(catid,page, size);
     	return brands;
     }
 	
 	@ApiOperation(value="添加品牌")
     @ApiImplicitParams({
-        @ApiImplicitParam(name = "catId", value = "类目编号", required = true, dataType = "long"),
+        @ApiImplicitParam(name = "catid", value = "类目编号", required = true, dataType = "long"),
         @ApiImplicitParam(name = "name", value = "属性名称", required = true, dataType = "String"),
-        @ApiImplicitParam(name = "isOpt", value = "是否可选", required = true, dataType = "int")
+        @ApiImplicitParam(name = "isopt", value = "是否可选", required = true, dataType = "int")
     })
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public void add(Brand brand){

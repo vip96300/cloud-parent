@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class PictureServiceBreaker implements PictureService{
 
 	@Override
-	public List<Picture> listByProId(long proId) {
+	public List<Picture> listByProid(long proid) {
 		// TODO Auto-generated method stub
 		return null;
 	}

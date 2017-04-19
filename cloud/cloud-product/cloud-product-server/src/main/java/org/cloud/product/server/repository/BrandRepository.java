@@ -13,5 +13,5 @@ public interface BrandRepository extends JpaRepository<Brand, Serializable>{
 	 * @param catId
 	 * @return
 	 */
-	public Page<Brand> findByCatId(long catId,Pageable pageable);
+	public Page<Brand> findByCatid(long catid,Pageable pageable);
 }

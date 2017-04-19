@@ -14,7 +14,7 @@ public class BrandServiceBreaker implements BrandService{
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Override
-	public List<Brand> listByCatId(long catId,int page,int size) {
+	public List<Brand> listByCatid(long catid,int page,int size) {
 		logger.error("listByCatId error");
 		return null;
 	}

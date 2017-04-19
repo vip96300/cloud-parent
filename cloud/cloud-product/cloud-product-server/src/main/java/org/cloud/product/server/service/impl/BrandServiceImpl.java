@@ -19,9 +19,9 @@ public class BrandServiceImpl implements BrandService{
 	private BrandRepository brandRepository;
 	
 	@Override
-	public List<Brand> listByCatId(long catId,Pageable pageable) {
+	public List<Brand> listByCatid(long catid,Pageable pageable) {
 		logger.debug(this.getClass().getName());
-		Page<Brand> brands=brandRepository.findByCatId(catId,pageable);
+		Page<Brand> brands=brandRepository.findByCatid(catid,pageable);
 		return brands.getContent();
 	}
 	

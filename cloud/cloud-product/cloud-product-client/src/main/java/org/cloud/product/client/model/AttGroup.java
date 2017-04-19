@@ -5,27 +5,27 @@ public class AttGroup{
 	/**
 	 * 属性组
 	 */
-	private Long groId;
-	private Long catId;//类目编号
+	private Long groid;
+	private Long catid;//类目编号
 
 	private String name;//名称
 
 	private Long time;//创建时间
 
-	public Long getGroId() {
-		return groId;
+	public Long getGroid() {
+		return groid;
 	}
 
-	public void setGroId(Long groId) {
-		this.groId = groId;
+	public void setGroid(Long groid) {
+		this.groid = groid;
 	}
 
-	public Long getCatId() {
-		return catId;
+	public Long getCatid() {
+		return catid;
 	}
 
-	public void setCatId(Long catId) {
-		this.catId = catId;
+	public void setCatid(Long catid) {
+		this.catid = catid;
 	}
 
 	public String getName() {
@@ -44,4 +44,5 @@ public class AttGroup{
 		this.time = time;
 	}
 
+	
 }

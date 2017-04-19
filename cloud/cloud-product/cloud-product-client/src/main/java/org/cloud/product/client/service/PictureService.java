@@ -16,6 +16,6 @@ public interface PictureService {
 	 * @param proId
 	 * @return
 	 */
-	@RequestMapping(value = "/product/product/picture/list_proId")
-	public List<Picture> listByProId(@RequestParam(value="proId",required=true)long proId);
+	@RequestMapping(value = "/product/product/picture/list_proid")
+	public List<Picture> listByProid(@RequestParam(value="proid",required=true)long proid);
 }

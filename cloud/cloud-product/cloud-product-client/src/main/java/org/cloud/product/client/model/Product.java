@@ -2,21 +2,21 @@ package org.cloud.product.client.model;
 
 public class Product{
 
-	private Long proId;//产品编号
-	private Long braId;//品牌编号
+	private Long proid;//产品编号
+	private Long braid;//品牌编号
 	private String name;//品牌名称
 	private Long time;
-	public Long getProId() {
-		return proId;
+	public Long getProid() {
+		return proid;
 	}
-	public void setProId(Long proId) {
-		this.proId = proId;
+	public void setProid(Long proid) {
+		this.proid = proid;
 	}
-	public Long getBraId() {
-		return braId;
+	public Long getBraid() {
+		return braid;
 	}
-	public void setBraId(Long braId) {
-		this.braId = braId;
+	public void setBraid(Long braid) {
+		this.braid = braid;
 	}
 	public String getName() {
 		return name;
@@ -30,6 +30,5 @@ public class Product{
 	public void setTime(Long time) {
 		this.time = time;
 	}
-
-
+	
 }
