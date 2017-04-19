@@ -20,16 +20,16 @@ public class Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("org.cloud.user.client.controller"))
+                .apis(RequestHandlerSelectors.basePackage("org.cloud.product.client.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
     
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("cloud-user-client")
+                .title("cloud-product-client")
                 .description("... ...")
-                .termsOfServiceUrl("127.0.0.1:9002")
+                .termsOfServiceUrl("127.0.0.1:9005")
                 .contact("admin")
                 .version("1.0")
                 .build();

@@ -10,7 +10,7 @@ public interface AttributeService {
 	 * @param attId
 	 * @return
 	 */
-	public List<Attribute> listByCatId(long catId);
+	public List<Attribute> listByGroId(long catId);
 	/**
 	 * 添加属性
 	 * @param attribute

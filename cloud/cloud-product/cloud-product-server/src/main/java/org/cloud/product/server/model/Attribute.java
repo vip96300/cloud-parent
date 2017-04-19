@@ -18,11 +18,13 @@ public class Attribute implements Serializable{
 	@GeneratedValue
 	private Long attId;//编号
 	@Column(nullable=false)
+	private Long groId;//属性组编号
+	@Column(nullable=false)
 	private Long catId;//类目编号
 	@Column(nullable=false)
 	private String name;//属性名称
 	@Column(nullable=false)
-	private Integer isOpt;
+	private Integer type;//属性类型/0：输入框，1：单选框，2：多选框
 	@Column(nullable=false)
 	private Long time;//创建时间
 

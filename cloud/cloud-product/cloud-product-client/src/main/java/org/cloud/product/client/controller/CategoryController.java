@@ -20,7 +20,7 @@ public class CategoryController {
 	private CategoryService categoryService;
 	
 	@RequestMapping(value="/list_pid",method=RequestMethod.GET)
-	public List<Category> list_pid(@RequestParam(value="pid") long pid){
+	public List<Category> list_pid(@RequestParam(value="pid",required=true) long pid){
 		List<Category> categorys=categoryService.listByPid(pid);
 		return categorys;
 		

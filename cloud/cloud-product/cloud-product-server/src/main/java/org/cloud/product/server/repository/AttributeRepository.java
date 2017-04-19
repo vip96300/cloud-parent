@@ -12,5 +12,5 @@ public interface AttributeRepository extends JpaRepository<Attribute, Serializab
 	 * @param catId
 	 * @return
 	 */
-	List<Attribute> findByCatId(long catId);
+	List<Attribute> findByGroId(long groId);
 }

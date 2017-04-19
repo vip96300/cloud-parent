@@ -9,20 +9,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="product_category_attribute_value")
-public class Value implements Serializable{
+@Table(name="product_category_attGroup")
+public class AttGroup implements Serializable{
 
 	private static final long serialVersionUID = -8871759945813635178L;
-	
+	/**
+	 * 属性组
+	 */
 	@Id
 	@GeneratedValue
-	private Long valId;
+	private Long groId;
 	@Column(nullable=false)
 	private Long catId;//类目编号
 	@Column(nullable=false)
-	private Long attId;//属性编号
-	@Column(nullable=false)
-	private String name;//值名称
+	private String name;//名称
 	@Column(nullable=false)
 	private Long time;//创建时间
 

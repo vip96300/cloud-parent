@@ -17,12 +17,12 @@ public interface AttributeService {
 	 * @param attId
 	 * @return
 	 */
-	@RequestMapping(value = "/product/category/attribute/list_catId",method=RequestMethod.GET)
-	public List<Attribute> listByCatId(@RequestParam(value="catId") long catId);
+	@RequestMapping(value = "/product/category/attribute/list_groId",method=RequestMethod.GET)
+	public List<Attribute> listByGroId(@RequestParam(value="groId",required=true) long groId);
 	/**
 	 * 添加属性
 	 * @param attribute
 	 */
-	@RequestMapping(value = "/product/category/attribute/add",method=RequestMethod.POST)
+	@RequestMapping(value = "/product/category/attribute/add")
 	public void add(@ModelAttribute Attribute attribute);
 }

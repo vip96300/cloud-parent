@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class AttributeServiceBreaker implements AttributeService{
 
 	@Override
-	public List<Attribute> listByCatId(long catId) {
+	public List<Attribute> listByGroId(long groId) {
 		System.out.println("server error!");
 		return null;
 	}

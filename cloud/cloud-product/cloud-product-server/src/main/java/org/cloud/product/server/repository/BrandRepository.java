@@ -1,9 +1,10 @@
 package org.cloud.product.server.repository;
 
 import java.io.Serializable;
-import java.util.List;
 
 import org.cloud.product.server.model.Brand;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BrandRepository extends JpaRepository<Brand, Serializable>{
@@ -12,5 +13,5 @@ public interface BrandRepository extends JpaRepository<Brand, Serializable>{
 	 * @param catId
 	 * @return
 	 */
-	public List<Brand> findByCatId(long catId);
+	public Page<Brand> findByCatId(long catId,Pageable pageable);
 }

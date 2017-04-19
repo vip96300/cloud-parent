@@ -1,5 +1,9 @@
 package org.cloud.product.client.controller;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+
 import java.util.List;
 
 import org.cloud.product.client.model.Attribute;
@@ -20,11 +24,20 @@ public class AttributeController {
 	@Autowired
 	private AttributeService attributeService;
 	
-    @RequestMapping(value="/list_catId",method=RequestMethod.GET)
-    public List<Attribute> list_catId(@RequestParam(value="catId") Long catId){
-    	List<Attribute> attributes=attributeService.listByCatId(catId);
+	@ApiOperation(value="根据产品类目编号获取属性列表")
+	@ApiImplicitParams(@ApiImplicitParam(name="catId",value="产品类目编号",required=true,dataType="long"))
+    @RequestMapping(value="list_groId",method=RequestMethod.GET)
+    public List<Attribute> list_groId(@RequestParam(value="groId",required=true) long groId){
+    	List<Attribute> attributes=attributeService.listByGroId(groId);
     	return attributes;
     }
+    
+	@ApiOperation(value="添加属性")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "catId", value = "类目编号", required = true, dataType = "long"),
+        @ApiImplicitParam(name = "name", value = "属性名称", required = true, dataType = "String"),
+        @ApiImplicitParam(name = "isOpt", value = "是否可选", required = true, dataType = "int")
+    })
     @RequestMapping(value="/add",method=RequestMethod.POST)
     public void add(@ModelAttribute Attribute attribute){
     	attributeService.add(attribute);

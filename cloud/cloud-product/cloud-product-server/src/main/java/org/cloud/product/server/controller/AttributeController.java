@@ -4,11 +4,12 @@ import java.util.List;
 
 import org.cloud.product.server.model.Attribute;
 import org.cloud.product.server.service.AttributeService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,19 +17,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value="/product/category/attribute")
 public class AttributeController {
-	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	@Autowired
 	private AttributeService attributeService;
 	
-    @RequestMapping(value="/list_catId",method=RequestMethod.GET)
-    public List<Attribute> list_catId(@RequestParam(value="catId") Long catId){
-    	List<Attribute> attributes=attributeService.listByCatId(catId);
-    	System.out.println(attributes);
+    @RequestMapping(value="/list_groId")
+    public List<Attribute> list_catId(@RequestParam(value="groId",required=true) long groId){
+    	logger.debug(this.getClass().getName());
+    	List<Attribute> attributes=attributeService.listByGroId(groId);
     	return attributes;
     }
     
-    @RequestMapping(value="/add",method=RequestMethod.POST)
+    @RequestMapping(value="/add")
     public void add(@ModelAttribute Attribute attribute){
+    	logger.debug(this.getClass().getName());
     	attributeService.add(attribute);
     }
 }

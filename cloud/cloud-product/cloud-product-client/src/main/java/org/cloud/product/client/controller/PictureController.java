@@ -20,7 +20,7 @@ public class PictureController {
 	private PictureService pictureService;
 	
 	@RequestMapping(value="/list_proId",method=RequestMethod.GET)
-	public List<Picture> list_proId(@RequestParam(value="proId")long proId){
+	public List<Picture> list_proId(@RequestParam(value="proId",required=true)long proId){
 		List<Picture> pictures=pictureService.listByProId(proId);
 		return pictures;
 	}

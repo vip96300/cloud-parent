@@ -4,10 +4,11 @@ import java.util.List;
 
 import org.cloud.product.server.model.Category;
 import org.cloud.product.server.service.CategoryService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,12 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value="/product/category")
 public class CategoryController {
-	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	@Autowired
 	private CategoryService categoryService;
 	
-	@RequestMapping(value="/list_pid",method=RequestMethod.GET)
-	public List<Category> list_pid(@RequestParam(value="pid") long pid){
+	@RequestMapping(value="/list_pid")
+	public List<Category> list_pid(@RequestParam(value="pid",required=true) long pid){
+		logger.debug("controller:/product/category/list_pid");
 		List<Category> categorys=categoryService.listByPid(pid);
 		return categorys;
 		

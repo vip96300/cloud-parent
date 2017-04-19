@@ -3,6 +3,7 @@ package org.cloud.product.server.service;
 import java.util.List;
 
 import org.cloud.product.server.model.Brand;
+import org.springframework.data.domain.Pageable;
 
 public interface BrandService {
 	/**
@@ -10,7 +11,7 @@ public interface BrandService {
 	 * @param catId
 	 * @return
 	 */
-	public List<Brand> listByCatId(long catId);
+	public List<Brand> listByCatId(long catId,Pageable pageable);
 	/**
 	 * 添加品牌
 	 * @param brand
