@@ -1,5 +1,15 @@
 package org.cloud.product.server.service;
 
-public interface AttGroupService {
+import java.util.List;
+import java.util.Map;
 
+import org.cloud.product.server.model.AttGroup;
+
+public interface AttGroupService {
+	/**
+	 * 根据类目编号获取属性组和属性列表和属性值列表
+	 * @param catId
+	 * @return
+	 */
+	public List<Map<AttGroup,List<Object>>> listAttributesAttValuesByCatId(long catId);
 }

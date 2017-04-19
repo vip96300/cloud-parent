@@ -15,13 +15,6 @@ public class AttributeServiceImpl implements AttributeService{
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	@Autowired
 	private AttributeRepository attributeRepository;
-	
-	@Override
-	public List<Attribute> listByGroId(long groId) {
-		logger.debug(this.getClass().getName());
-		List<Attribute> attributes=attributeRepository.findByGroId(groId);
-		return attributes;
-	}
 
 	@Override
 	public void add(Attribute attribute) {

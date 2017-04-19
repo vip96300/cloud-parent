@@ -27,5 +27,53 @@ public class Attribute implements Serializable{
 	private Integer type;//属性类型/0：输入框，1：单选框，2：多选框
 	@Column(nullable=false)
 	private Long time;//创建时间
-
+	public Long getAttId() {
+		return attId;
+	}
+	public void setAttId(Long attId) {
+		this.attId = attId;
+	}
+	public Long getGroId() {
+		return groId;
+	}
+	public void setGroId(Long groId) {
+		this.groId = groId;
+	}
+	public Long getCatId() {
+		return catId;
+	}
+	public void setCatId(Long catId) {
+		this.catId = catId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Integer getType() {
+		return type;
+	}
+	public void setType(Integer type) {
+		this.type = type;
+	}
+	public Long getTime() {
+		return time;
+	}
+	public void setTime(Long time) {
+		this.time = time;
+	}
+	/**
+	 * 文本
+	 */
+	public static final int T0=0;
+	/**
+	 * 单选
+	 */
+	public static final int T1=1;
+	/**
+	 * 多选
+	 */
+	public static final int T2=2;
+	
 }

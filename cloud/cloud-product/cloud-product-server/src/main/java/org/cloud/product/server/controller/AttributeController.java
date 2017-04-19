@@ -20,14 +20,7 @@ public class AttributeController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	@Autowired
 	private AttributeService attributeService;
-	
-    @RequestMapping(value="/list_groId")
-    public List<Attribute> list_catId(@RequestParam(value="groId",required=true) long groId){
-    	logger.debug(this.getClass().getName());
-    	List<Attribute> attributes=attributeService.listByGroId(groId);
-    	return attributes;
-    }
-    
+
     @RequestMapping(value="/add")
     public void add(@ModelAttribute Attribute attribute){
     	logger.debug(this.getClass().getName());

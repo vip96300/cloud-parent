@@ -7,10 +7,11 @@ import org.cloud.product.server.model.Attribute;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AttributeRepository extends JpaRepository<Attribute, Serializable>{
+
 	/**
-	 * 根据类目标号获取属性列表
+	 * 根据类目编号获取属性列表
 	 * @param catId
 	 * @return
 	 */
-	List<Attribute> findByGroId(long groId);
+	List<Attribute> findByCatId(long catId);
 }

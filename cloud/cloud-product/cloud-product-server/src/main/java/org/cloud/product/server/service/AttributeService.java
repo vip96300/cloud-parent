@@ -6,12 +6,6 @@ import org.cloud.product.server.model.Attribute;
 
 public interface AttributeService {
 	/**
-	 * 根据类目编号获取
-	 * @param attId
-	 * @return
-	 */
-	public List<Attribute> listByGroId(long catId);
-	/**
 	 * 添加属性
 	 * @param attribute
 	 */

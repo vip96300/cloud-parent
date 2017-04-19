@@ -23,15 +23,7 @@ public class AttributeController {
 	
 	@Autowired
 	private AttributeService attributeService;
-	
-	@ApiOperation(value="根据产品类目编号获取属性列表")
-	@ApiImplicitParams(@ApiImplicitParam(name="catId",value="产品类目编号",required=true,dataType="long"))
-    @RequestMapping(value="list_groId",method=RequestMethod.GET)
-    public List<Attribute> list_groId(@RequestParam(value="groId",required=true) long groId){
-    	List<Attribute> attributes=attributeService.listByGroId(groId);
-    	return attributes;
-    }
-    
+
 	@ApiOperation(value="添加属性")
     @ApiImplicitParams({
         @ApiImplicitParam(name = "catId", value = "类目编号", required = true, dataType = "long"),

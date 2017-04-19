@@ -12,13 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(value="cloud-product-server",fallback=AttributeServiceBreaker.class)
 public interface AttributeService {
-	/**
-	 * 根据类目编号获取
-	 * @param attId
-	 * @return
-	 */
-	@RequestMapping(value = "/product/category/attribute/list_groId",method=RequestMethod.GET)
-	public List<Attribute> listByGroId(@RequestParam(value="groId",required=true) long groId);
+
 	/**
 	 * 添加属性
 	 * @param attribute
