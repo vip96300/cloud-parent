@@ -1,7 +1,8 @@
 package org.cloud.user.server;
 
-import org.cloud.user.server.dao.UserDao;
 import org.cloud.user.server.model.User;
+import org.cloud.user.server.repository.UserRepository;
+import org.cloud.user.server.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +14,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class ApplicationTest {
 	
 	@Autowired
-	private UserDao userDao;
+	private UserService userService;
 	
 	@Test
 	public void test(){
-		User user=userDao.getById("1");
+		User user=userService.getByUseId(1);
 		System.out.println(user);
 		/*user=new User();
 		user.setName("userName0");

@@ -17,7 +17,7 @@ public class ApplicationTest {
 
 	@Test
 	public void test(){
-		User user=userService.getById("1");
+		User user=userService.getByUseId(1);
 		System.out.println(user);
 		/*user=new User();
 		user.setName("userName0");

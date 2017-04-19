@@ -8,5 +8,5 @@ public interface UserService {
 	 * @param id
 	 * @return
 	 */
-	User getById(String id);
+	User getByUseId(long useId);
 }

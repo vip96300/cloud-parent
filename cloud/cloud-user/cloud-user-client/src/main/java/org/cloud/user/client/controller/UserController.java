@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @EnableAutoConfiguration
+@RequestMapping(value="/user")
 public class UserController {
 	
 	@Autowired
@@ -21,9 +22,9 @@ public class UserController {
 	
 	@ApiOperation(value="get user detail info")
 	@ApiImplicitParams(value = { @ApiImplicitParam })
-	@RequestMapping(path="/getById",method=RequestMethod.GET)
-	public User getById(@RequestParam(value="id",required=true) String id){
-		User user=userService.getById(id);
+	@RequestMapping(path="/get_useId",method=RequestMethod.GET)
+	public User get_useId(@RequestParam(value="useId") long useId){
+		User user=userService.getByUseId(useId);
 		return user;
 	}
 }

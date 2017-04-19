@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class UserServiceBreaker implements UserService{
 
 	@Override
-	public User getById(String id) {
+	public User getByUseId(long useId) {
 		System.out.println("service error");
 		return null;
 	}
