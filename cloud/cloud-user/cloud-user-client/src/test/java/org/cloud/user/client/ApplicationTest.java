@@ -1,0 +1,27 @@
+package org.cloud.user.client;
+
+import org.cloud.user.client.model.User;
+import org.cloud.user.client.service.UserService;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(Application.class)
+public class ApplicationTest {
+	
+	@Autowired
+	private UserService userService;
+
+	@Test
+	public void test(){
+		User user=userService.getById("1");
+		System.out.println(user);
+		/*user=new User();
+		user.setName("userName0");
+		user.setPassword("123456");
+		userDao.save(user);*/
+	}
+}
