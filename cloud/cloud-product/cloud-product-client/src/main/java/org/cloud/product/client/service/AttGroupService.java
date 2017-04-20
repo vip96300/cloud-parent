@@ -6,7 +6,6 @@ import java.util.Map;
 import org.cloud.product.client.model.AttGroup;
 import org.cloud.product.client.service.breaker.AttGroupServiceBreaker;
 import org.springframework.cloud.netflix.feign.FeignClient;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,6 +34,20 @@ public interface AttGroupService {
 	 * @param groid
 	 * @return
 	 */
-	@RequestMapping(value="/product/category/attribute/attGroup/get_groid")
+	@RequestMapping(value="/product/category/attribute/attGroup/get_groid",method=RequestMethod.GET)
 	public AttGroup getByGroid(@RequestParam(value="groid",required=true)long groid);
+	
+	/**
+	 * 删除属性组，级联删除以下所有属性
+	 * @param groid
+	 */
+	@RequestMapping(value="/product/category/attribute/attGroup/del_groid",method=RequestMethod.DELETE)
+	public void delByGroid(@RequestParam(value="groid",required=true)long groid);
+	
+	/**
+	 * 修改属性组
+	 * @param attGroup
+	 */
+	@RequestMapping(value="/product/category/attribute/attGroup/upd_groid",method=RequestMethod.PUT)
+	public void updByGroid(@RequestBody AttGroup attGroup);
 }

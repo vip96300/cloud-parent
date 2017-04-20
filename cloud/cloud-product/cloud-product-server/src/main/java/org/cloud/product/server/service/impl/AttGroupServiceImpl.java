@@ -11,6 +11,7 @@ import org.cloud.product.server.model.Attribute;
 import org.cloud.product.server.repository.AttGroupRepository;
 import org.cloud.product.server.repository.AttValueRepository;
 import org.cloud.product.server.repository.AttributeRepository;
+import org.cloud.product.server.repository.PropertyRepository;
 import org.cloud.product.server.service.AttGroupService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,8 @@ public class AttGroupServiceImpl implements AttGroupService{
 	private AttributeRepository attributeRepository;
 	@Autowired
 	private AttValueRepository attValueRepository;
+	@Autowired
+	private PropertyRepository propertyRepository;
 	
 	@Override
 	public List<Map<AttGroup, List<Object>>> listAttributesAttValuesByCatid(long catid) {
@@ -79,5 +82,20 @@ public class AttGroupServiceImpl implements AttGroupService{
 	public AttGroup getByGroid(long groid) {
 		AttGroup attGroup=attGroupRepository.findOne(groid);
 		return attGroup;
+	}
+	
+	/**
+	 * 需要先删除产品属性才删除属性，不然会找不到属性删除不掉产品属性
+	 */
+	@Override
+	public void delByGroid(long groid) {
+		attGroupRepository.delete(groid);
+		propertyRepository.deleteByGroid(groid);
+		attributeRepository.deleteByGroid(groid);
+	}
+
+	@Override
+	public void updByGroid(AttGroup attGroup) {
+		attGroupRepository.saveAndFlush(attGroup);
 	}
 }

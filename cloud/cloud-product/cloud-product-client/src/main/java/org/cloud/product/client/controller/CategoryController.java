@@ -42,7 +42,7 @@ public class CategoryController {
 		@ApiImplicitParam(name="issku",value="是否是最小级类目",required=true,dataType="int"),
 		@ApiImplicitParam(name="name",value="类目名称",required=true,dataType="String")
 	})
-	@RequestMapping(value="add",method={RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value="/add",method={RequestMethod.POST,RequestMethod.GET})
 	public void add(@RequestParam(value="pid",required=true)long pid, @RequestParam(value="issku",required=true)int issku, @RequestParam(value="name",required=true)String name){
 		Category category=null;
 		if(pid!=0){//如果不是顶层类目

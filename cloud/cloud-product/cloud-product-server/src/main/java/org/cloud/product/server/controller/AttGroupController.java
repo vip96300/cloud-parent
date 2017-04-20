@@ -25,21 +25,31 @@ public class AttGroupController {
 	@Autowired
 	private AttGroupService attGroupService;
 	
-	@RequestMapping(value="list_attributes_attValues_catid",method=RequestMethod.GET)
+	@RequestMapping(value="/list_attributes_attValues_catid",method=RequestMethod.GET)
 	public List<Map<AttGroup,List<Object>>> list_attributes_attValues_catid(@RequestParam(value="catid",required=true) long catid){
 		List<Map<AttGroup,List<Object>>> attGroupsAttibutesAttValues=attGroupService.listAttributesAttValuesByCatid(catid);
 		logger.debug("list_attributes_attValues_catid");
 		return attGroupsAttibutesAttValues;
 	}
 	
-	@RequestMapping(value="add",method=RequestMethod.POST)
+	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public void add(@RequestBody AttGroup attGroup){
 		attGroupService.add(attGroup);
 	}
 	
-	@RequestMapping(value="get_groid",method=RequestMethod.GET)
+	@RequestMapping(value="/get_groid",method=RequestMethod.GET)
 	public AttGroup get_groid(@RequestParam(value="groid",required=true)long groid){
 		AttGroup attGroup=attGroupService.getByGroid(groid);
 		return attGroup;
+	}
+	
+	@RequestMapping(value="/del_groid",method=RequestMethod.DELETE)
+	public void del_groid(@RequestParam(value="groid",required=true)long groid){
+		attGroupService.delByGroid(groid);
+	}
+	
+	@RequestMapping(value="/upd_groid",method=RequestMethod.PUT)
+	public void upd_groid(@RequestBody AttGroup attGroup){
+		attGroupService.updByGroid(attGroup);
 	}
 }

@@ -28,5 +28,17 @@ public class AttGroupServiceBreaker implements AttGroupService{
 		return null;
 	}
 
+	@Override
+	public void delByGroid(long groid) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updByGroid(AttGroup attGroup) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

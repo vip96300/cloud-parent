@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.cloud.product.server.model.AttGroup;
+import org.springframework.transaction.annotation.Transactional;
 
 public interface AttGroupService {
 	/**
@@ -25,4 +26,17 @@ public interface AttGroupService {
 	 * @return
 	 */
 	public AttGroup getByGroid(long groid);
+	
+	/**
+	 * 删除属性组，级联删除以下所有属性列表
+	 * @param groid
+	 */
+	@Transactional(rollbackFor=Exception.class)
+	public void delByGroid(long groid);
+	
+	/**
+	 * 修改属性组
+	 * @param attGroup
+	 */
+	public void updByGroid(AttGroup attGroup);
 }

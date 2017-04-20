@@ -28,7 +28,7 @@ public class ProductController {
 	 * @param size
 	 * @return
 	 */
-	@RequestMapping(value="list_catid",method=RequestMethod.GET)
+	@RequestMapping(value="/list_catid",method=RequestMethod.GET)
 	public List<Product> list_catid(@RequestParam(value="catid",required=true)long catid,@RequestParam(value="page",required=true)int page,@RequestParam(value="size",required=true)int size){
 		List<Product> products=productService.listByCatid(catid,new PageRequest(page, size));
 		return products;

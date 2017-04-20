@@ -20,6 +20,8 @@ public class Property implements Serializable{
 	@Column(nullable=false)
 	private Long productid;//产品编号
 	@Column(nullable=false)
+	private Long attid;//属性编号
+	@Column(nullable=false)
 	private String attribute;//属性名
 	@Column(nullable=false)
 	private String value;//属性值
@@ -36,6 +38,12 @@ public class Property implements Serializable{
 	}
 	public void setProductid(Long productid) {
 		this.productid = productid;
+	}
+	public Long getAttid() {
+		return attid;
+	}
+	public void setAttid(Long attid) {
+		this.attid = attid;
 	}
 	public String getAttribute() {
 		return attribute;

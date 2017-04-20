@@ -45,4 +45,24 @@ public class AttributeController {
 		attribute.setType(type);
     	attributeService.add(attribute);
     }
+	
+	@ApiOperation(value="修改属性名称")
+	@ApiImplicitParams({@ApiImplicitParam(name="attid",value="属性编号",required=true,dataType="long"),
+		@ApiImplicitParam(name="name",value="属性名称",required=true,dataType="String")})
+	@RequestMapping(value="/upd_attid",method={RequestMethod.GET,RequestMethod.PUT})
+	public void upd_attid(@RequestParam(value="attid",required=true)long attid,@RequestParam(value="name",required=true)String name){
+		Attribute attribute=attributeService.getByAttid(attid);
+		if(!ValidUtil.isValid(attribute)){
+			return;
+		}
+		attribute.setName(name);
+		attributeService.updByAttid(attribute);
+	}
+	
+	@ApiOperation(value="删除属性，并删除属性及属性值和产品属性")
+	@ApiImplicitParams({@ApiImplicitParam(name="attid",value="属性编号",required=true,dataType="long")})
+	@RequestMapping(value="/del_attid",method={RequestMethod.GET,RequestMethod.DELETE})
+	public void del_attid(@RequestParam(value="attid")long attid){
+		attributeService.delByAttid(attid);
+	}
 }

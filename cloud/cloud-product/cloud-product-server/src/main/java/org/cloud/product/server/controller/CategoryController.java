@@ -38,7 +38,7 @@ public class CategoryController {
 		categoryService.add(category);
 	}
 	
-	@RequestMapping(value="get_catid",method=RequestMethod.GET)
+	@RequestMapping(value="/get_catid",method=RequestMethod.GET)
 	public Category get_catid(@RequestParam(value="catid",required=true)long catid){
 		Category category=categoryService.getByCatid(catid);
 		return category;

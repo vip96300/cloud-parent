@@ -13,4 +13,5 @@ public interface AttGroupRepository extends JpaRepository<AttGroup, Serializable
 	 * @return
 	 */
 	public List<AttGroup> findByCatid(long catid);
+
 }
