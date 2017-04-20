@@ -11,4 +11,17 @@ public interface CategoryService {
 	 * @return
 	 */
 	public List<Category> listByPid(long pid);
+	
+	/**
+	 * 添加类目
+	 * @param category
+	 */
+	public void add(Category category);
+	
+	/**
+	 * 验证类目是否存在
+	 * @param catid
+	 * @return
+	 */
+	public Category getByCatid(long catid);
 }

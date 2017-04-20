@@ -20,7 +20,9 @@ public class Product implements Serializable{
 	@Column(nullable=false)
 	private Long braid;//品牌编号
 	@Column(nullable=false)
-	private String name;//品牌名称
+	private Long catid;
+	@Column(nullable=false)
+	private String name;//名称
 	@Column(nullable=false)
 	private Long time;
 	public Long getProid() {
@@ -34,6 +36,12 @@ public class Product implements Serializable{
 	}
 	public void setBraid(Long braid) {
 		this.braid = braid;
+	}
+	public Long getCatid() {
+		return catid;
+	}
+	public void setCatid(Long catid) {
+		this.catid = catid;
 	}
 	public String getName() {
 		return name;

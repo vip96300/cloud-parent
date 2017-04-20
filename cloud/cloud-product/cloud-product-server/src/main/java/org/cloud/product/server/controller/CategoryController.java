@@ -8,7 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,4 +29,19 @@ public class CategoryController {
 		return categorys;
 		
 	}
+	
+	/**
+	 * 添加类目
+	 */
+	@RequestMapping(value="/add",method=RequestMethod.POST)
+	public void add(@RequestBody Category category){
+		categoryService.add(category);
+	}
+	
+	@RequestMapping(value="get_catid",method=RequestMethod.GET)
+	public Category get_catid(@RequestParam(value="catid",required=true)long catid){
+		Category category=categoryService.getByCatid(catid);
+		return category;
+	}
+
 }

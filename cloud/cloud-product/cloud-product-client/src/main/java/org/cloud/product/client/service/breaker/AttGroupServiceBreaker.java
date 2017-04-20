@@ -22,5 +22,11 @@ public class AttGroupServiceBreaker implements AttGroupService{
 		
 	}
 
+	@Override
+	public AttGroup getByGroid(long groid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

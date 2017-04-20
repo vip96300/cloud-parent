@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +23,7 @@ public class AttributeController {
 	private AttributeService attributeService;
 
     @RequestMapping(value="/add")
-    public void add(@ModelAttribute Attribute attribute){
+    public void add(@RequestBody Attribute attribute){
     	logger.debug(this.getClass().getName());
     	attributeService.add(attribute);
     }

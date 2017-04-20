@@ -74,4 +74,10 @@ public class AttGroupServiceImpl implements AttGroupService{
 		attGroup.setTime(System.currentTimeMillis());
 		attGroupRepository.save(attGroup);
 	}
+
+	@Override
+	public AttGroup getByGroid(long groid) {
+		AttGroup attGroup=attGroupRepository.findOne(groid);
+		return attGroup;
+	}
 }

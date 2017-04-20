@@ -1,14 +1,10 @@
 package org.cloud.product.client.service;
 
-import java.util.List;
-
 import org.cloud.product.client.model.Attribute;
 import org.cloud.product.client.service.breaker.AttributeServiceBreaker;
 import org.springframework.cloud.netflix.feign.FeignClient;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(value="cloud-product-server",fallback=AttributeServiceBreaker.class)
 public interface AttributeService {
@@ -18,5 +14,5 @@ public interface AttributeService {
 	 * @param attribute
 	 */
 	@RequestMapping(value = "/product/category/attribute/add")
-	public void add(@ModelAttribute Attribute attribute);
+	public void add(@RequestBody Attribute attribute);
 }

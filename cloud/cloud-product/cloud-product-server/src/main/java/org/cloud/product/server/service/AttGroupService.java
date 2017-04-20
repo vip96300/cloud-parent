@@ -18,4 +18,11 @@ public interface AttGroupService {
 	 * @param attGroup
 	 */
 	public void add(AttGroup attGroup);
+	
+	/**
+	 * 根据属性组编号获取属性组
+	 * @param groid
+	 * @return
+	 */
+	public AttGroup getByGroid(long groid);
 }

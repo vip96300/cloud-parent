@@ -27,7 +27,7 @@ public class BrandServiceImpl implements BrandService{
 	
 	@Override
 	public void add(Brand brand) {
-		logger.debug(this.getClass().getName());
+		brand.setTime(System.currentTimeMillis());
 		brandRepository.save(brand);
 	}
 

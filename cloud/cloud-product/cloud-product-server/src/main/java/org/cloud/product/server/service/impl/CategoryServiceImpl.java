@@ -22,4 +22,18 @@ public class CategoryServiceImpl implements CategoryService{
 		return categorys;
 	}
 
+	@Override
+	public void add(Category category) {
+		category.setTime(System.currentTimeMillis());
+		categoryRepository.save(category);
+	}
+
+	@Override
+	public Category getByCatid(long catid) {
+		Category category=categoryRepository.findOne(catid);
+		return category;
+	}
+
+
+
 }

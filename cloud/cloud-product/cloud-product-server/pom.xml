@@ -28,6 +28,17 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.spring.common.util</groupId>
+		  	<artifactId>cloud-common-util</artifactId>
+		  	<version>${project.parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.1.2</version>
+		</dependency>
+
 
 	</dependencies>
 

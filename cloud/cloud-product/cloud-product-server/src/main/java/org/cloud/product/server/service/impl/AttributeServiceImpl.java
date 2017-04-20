@@ -1,7 +1,5 @@
 package org.cloud.product.server.service.impl;
 
-import java.util.List;
-
 import org.cloud.product.server.model.Attribute;
 import org.cloud.product.server.repository.AttributeRepository;
 import org.cloud.product.server.service.AttributeService;
@@ -19,6 +17,7 @@ public class AttributeServiceImpl implements AttributeService{
 	@Override
 	public void add(Attribute attribute) {
 		logger.debug(this.getClass().getName());
+		attribute.setTime(System.currentTimeMillis());
 		attributeRepository.save(attribute);
 	}
 

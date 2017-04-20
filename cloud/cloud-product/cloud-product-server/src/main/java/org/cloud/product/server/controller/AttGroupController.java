@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,7 +33,13 @@ public class AttGroupController {
 	}
 	
 	@RequestMapping(value="add",method=RequestMethod.POST)
-	public void add(@ModelAttribute AttGroup attGroup){
+	public void add(@RequestBody AttGroup attGroup){
 		attGroupService.add(attGroup);
+	}
+	
+	@RequestMapping(value="get_groid",method=RequestMethod.GET)
+	public AttGroup get_groid(@RequestParam(value="groid",required=true)long groid){
+		AttGroup attGroup=attGroupService.getByGroid(groid);
+		return attGroup;
 	}
 }

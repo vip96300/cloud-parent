@@ -15,4 +15,17 @@ public class CategoryServiceBreaker implements CategoryService{
 		return null;
 	}
 
+	@Override
+	public void add(Category category) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Category getByCatid(long catid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 }
