@@ -29,10 +29,7 @@ public class CategoryController {
 		return categorys;
 		
 	}
-	
-	/**
-	 * 添加类目
-	 */
+
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public void add(@RequestBody Category category){
 		categoryService.add(category);
@@ -42,6 +39,16 @@ public class CategoryController {
 	public Category get_catid(@RequestParam(value="catid",required=true)long catid){
 		Category category=categoryService.getByCatid(catid);
 		return category;
+	}
+	
+	@RequestMapping(value="/del_catid",method=RequestMethod.DELETE)
+	public void del_catid(@RequestParam(value="catid",required=true)long catid){
+		categoryService.delByCatid(catid);
+	}
+
+	@RequestMapping(value="/upd_catid",method=RequestMethod.PUT)
+	public void upd_catid(@RequestBody Category category){
+		categoryService.updByCatid(category);
 	}
 
 }

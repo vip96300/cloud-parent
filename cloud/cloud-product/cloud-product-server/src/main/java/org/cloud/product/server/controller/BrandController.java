@@ -35,4 +35,20 @@ public class BrandController {
 		logger.debug(this.getClass().getName());
 		brandService.add(brand);
 	}
+
+	@RequestMapping(value="/get_braid",method=RequestMethod.GET)
+	public Brand get_braid(@RequestParam(value="braid",required=true)long braid){
+		Brand brand=brandService.getByBraid(braid);
+		return brand;
+	}
+
+	@RequestMapping(value="/del_braid",method={RequestMethod.DELETE})
+	public void del_braid(@RequestParam(value="braid",required=true)long braid){
+		brandService.delByBraid(braid);
+	}
+	
+	@RequestMapping(value="/upd_braid",method=RequestMethod.PUT)
+	public void upd_braid(@RequestBody Brand brand){
+		brandService.updByBraid(brand);
+	}
 }

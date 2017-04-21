@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AttGroupServiceImpl implements AttGroupService{
+	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
@@ -42,14 +43,14 @@ public class AttGroupServiceImpl implements AttGroupService{
 			return null;
 		}
 		List<AttValue> attValues=attValueRepository.findByCatid(catid);
-		//属性组集合<属性组名称：属性集合<属性：属性值集合>>
+		//属性组集合<属性组：属性集合<属性：属性值集合>>
 		List<Map<AttGroup,List<Object>>> attGroupsAttributes=new ArrayList<Map<AttGroup,List<Object>>>();
 		for(AttGroup attGroup:attGroups){
 			//属性组：属性集合
 			Map<AttGroup,List<Object>> attGroupAttributesMap=new HashMap<AttGroup,List<Object>>();
 			//属性集合<属性：属性值集合>
 			List<Object> attributesByAttGroup=new ArrayList<Object>();
-			//属性：属性值
+			//属性：属性值集合
 			Map<Attribute,List<AttValue>> attributeAttValues=new HashMap<Attribute,List<AttValue>>();
 			for(Attribute attribute:attributes){
 				if(attribute.getGroid()==attGroup.getGroid()){

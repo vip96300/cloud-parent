@@ -63,7 +63,7 @@ public class AttGroupController {
 	@ApiOperation(value="根据属性组编号修改属性组名称")
 	@ApiImplicitParams({@ApiImplicitParam(name="groid",value="属性组编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="name",value="属性组名称",required=true,dataType="String")})
-	@RequestMapping(value="/upd_groid",method={RequestMethod.GET,RequestMethod.PUT})
+	@RequestMapping(value="/upd_groid",method={RequestMethod.GET})
 	public void upd_groid(@RequestParam(value="groid",required=true)long groid,@RequestParam(value="name",required=true)String name){
 		AttGroup attGroup=attGroupService.getByGroid(groid);
 		if(!ValidUtil.isValid(attGroup)){
@@ -75,7 +75,7 @@ public class AttGroupController {
 	
 	@ApiOperation(value="删除属性组，并且级联删除以下所有属性")
 	@ApiImplicitParams({@ApiImplicitParam(name="groid",value="属性组编号",required=true,dataType="long")})
-	@RequestMapping(value="/del_groid",method={RequestMethod.DELETE,RequestMethod.GET})
+	@RequestMapping(value="/del_groid",method={RequestMethod.GET})
 	public void del_groid(@RequestParam(value="groid")long groid){
 		attGroupService.delByGroid(groid);
 	}

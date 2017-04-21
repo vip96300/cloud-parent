@@ -32,7 +32,7 @@ public class AttributeController {
         @ApiImplicitParam(name = "name", value = "属性名称", required = true, dataType = "String"),
         @ApiImplicitParam(name = "type", value = "属性类型，0输入，1单选，2多选", required = true, dataType = "int")
     })
-    @RequestMapping(value="/add",method={RequestMethod.GET,RequestMethod.POST})
+    @RequestMapping(value="/add",method={RequestMethod.GET})
     public void add(@RequestParam(value="groid",required=true)long groid,@RequestParam(value="name",required=true)String name,@RequestParam(value="type",required=true)int type){
 		AttGroup attGroup=attGroupService.getByGroid(groid);
 		if(!ValidUtil.isValid(attGroup)){
@@ -49,7 +49,7 @@ public class AttributeController {
 	@ApiOperation(value="修改属性名称")
 	@ApiImplicitParams({@ApiImplicitParam(name="attid",value="属性编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="name",value="属性名称",required=true,dataType="String")})
-	@RequestMapping(value="/upd_attid",method={RequestMethod.GET,RequestMethod.PUT})
+	@RequestMapping(value="/upd_attid",method={RequestMethod.GET})
 	public void upd_attid(@RequestParam(value="attid",required=true)long attid,@RequestParam(value="name",required=true)String name){
 		Attribute attribute=attributeService.getByAttid(attid);
 		if(!ValidUtil.isValid(attribute)){
@@ -61,7 +61,7 @@ public class AttributeController {
 	
 	@ApiOperation(value="删除属性，并删除属性及属性值和产品属性")
 	@ApiImplicitParams({@ApiImplicitParam(name="attid",value="属性编号",required=true,dataType="long")})
-	@RequestMapping(value="/del_attid",method={RequestMethod.GET,RequestMethod.DELETE})
+	@RequestMapping(value="/del_attid",method={RequestMethod.GET})
 	public void del_attid(@RequestParam(value="attid")long attid){
 		attributeService.delByAttid(attid);
 	}

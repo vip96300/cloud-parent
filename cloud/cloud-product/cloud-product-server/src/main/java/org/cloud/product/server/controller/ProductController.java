@@ -33,4 +33,10 @@ public class ProductController {
 		List<Product> products=productService.listByCatid(catid,new PageRequest(page, size));
 		return products;
 	}
+	
+	@RequestMapping(value="/get_proid",method=RequestMethod.GET)
+	public Product get_proid(@RequestParam(value="proid")long proid){
+		Product product=productService.getByProid(proid);
+		return product;
+	}
 }
