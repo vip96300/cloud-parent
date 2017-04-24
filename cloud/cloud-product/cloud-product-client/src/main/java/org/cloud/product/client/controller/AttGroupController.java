@@ -43,7 +43,7 @@ public class AttGroupController {
 		@ApiImplicitParam(name="catid",value="类目编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="name",value="属性组名称",required=true,dataType="String")
 	})
-	@RequestMapping(value="/add",method={RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value="/add",method={RequestMethod.GET})
 	public void add(@RequestParam(value="catid",required=true)long catid,@RequestParam(value="name",required=true)String name){
 		Category category=categoryService.getByCatid(catid);
 		if(!ValidUtil.isValid(category)){

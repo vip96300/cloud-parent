@@ -16,5 +16,6 @@
   <modules>
     <module>cloud-order-client</module>
     <module>cloud-order-server</module>
+    <module>cloud-order-admin</module>
   </modules>
 </project>
