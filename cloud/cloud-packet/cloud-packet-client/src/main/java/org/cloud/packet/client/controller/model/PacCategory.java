@@ -11,9 +11,9 @@ public class PacCategory{
 	private Long pacid;//包名
 
 	private Long categoryid;//类目编号
-
-	private Long name;//名称
-
+	
+	private String name;//名称
+	
 	private Long ismush;//是否必须
 
 	private Long time;
@@ -35,10 +35,11 @@ public class PacCategory{
 	public void setCategoryid(Long categoryid) {
 		this.categoryid = categoryid;
 	}
-	public Long getName() {
+	
+	public String getName() {
 		return name;
 	}
-	public void setName(Long name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 	public Long getIsmush() {

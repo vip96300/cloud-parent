@@ -8,5 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value="/packet/gift/picture")
 public class GiftPictureController {
-
+	
+	@RequestMapping(value="/")
+	public void add(){
+		
+	}
 }

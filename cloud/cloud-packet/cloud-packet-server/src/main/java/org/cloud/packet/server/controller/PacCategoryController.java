@@ -8,5 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value="/packet/category")
 public class PacCategoryController {
-
+	
+	
+	public void add(){
+		
+	}
 }
