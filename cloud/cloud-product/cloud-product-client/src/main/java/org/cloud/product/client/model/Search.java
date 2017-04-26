@@ -10,6 +10,8 @@ public class Search {
 
 	private Long time;// 时间
 
+
+
 	public Long getSeaid() {
 		return seaid;
 	}

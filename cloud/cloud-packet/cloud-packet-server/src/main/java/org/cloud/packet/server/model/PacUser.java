@@ -46,6 +46,7 @@ public class PacUser implements Serializable{
 	public void setPacid(Long pacid) {
 		this.pacid = pacid;
 	}
+
 	public String getName() {
 		return name;
 	}

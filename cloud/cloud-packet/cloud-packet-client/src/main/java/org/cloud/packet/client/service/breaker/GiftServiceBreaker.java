@@ -2,7 +2,7 @@ package org.cloud.packet.client.service.breaker;
 
 import java.util.List;
 
-import org.cloud.packet.client.controller.model.Gift;
+import org.cloud.packet.client.model.Gift;
 import org.cloud.packet.client.service.GiftService;
 import org.springframework.stereotype.Component;
 @Component

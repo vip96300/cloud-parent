@@ -7,7 +7,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
 import org.cloud.packet.client.controller.dto.Result;
-import org.cloud.packet.client.controller.model.Packet;
+import org.cloud.packet.client.model.Packet;
 import org.cloud.packet.client.service.PacketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

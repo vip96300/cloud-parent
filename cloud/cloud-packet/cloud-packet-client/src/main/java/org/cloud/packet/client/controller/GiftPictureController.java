@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
-import org.cloud.packet.client.controller.model.GifPicture;
+import org.cloud.packet.client.model.GifPicture;
 import org.cloud.packet.client.service.GifPictureService;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;

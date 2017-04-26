@@ -2,7 +2,7 @@ package org.cloud.packet.client.service;
 
 import java.util.List;
 
-import org.cloud.packet.client.controller.model.PacCategory;
+import org.cloud.packet.client.model.PacCategory;
 import org.cloud.packet.client.service.breaker.PacCategoryServiceBreaker;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;

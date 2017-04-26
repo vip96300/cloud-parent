@@ -2,7 +2,7 @@ package org.cloud.packet.client.service.breaker;
 
 import java.util.List;
 
-import org.cloud.packet.client.controller.model.PacCategory;
+import org.cloud.packet.client.model.PacCategory;
 import org.cloud.packet.client.service.PacCategoryService;
 import org.springframework.stereotype.Component;
 @Component

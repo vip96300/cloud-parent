@@ -1,6 +1,6 @@
 package org.cloud.packet.client.service;
 
-import org.cloud.packet.client.controller.model.GifPicture;
+import org.cloud.packet.client.model.GifPicture;
 import org.cloud.packet.client.service.breaker.GifPictureServiceBreaker;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;

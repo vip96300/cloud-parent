@@ -1,6 +1,6 @@
 package org.cloud.packet.client.service.breaker;
 
-import org.cloud.packet.client.controller.model.GifPicture;
+import org.cloud.packet.client.model.GifPicture;
 import org.cloud.packet.client.service.GifPictureService;
 import org.springframework.stereotype.Component;
 @Component
