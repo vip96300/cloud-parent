@@ -12,7 +12,7 @@ public class PacProduct{
 
 	private Long productid;//产品编号
 
-	private Long gitid;//礼物编号
+	private Long gifid;//礼物编号
 
 	private Long time;
 	public Long getProid() {
@@ -33,11 +33,12 @@ public class PacProduct{
 	public void setProductid(Long productid) {
 		this.productid = productid;
 	}
-	public Long getGitid() {
-		return gitid;
+
+	public Long getGifid() {
+		return gifid;
 	}
-	public void setGitid(Long gitid) {
-		this.gitid = gitid;
+	public void setGifid(Long gifid) {
+		this.gifid = gifid;
 	}
 	public Long getTime() {
 		return time;

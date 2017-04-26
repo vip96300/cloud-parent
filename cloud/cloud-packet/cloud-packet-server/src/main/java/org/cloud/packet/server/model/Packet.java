@@ -26,6 +26,8 @@ public class Packet implements Serializable{
 	private String depict;//描述
 	@Column(nullable=false)
 	private Long time;//时间
+	@Column(nullable=false)
+	private Integer state=Packet.STATE1;//-1已删除，0:异常，1：正常，
 	public Long getPacid() {
 		return pacid;
 	}
@@ -50,7 +52,25 @@ public class Packet implements Serializable{
 	public void setTime(Long time) {
 		this.time = time;
 	}
-	
-	
+	public Integer getState() {
+		return state;
+	}
+	public void setState(Integer state) {
+		this.state = state;
+	}
+
+
+	/**
+	 * 已删除
+	 */
+	public static final int STATE_1=-1;
+	/**
+	 * 异常
+	 */
+	public static final int STATE0=0;
+	/**
+	 * 正常
+	 */
+	public static final int STATE1=1;
 
 }

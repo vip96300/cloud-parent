@@ -25,7 +25,7 @@ public class PacProduct implements Serializable{
 	@Column(nullable=false)
 	private Long productid;//产品编号
 	@Column(nullable=false)
-	private Long gitid;//礼物编号
+	private Long gifid;//礼物编号
 	@Column(nullable=false)
 	private Long time;
 	public Long getProid() {
@@ -46,11 +46,11 @@ public class PacProduct implements Serializable{
 	public void setProductid(Long productid) {
 		this.productid = productid;
 	}
-	public Long getGitid() {
-		return gitid;
+	public Long getGifid() {
+		return gifid;
 	}
-	public void setGitid(Long gitid) {
-		this.gitid = gitid;
+	public void setGifid(Long gifid) {
+		this.gifid = gifid;
 	}
 	public Long getTime() {
 		return time;

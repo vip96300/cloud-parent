@@ -36,7 +36,7 @@ public class PacketController {
 		packetService.add(packet);
 	}
 	
-	@ApiOperation(value="根据删除优选包")
+	@ApiOperation(value="根据编号删除优选包，级联删除该优选包图片列表，及该优选包下所有类目")
 	@ApiImplicitParams({@ApiImplicitParam(name="pacid",value="优选包编号",required=true,dataType="long")})
 	@RequestMapping(value="pacid",method=RequestMethod.GET)
 	public void del_pacid(@RequestParam(value="pacid",required=true)long pacid){

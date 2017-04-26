@@ -21,7 +21,7 @@ public class GiftServiceBreaker implements GiftService{
 	}
 
 	@Override
-	public void upd_gifid(long gifid) {
+	public void updByGifid(Gift gift) {
 		// TODO Auto-generated method stub
 		
 	}

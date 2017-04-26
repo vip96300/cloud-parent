@@ -52,6 +52,8 @@ public class GiftController {
 		if(!ValidUtil.isValid(gift)){
 			return;
 		}
+		gift.setName(name);
+		giftService.updByGifid(gift);
 	}
 	
 	@ApiOperation(value="根据编号删除礼物，会级联删除礼物图片")

@@ -35,7 +35,7 @@ public interface GiftService {
 	 * @param gifid
 	 */
 	@RequestMapping(value="/packet/gift/upd_gifid",method=RequestMethod.PUT)
-	public void upd_gifid(@RequestParam(value="gifid",required=true)long gifid);
+	public void updByGifid(@RequestBody Gift gift);
 	
 	/**
 	 * 获取

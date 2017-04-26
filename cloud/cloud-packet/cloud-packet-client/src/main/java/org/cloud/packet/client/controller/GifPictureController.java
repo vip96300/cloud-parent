@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableAutoConfiguration
 @RestController
 @RequestMapping(value="/packet/gift/picture")
-public class GiftPictureController {
+public class GifPictureController {
 	
 	private GifPictureService gifPictureService;
 	
