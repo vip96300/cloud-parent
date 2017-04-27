@@ -77,6 +77,10 @@ public class AttGroupController {
 	@ApiImplicitParams({@ApiImplicitParam(name="groid",value="属性组编号",required=true,dataType="long")})
 	@RequestMapping(value="/del_groid",method={RequestMethod.GET})
 	public void del_groid(@RequestParam(value="groid")long groid){
+		AttGroup attGroup=attGroupService.getByGroid(groid);
+		if(!ValidUtil.isValid(attGroup)){
+			return;
+		}
 		attGroupService.delByGroid(groid);
 	}
 }

@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="packet_packet_user")
-public class PacUser implements Serializable{
+public class PacUser extends BaseModel implements Serializable{
 
 	/**
 	 * 用户的包

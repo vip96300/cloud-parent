@@ -8,9 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="packet_packet_picture")
-public class PacPicture implements Serializable{
+public class PacPicture extends BaseModel implements Serializable{
 
 	/**
 	 * 包图片

@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="product_product_picture")
-public class ProPicture implements Serializable{
+public class ProPicture extends BaseModel implements Serializable{
 
 	private static final long serialVersionUID = 7700383641712502454L;
 	

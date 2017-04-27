@@ -9,26 +9,22 @@ public class KeywordServiceBreaker implements KeywordService{
 
 	@Override
 	public void add(Keyword keyword) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 	@Override
 	public Keyword getByKeyid(long keyid) {
-		// TODO Auto-generated method stub
-		return null;
+		throw new RuntimeException();
 	}
 
 	@Override
 	public void updByKeyid(Keyword keyword) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 	@Override
 	public void delByKeyid(long keyid) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 

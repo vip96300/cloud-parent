@@ -1,12 +1,11 @@
 package org.cloud.product.server.repository;
 
-import java.io.Serializable;
 import java.util.List;
 
 import org.cloud.product.server.model.AttValue;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AttValueRepository extends JpaRepository<AttValue, Serializable>{
+public interface AttValueRepository extends JpaRepository<AttValue, Long>{
 	
 	/**
 	 * 根据类目编号获取属性值列表

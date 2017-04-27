@@ -10,32 +10,27 @@ public class GiftServiceBreaker implements GiftService{
 
 	@Override
 	public void add(Gift gift) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 	@Override
 	public List<Gift> list(int page, int size) {
-		// TODO Auto-generated method stub
-		return null;
+		throw new RuntimeException();
 	}
 
 	@Override
 	public void updByGifid(Gift gift) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 	@Override
 	public Gift getByGifid(long gifid) {
-		// TODO Auto-generated method stub
-		return null;
+		throw new RuntimeException();
 	}
 
 	@Override
 	public void delByGifid(long gifid) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 }

@@ -12,7 +12,7 @@ public interface AttGroupService {
 	 * @param catId
 	 * @return
 	 */
-	public List<Map<AttGroup,List<Object>>> listAttributesAttValuesByCatid(long catid);
+	public List<Map<String,List<Object>>> listAttributesAttValuesByCatid(long catid);
 	
 	/**
 	 * 添加属性组

@@ -5,6 +5,7 @@ import java.io.Serializable;
 import org.cloud.packet.server.model.PacProduct;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PacProductRepository extends JpaRepository<PacProduct, Serializable> {
-
+public interface PacProductRepository extends JpaRepository<PacProduct, Long> {
+	
+	void deleteByProductid(long productid);
 }

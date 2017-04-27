@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value="cloud-packet-server",fallback=PacProductServiceBreaker.class)
 public interface PacProductService {
 	
-	@RequestMapping(value="/packet/category/product",method=RequestMethod.POST)
+	@RequestMapping(value="/packet/category/product/add",method=RequestMethod.POST)
 	public void add(@RequestBody PacProduct pacProduct);
 	
-	@RequestMapping(value="/packet/category/product",method=RequestMethod.DELETE)
+	@RequestMapping(value="/packet/category/product/del_productid",method=RequestMethod.DELETE)
 	public void delByProductid(@RequestParam(value="productid",required=true)long productid);
 }

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="product_category_product_keyword")
-public class ProKeyword implements Serializable{
+public class ProKeyword extends BaseModel implements Serializable{
 
 	/**
 	 * 产品标签

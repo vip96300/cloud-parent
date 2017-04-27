@@ -1,6 +1,7 @@
 package org.cloud.product.client.model;
 
-public class Search {
+public class Search{
+
 
 	private Long seaid;
 

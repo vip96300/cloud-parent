@@ -8,7 +8,7 @@ package org.cloud.common.util;
 public class ExceptionUtils {
 	
 	
-	class ServerConnectException extends Exception{
+	public class ServerConnectException extends Exception{
 
 		/**
 		 * 服务连接失败异常

@@ -73,11 +73,12 @@ public class CategoryController {
 	@ApiImplicitParams({@ApiImplicitParam(name="catid",value="类目编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="name",value="类目名称",required=true,dataType="String")})
 	@RequestMapping(value="/upd_catid",method=RequestMethod.GET)
-	public void upd_catid(@RequestParam(value="catid",required=true)long catid){
+	public void upd_catid(@RequestParam(value="catid",required=true)long catid,@RequestParam(value="name",required=true)String name){
 		Category category=categoryService.getByCatid(catid);
 		if(!ValidUtil.isValid(category)){
 			return;
 		}
+		category.setName(name);
 		categoryService.updByCatid(category);
 	}
 }

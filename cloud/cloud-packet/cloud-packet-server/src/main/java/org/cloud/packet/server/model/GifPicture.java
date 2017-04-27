@@ -8,10 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name="packet_gift_picture")
-public class GifPicture implements Serializable{
+public class GifPicture extends BaseModel implements Serializable{
 
 	/**
 	 * 礼物图片

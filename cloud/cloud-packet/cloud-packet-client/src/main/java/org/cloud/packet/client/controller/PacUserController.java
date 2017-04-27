@@ -10,10 +10,10 @@ import io.swagger.annotations.ApiOperation;
 
 import org.cloud.packet.client.controller.dto.Result;
 import org.cloud.packet.client.model.PacUser;
-import org.cloud.packet.client.model.Packet;
 import org.cloud.packet.client.service.PacUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,11 +32,11 @@ public class PacUserController {
 		@ApiImplicitParam(name="page",value="当前页",required=true,dataType="int"),
 		@ApiImplicitParam(name="size",value="每页显示数",required=true,dataType="int")})
 	@RequestMapping(value="/list_userid",method=RequestMethod.GET)
-	public Result<List<Map<Packet,List<Object>>>> list_userid(@RequestParam(value="userid",required=true)String userid,
+	public Result<List<Map<String,List<Object>>>> list_userid(@RequestParam(value="userid",required=true)String userid,
 			@RequestParam(value="page",required=true)int page,
 			@RequestParam(value="size",required=true)int size){
-		List<Map<Packet,List<Object>>> packets=pacUserService.listByUserid(userid,page,size);
-		return new Result<List<Map<Packet,List<Object>>>>(200,null,packets);
+		List<Map<String,List<Object>>> packets=pacUserService.listByUserid(userid,page,size);
+		return new Result<List<Map<String,List<Object>>>>(200,null,packets);
 	}
 	
 	@ApiOperation(value="用户收藏优选包")
@@ -48,7 +48,7 @@ public class PacUserController {
 	public void add(@RequestParam(value="userid",required=true)String userid,
 			@RequestParam(value="pacid",required=true)long pacid,
 			@RequestParam(value="name",required=true)String name,
-			@RequestParam(value="packetMap")Map<Long,Long> packetMap){
+			@RequestBody Map<Long,Long> packetMap){
 		List<PacUser> pacUsers=new ArrayList<PacUser>();
 		for(Map.Entry<Long, Long> map:packetMap.entrySet()){
 			PacUser pacUser=new PacUser();
@@ -76,7 +76,7 @@ public class PacUserController {
 		@ApiImplicitParam(name="pacid",value="优选包编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="catid",value="类目编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="proid",value="产品编号",required=true,dataType="long")})
-	@RequestMapping(value="/add",method=RequestMethod.GET)
+	@RequestMapping(value="/upd_useid",method=RequestMethod.GET)
 	public void upd_useid(@RequestParam(value="useid",required=true)long useid,
 			@RequestParam(value="userid",required=true)String userid,
 			@RequestParam(value="pacid",required=true)long pacid,

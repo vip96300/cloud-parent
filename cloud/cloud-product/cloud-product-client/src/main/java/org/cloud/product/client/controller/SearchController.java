@@ -51,7 +51,7 @@ public class SearchController {
 	@ApiImplicitParams({@ApiImplicitParam(name="catid",value="类目编号",required=true,dataType="long")})
 	@RequestMapping(value="/list_keywords_catid",method=RequestMethod.GET)
 	public Result<List<Map<Search,List<Keyword>>>> list_keywords_catid(@RequestParam(value="catid",required=true)long catid){
-		List<Map<Search,List<Keyword>>> searchsKeywords=searchService.listKeywordsByCatid(catid);
+		List<Map<String,List<Keyword>>> searchsKeywords=searchService.listKeywordsByCatid(catid);
 		return new Result<List<Map<Search,List<Keyword>>>>(200,null,searchsKeywords);
 	}
 	

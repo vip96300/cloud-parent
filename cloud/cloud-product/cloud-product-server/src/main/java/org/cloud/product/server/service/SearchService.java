@@ -20,7 +20,7 @@ public interface SearchService {
 	 * @param catid
 	 * @return
 	 */
-	public List<Map<Search,List<Keyword>>> listKeywordsByCatid(long catid);
+	public List<Map<String,List<Keyword>>> listKeywordsByCatid(long catid);
 	
 	/**
 	 * 根据编号获取

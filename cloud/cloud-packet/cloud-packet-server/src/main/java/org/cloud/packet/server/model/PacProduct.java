@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="packet_category_product")
-public class PacProduct implements Serializable{
+public class PacProduct extends BaseModel implements Serializable{
 
 	/**
 	 * 包产品关联表

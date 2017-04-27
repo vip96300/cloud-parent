@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="packet_gift")
-public class Gift implements Serializable{
+public class Gift extends BaseModel implements Serializable{
 
 	/**
 	 * 礼物

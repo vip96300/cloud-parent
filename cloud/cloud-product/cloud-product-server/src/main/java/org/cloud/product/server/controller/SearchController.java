@@ -37,9 +37,15 @@ public class SearchController {
 		searchService.add(search);
 	}
 
+	@RequestMapping(value="/get_seaid",method=RequestMethod.GET)
+	public Search get_seaid(@RequestParam(value="seaid",required=true)long seaid) {
+		Search search=searchService.getBySeaid(seaid);
+		return search;
+	}
+	
 	@RequestMapping(value="/list_keywords_catid",method=RequestMethod.GET)
-	public List<Map<Search,List<Keyword>>> list_keywords_catid(@RequestParam(value="catid",required=true)long catid){
-		List<Map<Search,List<Keyword>>> searchsKeywords=searchService.listKeywordsByCatid(catid);
+	public List<Map<String,List<Keyword>>> list_keywords_catid(@RequestParam(value="catid",required=true)long catid){
+		List<Map<String,List<Keyword>>> searchsKeywords=searchService.listKeywordsByCatid(catid);
 		return searchsKeywords;
 	}
 

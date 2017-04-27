@@ -63,6 +63,10 @@ public class AttributeController {
 	@ApiImplicitParams({@ApiImplicitParam(name="attid",value="属性编号",required=true,dataType="long")})
 	@RequestMapping(value="/del_attid",method={RequestMethod.GET})
 	public void del_attid(@RequestParam(value="attid")long attid){
+		Attribute attribute=attributeService.getByAttid(attid);
+		if(!ValidUtil.isValid(attribute)){
+			return;
+		}
 		attributeService.delByAttid(attid);
 	}
 }

@@ -26,8 +26,8 @@ public class AttGroupController {
 	private AttGroupService attGroupService;
 	
 	@RequestMapping(value="/list_attributes_attValues_catid",method=RequestMethod.GET)
-	public List<Map<AttGroup,List<Object>>> list_attributes_attValues_catid(@RequestParam(value="catid",required=true) long catid){
-		List<Map<AttGroup,List<Object>>> attGroupsAttibutesAttValues=attGroupService.listAttributesAttValuesByCatid(catid);
+	public List<Map<String,List<Object>>> list_attributes_attValues_catid(@RequestParam(value="catid",required=true) long catid){
+		List<Map<String,List<Object>>> attGroupsAttibutesAttValues=attGroupService.listAttributesAttValuesByCatid(catid);
 		logger.debug("list_attributes_attValues_catid");
 		return attGroupsAttibutesAttValues;
 	}

@@ -8,9 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="packet_category")
-public class PacCategory implements Serializable{
+public class PacCategory extends BaseModel implements Serializable{
 
 	/**
 	 * 包类目

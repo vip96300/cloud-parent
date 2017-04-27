@@ -8,14 +8,12 @@ public class GifPictureServiceBreaker implements GifPictureService{
 
 	@Override
 	public void add(GifPicture gifPicture) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 	@Override
 	public void delByPicid(long picid) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 }

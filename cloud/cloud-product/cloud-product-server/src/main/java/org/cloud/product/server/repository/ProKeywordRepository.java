@@ -1,6 +1,5 @@
 package org.cloud.product.server.repository;
 
-import java.io.Serializable;
 
 import org.cloud.product.server.model.ProKeyword;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,7 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
-public interface ProKeywordRepository extends JpaRepository<ProKeyword, Serializable>{
+public interface ProKeywordRepository extends JpaRepository<ProKeyword, Long>{
 	/**
 	 * 根据搜索删除产品关键字集合
 	 * @param seaid

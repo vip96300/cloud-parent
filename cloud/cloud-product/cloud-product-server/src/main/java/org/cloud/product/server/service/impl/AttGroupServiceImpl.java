@@ -33,21 +33,21 @@ public class AttGroupServiceImpl implements AttGroupService{
 	private PropertyRepository propertyRepository;
 	
 	@Override
-	public List<Map<AttGroup, List<Object>>> listAttributesAttValuesByCatid(long catid) {
+	public List<Map<String, List<Object>>> listAttributesAttValuesByCatid(long catid) {
 		List<AttGroup> attGroups=attGroupRepository.findByCatid(catid);
 		if(attGroups.isEmpty()){
 			return null;
 		}
 		List<Attribute> attributes=attributeRepository.findByCatid(catid);
 		if(attributes.isEmpty()){
-			return null;
+			//return null;
 		}
 		List<AttValue> attValues=attValueRepository.findByCatid(catid);
 		//属性组集合<属性组：属性集合<属性：属性值集合>>
-		List<Map<AttGroup,List<Object>>> attGroupsAttributes=new ArrayList<Map<AttGroup,List<Object>>>();
+		List<Map<String,List<Object>>> attGroupsAttributes=new ArrayList<Map<String,List<Object>>>();
 		for(AttGroup attGroup:attGroups){
 			//属性组：属性集合
-			Map<AttGroup,List<Object>> attGroupAttributesMap=new HashMap<AttGroup,List<Object>>();
+			Map<String,List<Object>> attGroupAttributesMap=new HashMap<String,List<Object>>();
 			//属性集合<属性：属性值集合>
 			List<Object> attributesByAttGroup=new ArrayList<Object>();
 			//属性：属性值集合
@@ -67,7 +67,7 @@ public class AttGroupServiceImpl implements AttGroupService{
 					attributesByAttGroup.add(attributeAttValues);
 				}
 			}
-			attGroupAttributesMap.put(attGroup,attributesByAttGroup);
+			attGroupAttributesMap.put(attGroup.getName(),attributesByAttGroup);
 			attGroupsAttributes.add(attGroupAttributesMap);
 		}
 		return attGroupsAttributes;

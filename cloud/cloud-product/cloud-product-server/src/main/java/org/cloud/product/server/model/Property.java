@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="product_product_property")
-public class Property implements Serializable{
+public class Property extends BaseModel implements Serializable{
 
 	private static final long serialVersionUID = -5590060083681820992L;
 	

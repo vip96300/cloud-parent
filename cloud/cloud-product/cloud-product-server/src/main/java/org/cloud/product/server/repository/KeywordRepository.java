@@ -1,13 +1,12 @@
 package org.cloud.product.server.repository;
 
-import java.io.Serializable;
 import java.util.List;
 
 import org.cloud.product.server.model.Keyword;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-public interface KeywordRepository extends JpaRepository<Keyword, Serializable>{
+public interface KeywordRepository extends JpaRepository<Keyword, Long>{
 	
 	/**
 	 * 根据类目编号获取该类目下所有关键字

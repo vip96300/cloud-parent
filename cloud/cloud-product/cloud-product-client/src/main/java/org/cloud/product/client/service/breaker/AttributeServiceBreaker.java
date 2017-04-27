@@ -9,26 +9,22 @@ public class AttributeServiceBreaker implements AttributeService{
 
 	@Override
 	public void add(Attribute attribute) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 	@Override
 	public Attribute getByAttid(long attid) {
-		// TODO Auto-generated method stub
-		return null;
+		throw new RuntimeException();
 	}
 
 	@Override
 	public void updByAttid(Attribute attribute) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 	@Override
 	public void delByAttid(long attid) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 

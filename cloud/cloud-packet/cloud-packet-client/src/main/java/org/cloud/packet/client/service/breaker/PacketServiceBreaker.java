@@ -10,20 +10,17 @@ public class PacketServiceBreaker implements PacketService{
 
 	@Override
 	public void add(Packet packet) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 	@Override
 	public void delByPacid(long pacid) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 	@Override
 	public List<Packet> list(int page, int size) {
-		// TODO Auto-generated method stub
-		return null;
+		throw new RuntimeException();
 	}
 
 }

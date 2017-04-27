@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="product_category_search")
-public class Search implements Serializable{
+public class Search extends BaseModel implements Serializable{
 
 	/**
 	 * 搜索
@@ -53,6 +53,6 @@ public class Search implements Serializable{
 	public void setTime(Long time) {
 		this.time = time;
 	}
-	
-	
+
+
 }

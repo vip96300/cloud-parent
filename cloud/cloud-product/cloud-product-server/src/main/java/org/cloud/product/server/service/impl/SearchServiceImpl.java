@@ -11,6 +11,7 @@ import org.cloud.product.server.repository.KeywordRepository;
 import org.cloud.product.server.repository.ProKeywordRepository;
 import org.cloud.product.server.repository.SearchRepository;
 import org.cloud.product.server.service.SearchService;
+import org.codehaus.jettison.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,20 +30,21 @@ public class SearchServiceImpl implements SearchService{
 	
 	@Override
 	public void add(Search search) {
+		search.setTime(System.currentTimeMillis());
 		searchRepository.save(search);
 	}
 
 	@Override
-	public List<Map<Search, List<Keyword>>> listKeywordsByCatid(long catid) {
+	public List<Map<String, List<Keyword>>> listKeywordsByCatid(long catid) {
 		List<Search> searchs=searchRepository.findByCatid(catid);
 		if(searchs.isEmpty()){
 			return null;
 		}
 		List<Keyword> keywords=keywordRepository.findByCatid(catid);
 		//集合<搜索：集合<关键字>>
-		List<Map<Search,List<Keyword>>> searchsKeywords=new ArrayList<Map<Search,List<Keyword>>>();
+		List<Map<String,List<Keyword>>> searchsKeywords=new ArrayList<Map<String,List<Keyword>>>();
 		//搜索：集合<关键字>
-		Map<Search,List<Keyword>> searchKeywordsMap=new HashMap<Search,List<Keyword>>();
+		Map<String,List<Keyword>> searchKeywordsMap=new HashMap<String,List<Keyword>>();
 		for(Search search:searchs){
 			List<Keyword> keywordsBySearch=new ArrayList<Keyword>();
 			for(Keyword keyword:keywords){
@@ -50,7 +52,7 @@ public class SearchServiceImpl implements SearchService{
 					keywordsBySearch.add(keyword);
 				}
 			}
-			searchKeywordsMap.put(search, keywordsBySearch);
+			searchKeywordsMap.put(search.getName(), keywordsBySearch);
 			searchsKeywords.add(searchKeywordsMap);
 		}
 		return searchsKeywords;

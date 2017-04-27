@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="product_category_search_keyword")
-public class Keyword implements Serializable{
+public class Keyword extends BaseModel implements Serializable{
 
 	/**
 	 * 关键字

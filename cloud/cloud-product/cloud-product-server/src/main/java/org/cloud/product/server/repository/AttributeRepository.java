@@ -1,6 +1,5 @@
 package org.cloud.product.server.repository;
 
-import java.io.Serializable;
 import java.util.List;
 
 import org.cloud.product.server.model.Attribute;
@@ -9,7 +8,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
-public interface AttributeRepository extends JpaRepository<Attribute, Serializable>{
+public interface AttributeRepository extends JpaRepository<Attribute, Long>{
 
 	/**
 	 * 根据类目编号获取属性列表

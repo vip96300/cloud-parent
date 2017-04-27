@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,20 +21,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value="/product/category/brand")
 public class BrandController {
+	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	@Autowired
 	private BrandService brandService;
 	
 	@RequestMapping(value="/list_catid",method=RequestMethod.GET)
     public List<Brand> list_catId(@RequestParam(value="catid",required=true) long catid,@RequestParam(value="page",required=true) int page,@RequestParam(value="size",required=true) int size){
-		logger.debug(this.getClass().getName());
-    	List<Brand> brands=brandService.listByCatid(catid,new PageRequest(page, size));
+		Sort sort=new Sort(Direction.ASC,"braid");
+    	List<Brand> brands=brandService.listByCatid(catid,new PageRequest(page, size,sort));
     	return brands;
     }
 	
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public void add(@RequestBody Brand brand){
-		logger.debug(this.getClass().getName());
 		brandService.add(brand);
 	}
 

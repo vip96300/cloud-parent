@@ -11,14 +11,12 @@ public class ProKeywordServiceBreaker implements ProKeywordService{
 
 	@Override
 	public void add(List<ProKeyword> proKeywords) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 	@Override
 	public void delByKeyids(List<Long> keyids) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 

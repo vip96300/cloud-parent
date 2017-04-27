@@ -8,14 +8,12 @@ public class PacProductServiceBreaker implements PacProductService{
 
 	@Override
 	public void add(PacProduct pacProduct) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 	@Override
 	public void delByProductid(long productid) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 }

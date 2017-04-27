@@ -13,32 +13,28 @@ public class SearchServiceBreaker implements SearchService{
 
 	@Override
 	public void add(Search search) {
-		// TODO Auto-generated method stub
+		throw new RuntimeException();
 		
 	}
 
 	@Override
-	public List<Map<Search, List<Keyword>>> listKeywordsByCatid(long catid) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Map<String, List<Keyword>>> listKeywordsByCatid(long catid) {
+		throw new RuntimeException();
 	}
 
 	@Override
 	public Search getBySeaid(long seaid) {
-		// TODO Auto-generated method stub
-		return null;
+		throw new RuntimeException();
 	}
 
 	@Override
 	public void updBySeaid(Search search) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 	@Override
 	public void delBySeaid(long seaid) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 

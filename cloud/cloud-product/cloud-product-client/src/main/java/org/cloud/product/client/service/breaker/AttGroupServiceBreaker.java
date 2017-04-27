@@ -12,32 +12,27 @@ public class AttGroupServiceBreaker implements AttGroupService{
 
 	@Override
 	public List<Map<String, List<Object>>> listAttributesAttValuesByCatid(long catId) {
-		// TODO Auto-generated method stub
-		return null;
+		throw new RuntimeException();
 	}
 
 	@Override
 	public void add(AttGroup attGroup) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 	@Override
 	public AttGroup getByGroid(long groid) {
-		// TODO Auto-generated method stub
-		return null;
+		throw new RuntimeException();
 	}
 
 	@Override
 	public void delByGroid(long groid) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 	@Override
 	public void updByGroid(AttGroup attGroup) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 

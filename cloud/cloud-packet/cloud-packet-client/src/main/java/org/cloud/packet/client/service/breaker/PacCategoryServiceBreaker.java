@@ -10,20 +10,17 @@ public class PacCategoryServiceBreaker implements PacCategoryService{
 
 	@Override
 	public void add(PacCategory pacCategory) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 	@Override
 	public void delByCatid(long catid) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 	@Override
 	public List<PacCategory> listByPacid(long pacid) {
-		// TODO Auto-generated method stub
-		return null;
+		throw new RuntimeException();
 	}
 
 }

@@ -8,8 +8,7 @@ public class ProductServiceBreaker implements ProductService{
 
 	@Override
 	public Product getByProid(long proid) {
-		// TODO Auto-generated method stub
-		return null;
+		throw new RuntimeException();
 	}
 
 }
