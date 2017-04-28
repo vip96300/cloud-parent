@@ -29,10 +29,10 @@ public class CategoryController {
 	private CategoryService categoryService;
 	@ApiOperation(value="根据类目编号获取子类目列表，顶级类目请传0")
 	@ApiImplicitParams({@ApiImplicitParam(name="pid",value="类目父编号",required=true,dataType="long")})
-	@RequestMapping(value="/list_pid",method=RequestMethod.GET)
-	public Result<List> list_pid(@RequestParam(value="pid",required=true) long pid){
+	@RequestMapping(value="/list_pid",method=RequestMethod.POST)
+	public Result<List<Category>> list_pid(@RequestParam(value="pid",required=true) long pid){
 		List<Category> categorys=categoryService.listByPid(pid);
-		return new Result<List>(200,null,categorys);
+		return new Result<List<Category>>(200,null,categorys);
 	}
 	
 	@ApiOperation(value="添加类目")
@@ -41,7 +41,7 @@ public class CategoryController {
 		@ApiImplicitParam(name="issku",value="是否是最小级类目",required=true,dataType="int"),
 		@ApiImplicitParam(name="name",value="类目名称",required=true,dataType="String")
 	})
-	@RequestMapping(value="/add",method={RequestMethod.GET})
+	@RequestMapping(value="/add",method={RequestMethod.POST})
 	public Result<Object> add(@RequestParam(value="pid",required=true)long pid, @RequestParam(value="issku",required=true)int issku, @RequestParam(value="name",required=true)String name){
 		Category category=null;
 		if(pid!=0){//如果不是顶层类目
@@ -60,7 +60,7 @@ public class CategoryController {
 	
 	@ApiOperation(value="根据类目编号删除类目，若该类目以下有子类目，不可删除")
 	@ApiImplicitParams({@ApiImplicitParam(name="catid",value="类目编号",required=true,dataType="long")})
-	@RequestMapping(value="/del_catid",method=RequestMethod.GET)
+	@RequestMapping(value="/del_catid",method=RequestMethod.POST)
 	public Result<Object> del_catid(@RequestParam(value="catid",required=true)long catid){
 		List<Category> categorys=categoryService.listByPid(catid);
 		if(!categorys.isEmpty()){
@@ -74,7 +74,7 @@ public class CategoryController {
 	@ApiOperation(value="根据类目编号修改类目")
 	@ApiImplicitParams({@ApiImplicitParam(name="catid",value="类目编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="name",value="类目名称",required=true,dataType="String")})
-	@RequestMapping(value="/upd_catid",method=RequestMethod.GET)
+	@RequestMapping(value="/upd_catid",method=RequestMethod.POST)
 	public Result<Object> upd_catid(@RequestParam(value="catid",required=true)long catid,@RequestParam(value="name",required=true)String name){
 		Category category=categoryService.getByCatid(catid);
 		if(!ValidUtil.isValid(category)){

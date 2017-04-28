@@ -25,7 +25,7 @@ public class GifPictureController {
 	@ApiImplicitParams({@ApiImplicitParam(name="gifid",value="礼物编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="type",value="图片类型",required=true,dataType="int"),
 		@ApiImplicitParam(name="url",value="路径",required=true,dataType="String")})
-	@RequestMapping(value="/add",method=RequestMethod.GET)
+	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public Result<Object> add(@RequestParam(value="gifid",required=true)long gifid,@RequestParam(value="type",required=true)int type,@RequestParam(value="url",required=true)String url){
 		GifPicture gifPicture=new GifPicture();
 		gifPicture.setGifid(gifid);
@@ -37,7 +37,7 @@ public class GifPictureController {
 	
 	@ApiOperation(value="删除礼物图片")
 	@ApiImplicitParams({@ApiImplicitParam(name="picid",value="图片编号",required=true,dataType="long")})
-	@RequestMapping(value="/del_picid",method=RequestMethod.GET)
+	@RequestMapping(value="/del_picid",method=RequestMethod.POST)
 	public Result<Object> del_picid(@RequestParam(value="picid",required=true)long picid){
 		gifPictureService.delByPicid(picid);
 		return new Result<Object>(200,null,null);

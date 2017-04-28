@@ -30,7 +30,7 @@ public class KeywordController {
 	@ApiOperation(value="添加关键字")
 	@ApiImplicitParams({@ApiImplicitParam(name="seaid",value="搜索编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="name",value="关键字名称",required=true,dataType="String")})
-	@RequestMapping(value="/add",method=RequestMethod.GET)
+	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public Result<Object> add(@RequestParam(value="seaid",required=true)long seaid,@RequestParam(value="name",required=true)String name){
 		Search search=searchService.getBySeaid(seaid);
 		if(!ValidUtil.isValid(search)){
@@ -46,7 +46,7 @@ public class KeywordController {
 	@ApiOperation(value="修改")
 	@ApiImplicitParams({@ApiImplicitParam(name="keyid",value="关键字编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="name",value="关键字",required=true,dataType="String")})
-	@RequestMapping(value="/upd_keyid",method=RequestMethod.GET)
+	@RequestMapping(value="/upd_keyid",method=RequestMethod.POST)
 	public Result<Object> upd_keyid(@RequestParam(value="keyid",required=true)long keyid,@RequestParam(value="name",required=true)String name){
 		Keyword keyword=keywordService.getByKeyid(keyid);
 		if(!ValidUtil.isValid(keyword)){
@@ -59,7 +59,7 @@ public class KeywordController {
 	
 	@ApiOperation(value="根据编号删除，会删除产品的关联关系")
 	@ApiImplicitParams({@ApiImplicitParam(name="keyid",value="编号",required=true,dataType="long")})
-	@RequestMapping(value="/del_keyid",method=RequestMethod.GET)
+	@RequestMapping(value="/del_keyid",method=RequestMethod.POST)
 	public Result<Object> del_keyid(@RequestParam(value="keyid",required=true)long keyid){
 		keywordService.delByKeyid(keyid);
 		return new Result<Object>(200,null,null);

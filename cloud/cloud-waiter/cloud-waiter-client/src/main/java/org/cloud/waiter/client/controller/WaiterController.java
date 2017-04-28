@@ -17,7 +17,7 @@ public class WaiterController {
 	@Autowired
 	private WaiterService waiterService;
 	
-	@RequestMapping(value="/add",method=RequestMethod.GET)
+	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public Result<Object> add(){
 		return new Result<Object>(200,null,null);
 	}

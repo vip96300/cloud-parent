@@ -29,9 +29,10 @@ public class ProductController {
 	@ApiImplicitParams({@ApiImplicitParam(name="catid",value="类目编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="page",value="当前页",required=true,dataType="int"),
 		@ApiImplicitParam(name="size",value="每页数",required=true,dataType="int")})
-	@RequestMapping(value="/list_catid",method=RequestMethod.GET)
-	public Result<List> list_catid(@RequestParam(value="catid",required=true)long catid,@RequestParam(value="page",required=true)int page,@RequestParam(value="size",required=true)int size){
+	@RequestMapping(value="/list_catid",method=RequestMethod.POST)
+	public Result<List<Product>> list_catid(@RequestParam(value="catid",required=true)long catid,@RequestParam(value="page",required=true)int page,@RequestParam(value="size",required=true)int size){
 		List<Product> products=productService.listByCatid(catid,page,size);
-		return new Result<List>(200,null,products);
+		return new Result<List<Product>>(200,null,products);
 	}
+	
 }

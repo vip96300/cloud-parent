@@ -34,7 +34,7 @@ public class PacProductController {
 	@ApiOperation(value="将产品加入到优选包产品选项")
 	@ApiImplicitParams({@ApiImplicitParam(name="proid",value="产品编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="gifid",value="礼物编号",required=true,dataType="long")})
-	@RequestMapping(value="add",method=RequestMethod.GET)
+	@RequestMapping(value="add",method=RequestMethod.POST)
 	public Result<Object> add(@RequestParam(value="proid",required=true)long proid,@RequestParam(value="gifid",required=true)long gifid){
 		Product product=productService.getByProid(proid);
 		if(!ValidUtil.isValid(product)){
@@ -52,7 +52,7 @@ public class PacProductController {
 	}
 	
 	@ApiOperation(value="根据产品编号删除产品，这里的删除是指将该产品撤离优选包")
-	@RequestMapping(value="/del_productid",method=RequestMethod.GET)
+	@RequestMapping(value="/del_productid",method=RequestMethod.POST)
 	public Result<Object> del_productid(@RequestParam(value="productid",required=true)long productid){
 		pacProductService.delByProductid(productid);
 		return new Result<Object>(200,null,null);
