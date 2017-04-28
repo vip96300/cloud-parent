@@ -28,7 +28,7 @@ public class PacketController {
 	@ApiOperation(value="添加优选包")
 	@ApiImplicitParams({@ApiImplicitParam(name="name",value="优选包名称",required=true,dataType="String"),
 		@ApiImplicitParam(name="depict",value="优选包描述",required=true,dataType="String")})
-	@RequestMapping(value="/add",method=RequestMethod.GET)
+	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public Result<Object> add(@RequestParam(value="name",required=true)String name,@RequestParam(value="depict",required=true)String depict){
 		Packet packet=new Packet();
 		packet.setName(name);
@@ -39,7 +39,7 @@ public class PacketController {
 	
 	@ApiOperation(value="根据编号删除优选包，级联删除该优选包图片列表，及该优选包下所有类目")
 	@ApiImplicitParams({@ApiImplicitParam(name="pacid",value="优选包编号",required=true,dataType="long")})
-	@RequestMapping(value="pacid",method=RequestMethod.GET)
+	@RequestMapping(value="pacid",method=RequestMethod.POST)
 	public Result<Object> del_pacid(@RequestParam(value="pacid",required=true)long pacid){
 		packetService.delByPacid(pacid);
 		return new Result<Object>(200,null,null);
@@ -48,7 +48,7 @@ public class PacketController {
 	@ApiOperation(value="优选包列表")
 	@ApiImplicitParams({@ApiImplicitParam(name="page",value="当前页",required=true,dataType="int"),
 		@ApiImplicitParam(name="size",value="每页显示数",required=true,dataType="int")})
-	@RequestMapping(value="/list",method=RequestMethod.GET)
+	@RequestMapping(value="/list",method=RequestMethod.POST)
 	public Result<List<Packet>> list(@RequestParam(value="page",required=true)int page,@RequestParam(value="size",required=true)int size){
 		List<Packet> packets=packetService.list(page,size);
 		return new Result<List<Packet>>(200,null,packets);

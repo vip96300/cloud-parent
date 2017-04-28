@@ -50,7 +50,7 @@ public class SearchController {
 	
 	@ApiOperation(value="根据类目编号获取搜索标题及以下关键词集合")
 	@ApiImplicitParams({@ApiImplicitParam(name="catid",value="类目编号",required=true,dataType="long")})
-	@RequestMapping(value="/list_keywords_catid",method=RequestMethod.GET)
+	@RequestMapping(value="/list_keywords_catid",method=RequestMethod.POST)
 	public Result<List<Map<Search,List<Keyword>>>> list_keywords_catid(@RequestParam(value="catid",required=true)long catid){
 		List<Map<String,List<Keyword>>> searchsKeywords=searchService.listKeywordsByCatid(catid);
 		return new Result<List<Map<Search,List<Keyword>>>>(200,null,searchsKeywords);
@@ -59,7 +59,7 @@ public class SearchController {
 	@ApiOperation(value="修改搜索标题")
 	@ApiImplicitParams({@ApiImplicitParam(name="seaid",value="搜索编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="name",value="名称",required=true,dataType="String")})
-	@RequestMapping(value="/upd_seaid",method=RequestMethod.GET)
+	@RequestMapping(value="/upd_seaid",method=RequestMethod.POST)
 	public Result<Object> upd_seaid(@RequestParam(value="seaid",required=true)long seaid,@RequestParam(value="name",required=true)String name){
 		Search search=searchService.getBySeaid(seaid);
 		if(!ValidUtil.isValid(search)){
@@ -72,7 +72,7 @@ public class SearchController {
 	
 	@ApiOperation(value="删除搜索标题，会级联删除以下搜索关键字及产品关联")
 	@ApiImplicitParams({@ApiImplicitParam(name="seaid",value="编号",required=true,dataType="long")})
-	@RequestMapping(value="/del_seaid",method=RequestMethod.GET)
+	@RequestMapping(value="/del_seaid",method=RequestMethod.POST)
 	public Result<Object> del_seaid(@RequestParam(value="seaid",required=true)long seaid){
 		searchService.delBySeaid(seaid);
 		return new Result<Object>(200,null,null);

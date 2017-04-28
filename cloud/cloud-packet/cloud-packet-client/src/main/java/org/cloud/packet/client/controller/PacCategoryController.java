@@ -29,7 +29,7 @@ public class PacCategoryController {
 	@ApiImplicitParams({@ApiImplicitParam(name="pacid",value="优选包编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="categoryid",value="类目编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="ismust",value="是否必须",required=true,dataType="int")})
-	@RequestMapping(value="/add",method=RequestMethod.GET)
+	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public Result<Object> add(@RequestParam(value="pacid",required=true)long pacid,@RequestParam(value="categoryid",required=true)long categoryid,@RequestParam(value="ismust",required=true)int ismust){
 		PacCategory pacCategory=new PacCategory();
 		pacCategory.setPacid(pacid);
@@ -40,7 +40,7 @@ public class PacCategoryController {
 	
 	@ApiOperation(value="删除优选包中的类目")
 	@ApiImplicitParams({@ApiImplicitParam(name="catid",value="有选报类目编号",required=true,dataType="long")})
-	@RequestMapping(value="/del_catid",method=RequestMethod.GET)
+	@RequestMapping(value="/del_catid",method=RequestMethod.POST)
 	public Result<Object> del_catid(@RequestParam(value="catid",required=true)long catid){
 		pacCategoryService.delByCatid(catid);
 		return new Result<Object>(200,null,null);
@@ -48,7 +48,7 @@ public class PacCategoryController {
 	
 	@ApiOperation(value="优选包类目列表")
 	@ApiImplicitParams({@ApiImplicitParam(name="pacid",value="优选包编号",required=true,dataType="long")})
-	@RequestMapping(value="/list_pacid",method=RequestMethod.GET)
+	@RequestMapping(value="/list_pacid",method=RequestMethod.POST)
 	public Result<List<PacCategory>> list_pacid(@RequestParam(value="pacid",required=true)long pacid){
 		List<PacCategory> pacCategorys=pacCategoryService.listByPacid(pacid);
 		return new Result<List<PacCategory>>(200,null,pacCategorys);

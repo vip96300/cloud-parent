@@ -31,7 +31,7 @@ public class PacUserController {
 	@ApiImplicitParams({@ApiImplicitParam(name="userid",value="用户编号",required=true,dataType="String"),
 		@ApiImplicitParam(name="page",value="当前页",required=true,dataType="int"),
 		@ApiImplicitParam(name="size",value="每页显示数",required=true,dataType="int")})
-	@RequestMapping(value="/list_userid",method=RequestMethod.GET)
+	@RequestMapping(value="/list_userid",method=RequestMethod.POST)
 	public Result<List<Map<String,List<Object>>>> list_userid(@RequestParam(value="userid",required=true)String userid,
 			@RequestParam(value="page",required=true)int page,
 			@RequestParam(value="size",required=true)int size){
@@ -44,7 +44,7 @@ public class PacUserController {
 		@ApiImplicitParam(name="pacid",value="优选包编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="name",value="自定义优选包名称",required=true,dataType="String"),
 		@ApiImplicitParam(name="packetMap",value="类目编号：产品编号",required=true,dataType="Map")})
-	@RequestMapping(value="/add",method=RequestMethod.GET)
+	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public Result<Object> add(@RequestParam(value="userid",required=true)String userid,
 			@RequestParam(value="pacid",required=true)long pacid,
 			@RequestParam(value="name",required=true)String name,
@@ -65,7 +65,7 @@ public class PacUserController {
 	
 	@ApiOperation(value="根据收藏编号删除收藏")
 	@ApiImplicitParams({@ApiImplicitParam(name="useid",value="收藏编号",required=true,dataType="long")})
-	@RequestMapping(value="/del_useid",method=RequestMethod.GET)
+	@RequestMapping(value="/del_useid",method=RequestMethod.POST)
 	public Result<Object> del_useid(@RequestParam(value="useid",required=true)long useid){
 		pacUserService.delByUseid(useid);
 		return new Result<Object>(200,null,null);
@@ -78,7 +78,7 @@ public class PacUserController {
 		@ApiImplicitParam(name="pacid",value="优选包编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="catid",value="类目编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="proid",value="产品编号",required=true,dataType="long")})
-	@RequestMapping(value="/upd_useid",method=RequestMethod.GET)
+	@RequestMapping(value="/upd_useid",method=RequestMethod.POST)
 	public Result<Object> upd_useid(@RequestParam(value="useid",required=true)long useid,
 			@RequestParam(value="userid",required=true)String userid,
 			@RequestParam(value="pacid",required=true)long pacid,

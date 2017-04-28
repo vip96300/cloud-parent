@@ -33,7 +33,7 @@ public class ProKeywordController {
 	@ApiOperation(value="添加产品关键字")
 	@ApiImplicitParams({@ApiImplicitParam(name="proid",value="产品编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="keywordids",value="关键字编号集合",required=true,dataType="List<long>")})
-	@RequestMapping(value="/add",method=RequestMethod.GET)
+	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public Result<Object> add(@RequestParam(value="keywordids",required=true)List<Long> keywordids,@RequestParam(value="proid",required=true)long proid){
 		Product product=productService.getByProid(proid);
 		if(!ValidUtil.isValid(product)){
@@ -52,7 +52,7 @@ public class ProKeywordController {
 	
 	@ApiOperation(value="根据编号批量删除")
 	@ApiImplicitParams({@ApiImplicitParam(name="keyids",value="产品关联表编号",required=true,dataType="long")})
-	@RequestMapping(value="/del_keyids",method=RequestMethod.GET)
+	@RequestMapping(value="/del_keyids",method=RequestMethod.POST)
 	public Result<Object> del_keyids(@RequestParam(value="keyids",required=true)List<Long> keyids){
 		if(keyids.isEmpty()){
 			return null;
