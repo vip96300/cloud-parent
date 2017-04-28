@@ -7,6 +7,7 @@ import org.cloud.packet.server.service.GiftService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,6 +27,7 @@ public class GiftController {
 	 * 添加
 	 * @param gift
 	 */
+	@Async
 	@RequestMapping(value="/packet/gift/add",method=RequestMethod.POST)
 	public void add(@RequestBody Gift gift) {
 		giftService.add(gift);
@@ -47,6 +49,7 @@ public class GiftController {
 	 * 修改
 	 * @param gifid
 	 */
+	@Async
 	@RequestMapping(value="/packet/gift/upd_gifid",method=RequestMethod.PUT)
 	public void upd_gifid(@RequestBody Gift gift) {
 		giftService.updByGifid(gift);
@@ -67,6 +70,7 @@ public class GiftController {
 	 * 删除
 	 * @param gifid
 	 */
+	@Async
 	@RequestMapping(value="/packet/gift/del_gifid",method=RequestMethod.DELETE)
 	public void delByGifid(@RequestParam(value="gifid",required=true)long gifid) {
 	}

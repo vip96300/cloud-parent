@@ -14,12 +14,17 @@
 	<packaging>jar</packaging>
 	<name>${project.artifactId}</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.spring.common.util</groupId>
+			<artifactId>cloud-common-util</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
 	</dependencies>
-	
+
 </project>

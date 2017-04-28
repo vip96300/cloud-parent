@@ -7,6 +7,7 @@ import org.cloud.packet.server.service.PacketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,12 +21,12 @@ public class PacketController {
 
 	@Autowired
 	private PacketService packetService;
-	
+	@Async
 	@RequestMapping(value="/packet/packet/add",method=RequestMethod.POST)
 	public void add(@RequestBody Packet packet) {
 		packetService.add(packet);
 	}
-	
+	@Async
 	@RequestMapping(value="/packet/packet/del_pacid",method=RequestMethod.DELETE)
 	public void del_pacid(@RequestParam(value="pacid",required=true)long pacid) {
 		packetService.delByPacid(pacid);

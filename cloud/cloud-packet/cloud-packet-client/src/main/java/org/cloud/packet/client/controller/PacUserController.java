@@ -45,7 +45,7 @@ public class PacUserController {
 		@ApiImplicitParam(name="name",value="自定义优选包名称",required=true,dataType="String"),
 		@ApiImplicitParam(name="packetMap",value="类目编号：产品编号",required=true,dataType="Map")})
 	@RequestMapping(value="/add",method=RequestMethod.GET)
-	public void add(@RequestParam(value="userid",required=true)String userid,
+	public Result<Object> add(@RequestParam(value="userid",required=true)String userid,
 			@RequestParam(value="pacid",required=true)long pacid,
 			@RequestParam(value="name",required=true)String name,
 			@RequestBody Map<Long,Long> packetMap){
@@ -60,13 +60,15 @@ public class PacUserController {
 			pacUsers.add(pacUser);
 		}
 		pacUserService.add(pacUsers);
+		return new Result<Object>(200,null,null);
 	}
 	
 	@ApiOperation(value="根据收藏编号删除收藏")
 	@ApiImplicitParams({@ApiImplicitParam(name="useid",value="收藏编号",required=true,dataType="long")})
 	@RequestMapping(value="/del_useid",method=RequestMethod.GET)
-	public void del_useid(@RequestParam(value="useid",required=true)long useid){
+	public Result<Object> del_useid(@RequestParam(value="useid",required=true)long useid){
 		pacUserService.delByUseid(useid);
+		return new Result<Object>(200,null,null);
 	}
 	
 	@ApiOperation(value="用户编辑优选包")
@@ -77,7 +79,7 @@ public class PacUserController {
 		@ApiImplicitParam(name="catid",value="类目编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="proid",value="产品编号",required=true,dataType="long")})
 	@RequestMapping(value="/upd_useid",method=RequestMethod.GET)
-	public void upd_useid(@RequestParam(value="useid",required=true)long useid,
+	public Result<Object> upd_useid(@RequestParam(value="useid",required=true)long useid,
 			@RequestParam(value="userid",required=true)String userid,
 			@RequestParam(value="pacid",required=true)long pacid,
 			@RequestParam(value="catid",required=true)long catid,
@@ -89,5 +91,6 @@ public class PacUserController {
 		pacUser.setCatid(catid);
 		pacUser.setProid(proid);
 		pacUserService.updByUseid(pacUser);
+		return new Result<Object>(200,null,null);
 	}
 }

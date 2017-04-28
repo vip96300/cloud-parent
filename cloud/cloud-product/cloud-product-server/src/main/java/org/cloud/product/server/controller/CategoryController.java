@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,7 +30,7 @@ public class CategoryController {
 		return categorys;
 		
 	}
-
+	@Async
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public void add(@RequestBody Category category){
 		categoryService.add(category);
@@ -40,12 +41,12 @@ public class CategoryController {
 		Category category=categoryService.getByCatid(catid);
 		return category;
 	}
-	
+	@Async
 	@RequestMapping(value="/del_catid",method=RequestMethod.DELETE)
 	public void del_catid(@RequestParam(value="catid",required=true)long catid){
 		categoryService.delByCatid(catid);
 	}
-
+	@Async
 	@RequestMapping(value="/upd_catid",method=RequestMethod.PUT)
 	public void upd_catid(@RequestBody Category category){
 		categoryService.updByCatid(category);

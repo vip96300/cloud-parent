@@ -28,10 +28,11 @@ public class GiftController {
 	@ApiOperation(value="添加礼物")
 	@ApiImplicitParams({@ApiImplicitParam(name="name",required=true,dataType="String")})
 	@RequestMapping(value="/add",method=RequestMethod.GET)
-	public void add(@RequestParam(value="name",required=true)String name){
+	public Result<Object> add(@RequestParam(value="name",required=true)String name){
 		Gift gift=new Gift();
 		gift.setName(name);
 		giftService.add(gift);
+		return new Result<Object>(200,null,null);
 	}
 	
 	@ApiOperation(value="获取礼物列表")
@@ -47,19 +48,21 @@ public class GiftController {
 	@ApiImplicitParams({@ApiImplicitParam(name="gifid",value="礼物编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="name",value="礼物名称",required=true,dataType="String")})
 	@RequestMapping(value="/upd_gifid",method=RequestMethod.GET)
-	public void upd_gifid(@RequestParam(value="gifid",required=true)long gifid ,@RequestParam(value="name",required=true)String name){
+	public Result<Object> upd_gifid(@RequestParam(value="gifid",required=true)long gifid ,@RequestParam(value="name",required=true)String name){
 		Gift gift=giftService.getByGifid(gifid);
 		if(!ValidUtil.isValid(gift)){
-			return;
+			return null;
 		}
 		gift.setName(name);
 		giftService.updByGifid(gift);
+		return new Result<Object>(200,null,null);
 	}
 	
 	@ApiOperation(value="根据编号删除礼物，会级联删除礼物图片")
 	@ApiImplicitParams({@ApiImplicitParam(name="gifid",value="礼物编号",required=true,dataType="long")})
 	@RequestMapping(value="/del_gifid",method=RequestMethod.GET)
-	public void del_gifid(@RequestParam(value="gifid",required=true)long gifid){
+	public Result<Object> del_gifid(@RequestParam(value="gifid",required=true)long gifid){
 		giftService.delByGifid(gifid);
+		return new Result<Object>(200,null,null);
 	}
 }

@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
 import org.cloud.common.util.ValidUtil;
+import org.cloud.packet.client.controller.dto.Result;
 import org.cloud.packet.client.model.Gift;
 import org.cloud.packet.client.model.PacProduct;
 import org.cloud.packet.client.model.Product;
@@ -34,24 +35,26 @@ public class PacProductController {
 	@ApiImplicitParams({@ApiImplicitParam(name="proid",value="产品编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="gifid",value="礼物编号",required=true,dataType="long")})
 	@RequestMapping(value="add",method=RequestMethod.GET)
-	public void add(@RequestParam(value="proid",required=true)long proid,@RequestParam(value="gifid",required=true)long gifid){
+	public Result<Object> add(@RequestParam(value="proid",required=true)long proid,@RequestParam(value="gifid",required=true)long gifid){
 		Product product=productService.getByProid(proid);
 		if(!ValidUtil.isValid(product)){
-			return;
+			return null;
 		}
 		Gift gift=giftService.getByGifid(gifid);
 		if(!ValidUtil.isValid(gift)){
-			return;
+			return null;
 		}
 		PacProduct pacProduct=new PacProduct();
 		pacProduct.setProductid(proid);
 		pacProduct.setGifid(gifid);
 		pacProductService.add(pacProduct);
+		return new Result<Object>(200,null,null);
 	}
 	
 	@ApiOperation(value="根据产品编号删除产品，这里的删除是指将该产品撤离优选包")
 	@RequestMapping(value="/del_productid",method=RequestMethod.GET)
-	public void del_productid(@RequestParam(value="productid",required=true)long productid){
+	public Result<Object> del_productid(@RequestParam(value="productid",required=true)long productid){
 		pacProductService.delByProductid(productid);
+		return new Result<Object>(200,null,null);
 	}
 }

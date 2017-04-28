@@ -42,12 +42,12 @@ public class CategoryController {
 		@ApiImplicitParam(name="name",value="类目名称",required=true,dataType="String")
 	})
 	@RequestMapping(value="/add",method={RequestMethod.GET})
-	public void add(@RequestParam(value="pid",required=true)long pid, @RequestParam(value="issku",required=true)int issku, @RequestParam(value="name",required=true)String name){
+	public Result<Object> add(@RequestParam(value="pid",required=true)long pid, @RequestParam(value="issku",required=true)int issku, @RequestParam(value="name",required=true)String name){
 		Category category=null;
 		if(pid!=0){//如果不是顶层类目
 			category=categoryService.getByCatid(pid);
 			if(ValidUtil.isValid(category)){
-				return;
+				return null;
 			}
 		}
 		category=new Category();
@@ -55,30 +55,33 @@ public class CategoryController {
 		category.setIssku(issku);
 		category.setName(name);
 		categoryService.add(category);
+		return new Result<Object>(200,null,null);
 	}
 	
 	@ApiOperation(value="根据类目编号删除类目，若该类目以下有子类目，不可删除")
 	@ApiImplicitParams({@ApiImplicitParam(name="catid",value="类目编号",required=true,dataType="long")})
 	@RequestMapping(value="/del_catid",method=RequestMethod.GET)
-	public void del_catid(@RequestParam(value="catid",required=true)long catid){
+	public Result<Object> del_catid(@RequestParam(value="catid",required=true)long catid){
 		List<Category> categorys=categoryService.listByPid(catid);
 		if(!categorys.isEmpty()){
 			logger.info("有子集，不能删除");
-			return;
+			return null;
 		}
 		categoryService.delByCatid(catid);
+		return new Result<Object>(200,null,null);
 	}
 	
 	@ApiOperation(value="根据类目编号修改类目")
 	@ApiImplicitParams({@ApiImplicitParam(name="catid",value="类目编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="name",value="类目名称",required=true,dataType="String")})
 	@RequestMapping(value="/upd_catid",method=RequestMethod.GET)
-	public void upd_catid(@RequestParam(value="catid",required=true)long catid,@RequestParam(value="name",required=true)String name){
+	public Result<Object> upd_catid(@RequestParam(value="catid",required=true)long catid,@RequestParam(value="name",required=true)String name){
 		Category category=categoryService.getByCatid(catid);
 		if(!ValidUtil.isValid(category)){
-			return;
+			return null;
 		}
 		category.setName(name);
 		categoryService.updByCatid(category);
+		return new Result<Object>(200,null,null);
 	}
 }

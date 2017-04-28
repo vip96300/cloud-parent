@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(value="cloud-packet-server",fallback=ProductServiceBreaker.class)
+@FeignClient(value="cloud-product-server",fallback=ProductServiceBreaker.class)
 public interface ProductService {
 	
 	@RequestMapping(value="/product/product/get_proid",method=RequestMethod.GET)

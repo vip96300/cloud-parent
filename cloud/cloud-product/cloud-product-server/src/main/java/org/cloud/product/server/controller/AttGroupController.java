@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,7 +32,7 @@ public class AttGroupController {
 		logger.debug("list_attributes_attValues_catid");
 		return attGroupsAttibutesAttValues;
 	}
-	
+	@Async
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public void add(@RequestBody AttGroup attGroup){
 		attGroupService.add(attGroup);
@@ -42,12 +43,12 @@ public class AttGroupController {
 		AttGroup attGroup=attGroupService.getByGroid(groid);
 		return attGroup;
 	}
-	
+	@Async
 	@RequestMapping(value="/del_groid",method=RequestMethod.DELETE)
 	public void del_groid(@RequestParam(value="groid",required=true)long groid){
 		attGroupService.delByGroid(groid);
 	}
-	
+	@Async
 	@RequestMapping(value="/upd_groid",method=RequestMethod.PUT)
 	public void upd_groid(@RequestBody AttGroup attGroup){
 		attGroupService.updByGroid(attGroup);

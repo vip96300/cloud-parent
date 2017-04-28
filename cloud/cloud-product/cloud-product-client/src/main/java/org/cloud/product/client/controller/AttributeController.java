@@ -5,12 +5,14 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
 import org.cloud.common.util.ValidUtil;
+import org.cloud.product.client.controller.dto.Result;
 import org.cloud.product.client.model.AttGroup;
 import org.cloud.product.client.model.Attribute;
 import org.cloud.product.client.service.AttGroupService;
 import org.cloud.product.client.service.AttributeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,10 +35,10 @@ public class AttributeController {
         @ApiImplicitParam(name = "type", value = "属性类型，0输入，1单选，2多选", required = true, dataType = "int")
     })
     @RequestMapping(value="/add",method={RequestMethod.GET})
-    public void add(@RequestParam(value="groid",required=true)long groid,@RequestParam(value="name",required=true)String name,@RequestParam(value="type",required=true)int type){
+    public Result<Object> add(@RequestParam(value="groid",required=true)long groid,@RequestParam(value="name",required=true)String name,@RequestParam(value="type",required=true)int type){
 		AttGroup attGroup=attGroupService.getByGroid(groid);
 		if(!ValidUtil.isValid(attGroup)){
-			return;
+			return null;
 		}
 		Attribute attribute=new Attribute();
 		attribute.setGroid(groid);
@@ -44,29 +46,32 @@ public class AttributeController {
 		attribute.setName(name);
 		attribute.setType(type);
     	attributeService.add(attribute);
+    	return new Result<Object>(200,null,null);
     }
 	
 	@ApiOperation(value="修改属性名称")
 	@ApiImplicitParams({@ApiImplicitParam(name="attid",value="属性编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="name",value="属性名称",required=true,dataType="String")})
 	@RequestMapping(value="/upd_attid",method={RequestMethod.GET})
-	public void upd_attid(@RequestParam(value="attid",required=true)long attid,@RequestParam(value="name",required=true)String name){
+	public Result<Object> upd_attid(@RequestParam(value="attid",required=true)long attid,@RequestParam(value="name",required=true)String name){
 		Attribute attribute=attributeService.getByAttid(attid);
 		if(!ValidUtil.isValid(attribute)){
-			return;
+			return null;
 		}
 		attribute.setName(name);
 		attributeService.updByAttid(attribute);
+		return new Result<Object>(200,null,null);
 	}
 	
 	@ApiOperation(value="删除属性，并删除属性及属性值和产品属性")
 	@ApiImplicitParams({@ApiImplicitParam(name="attid",value="属性编号",required=true,dataType="long")})
 	@RequestMapping(value="/del_attid",method={RequestMethod.GET})
-	public void del_attid(@RequestParam(value="attid")long attid){
+	public Result<Object> del_attid(@RequestParam(value="attid")long attid){
 		Attribute attribute=attributeService.getByAttid(attid);
 		if(!ValidUtil.isValid(attribute)){
-			return;
+			return null;
 		}
 		attributeService.delByAttid(attid);
+		return new Result<Object>(200,null,null);
 	}
 }

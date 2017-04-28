@@ -44,43 +44,46 @@ public class AttGroupController {
 		@ApiImplicitParam(name="name",value="属性组名称",required=true,dataType="String")
 	})
 	@RequestMapping(value="/add",method={RequestMethod.GET})
-	public void add(@RequestParam(value="catid",required=true)long catid,@RequestParam(value="name",required=true)String name){
+	public Result<Object> add(@RequestParam(value="catid",required=true)long catid,@RequestParam(value="name",required=true)String name){
 		Category category=categoryService.getByCatid(catid);
 		if(!ValidUtil.isValid(category)){
 			//如果类目不存在
-			return;
+			return null;
 		}
 		if(category.getIssku()==0){
 			//不是最小单元
-			return;
+			return null;
 		}
 		AttGroup attGroup=new AttGroup();
 		attGroup.setCatid(catid);
 		attGroup.setName(name);
 		attGroupService.add(attGroup);
+		return new Result<Object>(200,null,null);
 	}
 	
 	@ApiOperation(value="根据属性组编号修改属性组名称")
 	@ApiImplicitParams({@ApiImplicitParam(name="groid",value="属性组编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="name",value="属性组名称",required=true,dataType="String")})
 	@RequestMapping(value="/upd_groid",method={RequestMethod.GET})
-	public void upd_groid(@RequestParam(value="groid",required=true)long groid,@RequestParam(value="name",required=true)String name){
+	public Result<Object> upd_groid(@RequestParam(value="groid",required=true)long groid,@RequestParam(value="name",required=true)String name){
 		AttGroup attGroup=attGroupService.getByGroid(groid);
 		if(!ValidUtil.isValid(attGroup)){
-			return;
+			return null;
 		}
 		attGroup.setName(name);
 		attGroupService.updByGroid(attGroup);
+		return new Result<Object>(200,null,null);
 	}
 	
 	@ApiOperation(value="删除属性组，并且级联删除以下所有属性")
 	@ApiImplicitParams({@ApiImplicitParam(name="groid",value="属性组编号",required=true,dataType="long")})
 	@RequestMapping(value="/del_groid",method={RequestMethod.GET})
-	public void del_groid(@RequestParam(value="groid")long groid){
+	public Result<Object> del_groid(@RequestParam(value="groid")long groid){
 		AttGroup attGroup=attGroupService.getByGroid(groid);
 		if(!ValidUtil.isValid(attGroup)){
-			return;
+			return null;
 		}
 		attGroupService.delByGroid(groid);
+		return new Result<Object>(200,null,null);
 	}
 }

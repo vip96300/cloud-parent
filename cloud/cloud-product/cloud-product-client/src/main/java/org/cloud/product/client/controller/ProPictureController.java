@@ -50,31 +50,34 @@ public class ProPictureController {
 	@ApiImplicitParams({@ApiImplicitParam(name="proid",value="产品编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="type",value="图片类型0效果图，1封面，2列表图",required=true,dataType="int")})
 	@RequestMapping(value="/add",method=RequestMethod.GET)
-	public void add(@RequestParam(value="proid",required=true)long proid,@RequestParam(value="type",required=true)int type){
+	public Result<Object> add(@RequestParam(value="proid",required=true)long proid,@RequestParam(value="type",required=true)int type){
 		Product product=productService.getByProid(proid);
 		if(!ValidUtil.isValid(product)){
-			return;
+			return null;
 		}
 		ProPicture picture=new ProPicture();
 		picture.setProid(proid);
 		picture.setType(type);
 		pictureService.add(picture);
+		return new Result<Object>(200,null,null);
 	}
 	
 	@ApiOperation(value="根据编号删除产品图片")
 	@ApiImplicitParams({@ApiImplicitParam(name="picid",value="产品图片编号",required=true,dataType="long")})
 	@RequestMapping(value="/del_picid",method=RequestMethod.GET)
-	public void del_picid(@RequestParam(value="picid",required=true)long picid){
+	public Result<Object> del_picid(@RequestParam(value="picid",required=true)long picid){
 		pictureService.delByPicid(picid);
+		return new Result<Object>(200,null,null);
 	}
 	
 	@ApiOperation(value="根据图片编号删除图片")
 	@RequestMapping(value="upd_picid",method=RequestMethod.GET)
-	public void upd_picid(@RequestParam(value="picid",required=true)long picid){
+	public Result<Object> upd_picid(@RequestParam(value="picid",required=true)long picid){
 		ProPicture picture=pictureService.getByPicid(picid);
 		if(!ValidUtil.isValid(picture)){
-			return;
+			return null;
 		}
 		pictureService.updByPicid(picture);
+		return new Result<Object>(200,null,null);
 	}
 }

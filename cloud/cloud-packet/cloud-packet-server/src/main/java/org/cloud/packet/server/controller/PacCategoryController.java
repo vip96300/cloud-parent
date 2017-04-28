@@ -6,6 +6,7 @@ import org.cloud.packet.server.model.PacCategory;
 import org.cloud.packet.server.service.PacCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,12 +21,12 @@ public class PacCategoryController {
 	
 	@Autowired
 	private PacCategoryService pacCategoryService;
-	
+	@Async
 	@RequestMapping(value="/packet/category/add",method=RequestMethod.POST)
 	public void add(@RequestBody PacCategory pacCategory) {
 		pacCategoryService.add(pacCategory);
 	}
-	
+	@Async
 	@RequestMapping(value="/packet/category/del_catid",method=RequestMethod.DELETE)
 	public void del_catid(@RequestParam(value="catid",required=true)long catid) {
 		pacCategoryService.delByCatid(catid);

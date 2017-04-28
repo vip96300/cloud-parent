@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,12 +27,12 @@ public class ProKeywordController {
 	private ProKeywordService proKeywordService;
 	@Autowired
 	private ProductService productService;
-	
+	@Async
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public void add(@RequestParam(value="proKeywords",required=true)List<ProKeyword> proKeywords){
 		proKeywordService.add(proKeywords);
 	}
-
+	@Async
 	@RequestMapping(value="/del_keyids",method=RequestMethod.DELETE)
 	public void delByKeyids(@RequestParam(value="keyids",required=true)List<Long> keyids){
 		proKeywordService.delByKeyids(keyids);

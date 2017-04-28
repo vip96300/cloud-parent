@@ -36,15 +36,16 @@ public class SearchController {
 	@ApiImplicitParams({@ApiImplicitParam(name="catid",value="类目编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="name",value="名称",required=true,dataType="String")})
 	@RequestMapping(value="/add",method=RequestMethod.GET)
-	public void add(@RequestParam(value="catid",required=true)Long catid,@RequestParam(value="name",required=true)String name){
+	public Result<Object> add(@RequestParam(value="catid",required=true)Long catid,@RequestParam(value="name",required=true)String name){
 		Category category=categoryService.getByCatid(catid);
 		if(!ValidUtil.isValid(category)){
-			return;
+			return null;
 		}
 		Search search=new Search();
 		search.setCatid(catid);
 		search.setName(name);
 		searchService.add(search);
+		return new Result<Object>(200,null,null);
 	}
 	
 	@ApiOperation(value="根据类目编号获取搜索标题及以下关键词集合")
@@ -59,19 +60,21 @@ public class SearchController {
 	@ApiImplicitParams({@ApiImplicitParam(name="seaid",value="搜索编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="name",value="名称",required=true,dataType="String")})
 	@RequestMapping(value="/upd_seaid",method=RequestMethod.GET)
-	public void upd_seaid(@RequestParam(value="seaid",required=true)long seaid,@RequestParam(value="name",required=true)String name){
+	public Result<Object> upd_seaid(@RequestParam(value="seaid",required=true)long seaid,@RequestParam(value="name",required=true)String name){
 		Search search=searchService.getBySeaid(seaid);
 		if(!ValidUtil.isValid(search)){
-			return;
+			return null;
 		}
 		search.setName(name);
 		searchService.updBySeaid(search);
+		return new Result<Object>(200,null,null);
 	}
 	
 	@ApiOperation(value="删除搜索标题，会级联删除以下搜索关键字及产品关联")
 	@ApiImplicitParams({@ApiImplicitParam(name="seaid",value="编号",required=true,dataType="long")})
 	@RequestMapping(value="/del_seaid",method=RequestMethod.GET)
-	public void del_seaid(@RequestParam(value="seaid",required=true)long seaid){
+	public Result<Object> del_seaid(@RequestParam(value="seaid",required=true)long seaid){
 		searchService.delBySeaid(seaid);
+		return new Result<Object>(200,null,null);
 	}
 }

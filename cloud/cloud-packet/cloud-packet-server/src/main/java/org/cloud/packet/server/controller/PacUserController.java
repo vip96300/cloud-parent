@@ -8,6 +8,7 @@ import org.cloud.packet.server.service.PacUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,17 +28,17 @@ public class PacUserController {
 		List<Map<String,List<Object>>> pacUsers=pacUserService.listByUserid(userid,new PageRequest(page, size));
 		return pacUsers;
 	}
-	
+	@Async
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public void add(@RequestBody List<PacUser> pacUsers) {
 		pacUserService.add(pacUsers);
 	}
-	
+	@Async
 	@RequestMapping(value="/del_useid",method=RequestMethod.DELETE)
 	public void del_useid(@RequestParam(value="useid",required=true)long useid) {
 		pacUserService.delByUseid(useid);
 	}
-	
+	@Async
 	@RequestMapping(value="/upd_useid",method=RequestMethod.PUT)
 	public void upd_useid(@RequestBody PacUser pacUser) {
 		pacUserService.updByUseid(pacUser);

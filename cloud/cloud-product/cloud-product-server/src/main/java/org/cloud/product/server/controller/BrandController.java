@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,7 +34,7 @@ public class BrandController {
     	List<Brand> brands=brandService.listByCatid(catid,new PageRequest(page, size,sort));
     	return brands;
     }
-	
+	@Async
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public void add(@RequestBody Brand brand){
 		brandService.add(brand);
@@ -44,12 +45,12 @@ public class BrandController {
 		Brand brand=brandService.getByBraid(braid);
 		return brand;
 	}
-
+	@Async
 	@RequestMapping(value="/del_braid",method={RequestMethod.DELETE})
 	public void del_braid(@RequestParam(value="braid",required=true)long braid){
 		brandService.delByBraid(braid);
 	}
-	
+	@Async
 	@RequestMapping(value="/upd_braid",method=RequestMethod.PUT)
 	public void upd_braid(@RequestBody Brand brand){
 		brandService.updByBraid(brand);

@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,12 +49,12 @@ public class SearchController {
 		List<Map<String,List<Keyword>>> searchsKeywords=searchService.listKeywordsByCatid(catid);
 		return searchsKeywords;
 	}
-
+	@Async
 	@RequestMapping(value="/upd_seaid",method=RequestMethod.PUT)
 	public void upd_seaid(@RequestBody Search search){
 		searchService.updBySeaid(search);
 	}
-
+	@Async
 	@RequestMapping(value="/del_seaid",method=RequestMethod.DELETE)
 	public void del_seaid(@RequestParam(value="seaid",required=true)long seaid){
 		searchService.delBySeaid(seaid);

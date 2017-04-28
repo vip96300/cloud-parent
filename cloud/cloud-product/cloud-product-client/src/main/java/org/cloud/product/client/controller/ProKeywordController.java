@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
 import org.cloud.common.util.ValidUtil;
+import org.cloud.product.client.controller.dto.Result;
 import org.cloud.product.client.model.ProKeyword;
 import org.cloud.product.client.model.Product;
 import org.cloud.product.client.service.ProKeywordService;
@@ -33,10 +34,10 @@ public class ProKeywordController {
 	@ApiImplicitParams({@ApiImplicitParam(name="proid",value="产品编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="keywordids",value="关键字编号集合",required=true,dataType="List<long>")})
 	@RequestMapping(value="/add",method=RequestMethod.GET)
-	public void add(@RequestParam(value="keywordids",required=true)List<Long> keywordids,@RequestParam(value="proid",required=true)long proid){
+	public Result<Object> add(@RequestParam(value="keywordids",required=true)List<Long> keywordids,@RequestParam(value="proid",required=true)long proid){
 		Product product=productService.getByProid(proid);
 		if(!ValidUtil.isValid(product)){
-			return;
+			return null;
 		}
 		List<ProKeyword> proKeywords=new ArrayList<ProKeyword>();
 		for(Long keywordid:keywordids){
@@ -46,15 +47,17 @@ public class ProKeywordController {
 			proKeywords.add(proKeyword);
 		}
 		proKeywordService.add(proKeywords);
+		return new Result<Object>(200,null,null);
 	}
 	
 	@ApiOperation(value="根据编号批量删除")
 	@ApiImplicitParams({@ApiImplicitParam(name="keyids",value="产品关联表编号",required=true,dataType="long")})
 	@RequestMapping(value="/del_keyids",method=RequestMethod.GET)
-	public void del_keyids(@RequestParam(value="keyids",required=true)List<Long> keyids){
+	public Result<Object> del_keyids(@RequestParam(value="keyids",required=true)List<Long> keyids){
 		if(keyids.isEmpty()){
-			return;
+			return null;
 		}
 		proKeywordService.delByKeyids(keyids);
+		return new Result<Object>(200,null,null);
 	}
 }
