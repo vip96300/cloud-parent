@@ -3,6 +3,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
+import org.cloud.user.client.controller.dto.Result;
 import org.cloud.user.client.model.User;
 import org.cloud.user.client.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,9 @@ public class UserController {
 	
 	@ApiOperation(value="get user detail info")
 	@ApiImplicitParams(value = { @ApiImplicitParam })
-	@RequestMapping(path="/get_useId",method=RequestMethod.GET)
-	public User get_useId(@RequestParam(value="useId") long useId){
+	@RequestMapping(path="/get_useId",method=RequestMethod.POST)
+	public Result<Object> get_useId(@RequestParam(value="useId") long useId){
 		User user=userService.getByUseId(useId);
-		return user;
+		return new Result<Object>(200,null,user);
 	}
 }

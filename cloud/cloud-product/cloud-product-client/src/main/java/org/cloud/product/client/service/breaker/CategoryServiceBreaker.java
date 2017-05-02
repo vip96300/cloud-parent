@@ -11,20 +11,27 @@ public class CategoryServiceBreaker implements CategoryService{
 
 	@Override
 	public List<Category> listByPid(long pid) {
-		// TODO Auto-generated method stub
-		return null;
+		throw new RuntimeException();
 	}
 
 	@Override
 	public void add(Category category) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException();
 	}
 
 	@Override
 	public Category getByCatid(long catid) {
-		// TODO Auto-generated method stub
-		return null;
+		throw new RuntimeException();
+	}
+
+	@Override
+	public void delByCatid(long catid) {
+		throw new RuntimeException();
+	}
+
+	@Override
+	public void updByCatid(Category category) {
+		throw new RuntimeException();
 	}
 
 

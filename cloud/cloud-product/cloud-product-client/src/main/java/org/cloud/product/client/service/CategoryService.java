@@ -19,9 +19,32 @@ public interface CategoryService {
 	@RequestMapping(value = "/product/category/list_pid",method=RequestMethod.GET)
 	public List<Category> listByPid(@RequestParam(value="pid",required=true)long pid);
 	
+	/**
+	 * 添加类目
+	 * @param category
+	 */
 	@RequestMapping(value="/product/category/add",method=RequestMethod.POST)
 	public void add(@RequestBody Category category);
 
+	/**
+	 * 根据编号获取类目
+	 * @param catid
+	 * @return
+	 */
 	@RequestMapping(value="/product/category/get_catid",method=RequestMethod.GET)
 	public Category getByCatid(@RequestParam(value="catid",required=true)long catid);
+	
+	/**
+	 * 根据类目编号删除类目
+	 * @param catid
+	 */
+	@RequestMapping(value="/product/category/del_catid",method=RequestMethod.DELETE)
+	public void delByCatid(@RequestParam(value="catid",required=true)long catid);
+	
+	/**
+	 * 修改类目
+	 * @param category
+	 */
+	@RequestMapping(value="/product/category/upd_catid",method=RequestMethod.PUT)
+	public void updByCatid(@RequestBody Category category);
 }

@@ -9,8 +9,7 @@ public class UserServiceBreaker implements UserService{
 
 	@Override
 	public User getByUseId(long useId) {
-		System.out.println("service error");
-		return null;
+		throw new RuntimeException();
 	}
 
 }

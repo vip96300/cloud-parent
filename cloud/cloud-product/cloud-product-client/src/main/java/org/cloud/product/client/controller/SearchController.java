@@ -9,10 +9,8 @@ import io.swagger.annotations.ApiOperation;
 
 import org.cloud.common.util.ValidUtil;
 import org.cloud.product.client.controller.dto.Result;
-import org.cloud.product.client.model.Category;
 import org.cloud.product.client.model.Keyword;
 import org.cloud.product.client.model.Search;
-import org.cloud.product.client.service.CategoryService;
 import org.cloud.product.client.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -29,18 +27,12 @@ public class SearchController {
 	
 	@Autowired
 	private SearchService searchService;
-	@Autowired
-	private CategoryService categoryService;
 	
 	@ApiOperation(value="添加搜索标题")
 	@ApiImplicitParams({@ApiImplicitParam(name="catid",value="类目编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="name",value="名称",required=true,dataType="String")})
 	@RequestMapping(value="/add",method=RequestMethod.GET)
 	public Result<Object> add(@RequestParam(value="catid",required=true)Long catid,@RequestParam(value="name",required=true)String name){
-		Category category=categoryService.getByCatid(catid);
-		if(!ValidUtil.isValid(category)){
-			return null;
-		}
 		Search search=new Search();
 		search.setCatid(catid);
 		search.setName(name);
@@ -61,10 +53,8 @@ public class SearchController {
 		@ApiImplicitParam(name="name",value="名称",required=true,dataType="String")})
 	@RequestMapping(value="/upd_seaid",method=RequestMethod.POST)
 	public Result<Object> upd_seaid(@RequestParam(value="seaid",required=true)long seaid,@RequestParam(value="name",required=true)String name){
-		Search search=searchService.getBySeaid(seaid);
-		if(!ValidUtil.isValid(search)){
-			return null;
-		}
+		Search search=new Search();
+		search.setSeaid(seaid);
 		search.setName(name);
 		searchService.updBySeaid(search);
 		return new Result<Object>(200,null,null);

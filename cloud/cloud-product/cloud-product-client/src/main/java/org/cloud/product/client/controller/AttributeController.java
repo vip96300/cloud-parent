@@ -25,8 +25,6 @@ public class AttributeController {
 	
 	@Autowired
 	private AttributeService attributeService;
-	@Autowired
-	private AttGroupService attGroupService;
 
 	@ApiOperation(value="添加属性")
     @ApiImplicitParams({
@@ -36,13 +34,8 @@ public class AttributeController {
     })
     @RequestMapping(value="/add",method={RequestMethod.POST})
     public Result<Object> add(@RequestParam(value="groid",required=true)long groid,@RequestParam(value="name",required=true)String name,@RequestParam(value="type",required=true)int type){
-		AttGroup attGroup=attGroupService.getByGroid(groid);
-		if(!ValidUtil.isValid(attGroup)){
-			return null;
-		}
 		Attribute attribute=new Attribute();
 		attribute.setGroid(groid);
-		attribute.setCatid(attGroup.getCatid());
 		attribute.setName(name);
 		attribute.setType(type);
     	attributeService.add(attribute);

@@ -26,4 +26,26 @@ public interface BrandService {
 	 */
 	@RequestMapping(value = "/product/category/brand/add",method=RequestMethod.POST)
 	public void add(@RequestBody Brand brand);
+	
+	/**
+	 * 根据品牌编号获取品牌信息
+	 * @param braid
+	 * @return
+	 */
+	@RequestMapping(value="/product/category/brand/get_braid",method=RequestMethod.GET)
+	public Brand getByBraid(@RequestParam(value="braid",required=true)long braid);
+	
+	/**
+	 * 根据品牌编号删除品牌
+	 * @param braid
+	 */
+	@RequestMapping(value="/product/category/brand/del_braid",method=RequestMethod.DELETE)
+	public void delByBraid(@RequestParam(value="braid",required=true)long braid);
+	
+	/**
+	 * 根据品牌编号修改品牌
+	 * @param brand
+	 */
+	@RequestMapping(value="/product/category/brand/upd_braid",method=RequestMethod.PUT)
+	public void updByBraid(@RequestBody Brand brand);
 }

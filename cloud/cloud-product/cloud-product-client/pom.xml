@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.spring.product</groupId>
-    <artifactId>cloud-product</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <groupId>com.spring.product.client</groupId>
-  <artifactId>cloud-product-client</artifactId>
-  <version>${project.parent.version}</version>
-  <packaging>jar</packaging>
-  <name>cloud-product-client</name>
-  <url>http://maven.apache.org</url>
-  
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.spring.product</groupId>
+		<artifactId>cloud-product</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>com.spring.product.client</groupId>
+	<artifactId>cloud-product-client</artifactId>
+	<version>${project.parent.version}</version>
+	<packaging>jar</packaging>
+	<name>cloud-product-client</name>
+	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -36,21 +36,21 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<!-- Swagger -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>2.6.0</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.6.0</version>
-        </dependency>
-        <dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+		<dependency>
 			<groupId>com.spring.common.util</groupId>
-		  	<artifactId>cloud-common-util</artifactId>
-		  	<version>${project.parent.version}</version>
+			<artifactId>cloud-common-util</artifactId>
+			<version>${project.parent.version}</version>
 		</dependency>
 	</dependencies>
-	
+
 </project>

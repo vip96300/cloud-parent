@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="product_category_attribute")
-public class Attribute implements Serializable{
+public class Attribute extends BaseModel implements Serializable{
 
 	private static final long serialVersionUID = -4187369360003107593L;
 	
@@ -24,7 +24,7 @@ public class Attribute implements Serializable{
 	@Column(nullable=false)
 	private String name;//属性名称
 	@Column(nullable=false)
-	private Integer type;//属性类型/0：输入框，1：单选框，2：多选框
+	private Integer type;//属性类型/0：输入框，1：单选框，2：多选框,3:多文本域
 	@Column(nullable=false)
 	private Long time;//创建时间
 	

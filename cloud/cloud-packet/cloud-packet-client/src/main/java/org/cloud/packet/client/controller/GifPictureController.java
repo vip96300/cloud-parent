@@ -26,7 +26,9 @@ public class GifPictureController {
 		@ApiImplicitParam(name="type",value="图片类型",required=true,dataType="int"),
 		@ApiImplicitParam(name="url",value="路径",required=true,dataType="String")})
 	@RequestMapping(value="/add",method=RequestMethod.POST)
-	public Result<Object> add(@RequestParam(value="gifid",required=true)long gifid,@RequestParam(value="type",required=true)int type,@RequestParam(value="url",required=true)String url){
+	public Result<Object> add(@RequestParam(value="gifid",required=true)long gifid,
+			@RequestParam(value="type",required=true)int type,
+			@RequestParam(value="url",required=true)String url){
 		GifPicture gifPicture=new GifPicture();
 		gifPicture.setGifid(gifid);
 		gifPicture.setType(type);

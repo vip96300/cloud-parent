@@ -3,7 +3,9 @@ package org.cloud.product.server.controller;
 import java.util.List;
 
 import org.cloud.common.util.ValidUtil;
+import org.cloud.product.server.model.AttGroup;
 import org.cloud.product.server.model.Attribute;
+import org.cloud.product.server.service.AttGroupService;
 import org.cloud.product.server.service.AttributeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,10 +25,16 @@ public class AttributeController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	@Autowired
 	private AttributeService attributeService;
+	@Autowired
+	private AttGroupService attGroupService;
 	@Async
     @RequestMapping(value="/add")
     public void add(@RequestBody Attribute attribute){
-    	logger.debug(this.getClass().getName());
+		AttGroup attGroup=attGroupService.getByGroid(attribute.getGroid());
+		if(!ValidUtil.isValid(attGroup)){
+			return;
+		}
+		attribute.setCatid(attGroup.getCatid());
     	attributeService.add(attribute);
     }
     

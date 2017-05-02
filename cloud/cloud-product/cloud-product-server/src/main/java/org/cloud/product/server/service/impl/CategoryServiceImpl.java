@@ -11,13 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service
 public class CategoryServiceImpl implements CategoryService{
+	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
 	@Override
 	public List<Category> listByPid(long pid) {
-		logger.debug(this.getClass().getName());
 		List<Category> categorys=categoryRepository.findByPid(pid);
 		return categorys;
 	}
@@ -32,6 +33,16 @@ public class CategoryServiceImpl implements CategoryService{
 	public Category getByCatid(long catid) {
 		Category category=categoryRepository.findOne(catid);
 		return category;
+	}
+
+	@Override
+	public void delByCatid(long catid) {
+		categoryRepository.delete(catid);
+	}
+
+	@Override
+	public void updByCatid(Category category) {
+		categoryRepository.saveAndFlush(category);
 	}
 
 

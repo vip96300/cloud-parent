@@ -35,6 +35,10 @@ public class SearchController {
 
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public void add(@RequestBody Search search){
+		Category category=categoryService.getByCatid(search.getCatid());
+		if(!ValidUtil.isValid(category)){
+			return;
+		}
 		searchService.add(search);
 	}
 
@@ -52,6 +56,10 @@ public class SearchController {
 	@Async
 	@RequestMapping(value="/upd_seaid",method=RequestMethod.PUT)
 	public void upd_seaid(@RequestBody Search search){
+		Search hasSearch=searchService.getBySeaid(search.getSeaid());
+		if(!ValidUtil.isValid(hasSearch)){
+			return;
+		}
 		searchService.updBySeaid(search);
 	}
 	@Async

@@ -7,9 +7,7 @@ import io.swagger.annotations.ApiOperation;
 import org.cloud.common.util.ValidUtil;
 import org.cloud.product.client.controller.dto.Result;
 import org.cloud.product.client.model.Keyword;
-import org.cloud.product.client.model.Search;
 import org.cloud.product.client.service.KeywordService;
-import org.cloud.product.client.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,18 +22,13 @@ public class KeywordController {
 	
 	@Autowired
 	private KeywordService keywordService;
-	@Autowired
-	private SearchService searchService;
 	
 	@ApiOperation(value="添加关键字")
 	@ApiImplicitParams({@ApiImplicitParam(name="seaid",value="搜索编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="name",value="关键字名称",required=true,dataType="String")})
 	@RequestMapping(value="/add",method=RequestMethod.POST)
-	public Result<Object> add(@RequestParam(value="seaid",required=true)long seaid,@RequestParam(value="name",required=true)String name){
-		Search search=searchService.getBySeaid(seaid);
-		if(!ValidUtil.isValid(search)){
-			return null;
-		}
+	public Result<Object> add(@RequestParam(value="seaid",required=true)long seaid,
+			@RequestParam(value="name",required=true)String name){
 		Keyword keyword=new Keyword();
 		keyword.setSeaid(seaid);
 		keyword.setName(name);
@@ -47,11 +40,10 @@ public class KeywordController {
 	@ApiImplicitParams({@ApiImplicitParam(name="keyid",value="关键字编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="name",value="关键字",required=true,dataType="String")})
 	@RequestMapping(value="/upd_keyid",method=RequestMethod.POST)
-	public Result<Object> upd_keyid(@RequestParam(value="keyid",required=true)long keyid,@RequestParam(value="name",required=true)String name){
-		Keyword keyword=keywordService.getByKeyid(keyid);
-		if(!ValidUtil.isValid(keyword)){
-			return null;
-		}
+	public Result<Object> upd_keyid(@RequestParam(value="keyid",required=true)long keyid,
+			@RequestParam(value="name",required=true)String name){
+		Keyword keyword=new Keyword();
+		keyword.setKeyid(keyid);
 		keyword.setName(name);
 		keywordService.updByKeyid(keyword);
 		return new Result<Object>(200,null,null);

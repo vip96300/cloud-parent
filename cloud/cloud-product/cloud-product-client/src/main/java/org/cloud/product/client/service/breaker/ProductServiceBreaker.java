@@ -11,8 +11,17 @@ public class ProductServiceBreaker implements ProductService{
 
 	@Override
 	public List<Product> listByCatid(long catid,int page,int size) {
-		// TODO Auto-generated method stub
-		return null;
+		throw new RuntimeException();
+	}
+
+	@Override
+	public Product getByProid(long proid) {
+		throw new RuntimeException();
+	}
+
+	@Override
+	public void add(Product product) {
+		throw new RuntimeException();
 	}
 
 

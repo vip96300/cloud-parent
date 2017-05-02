@@ -2,6 +2,7 @@ package org.cloud.product.server.controller;
 
 import java.util.List;
 
+import org.cloud.common.util.ValidUtil;
 import org.cloud.product.server.model.Category;
 import org.cloud.product.server.service.CategoryService;
 import org.slf4j.Logger;
@@ -23,9 +24,8 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 	
-	@RequestMapping(value="/list_pid")
+	@RequestMapping(value="/list_pid",method=RequestMethod.GET)
 	public List<Category> list_pid(@RequestParam(value="pid",required=true) long pid){
-		logger.debug("controller:/product/category/list_pid");
 		List<Category> categorys=categoryService.listByPid(pid);
 		return categorys;
 		
@@ -33,6 +33,13 @@ public class CategoryController {
 	@Async
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public void add(@RequestBody Category category){
+		if(category.getPid()!=0){
+			//如果不是一级类目需要验证上层类目
+			Category hasCategory=categoryService.getByCatid(category.getPid());
+			if(!ValidUtil.isValid(hasCategory)){
+				return;
+			}
+		}
 		categoryService.add(category);
 	}
 	
@@ -44,11 +51,23 @@ public class CategoryController {
 	@Async
 	@RequestMapping(value="/del_catid",method=RequestMethod.DELETE)
 	public void del_catid(@RequestParam(value="catid",required=true)long catid){
+		Category category=categoryService.getByCatid(catid);
+		if(!ValidUtil.isValid(category)){
+			return;
+		}
+		if(category.getIssku()==0){
+			//如果不是最小单元
+			return;
+		}
 		categoryService.delByCatid(catid);
 	}
 	@Async
 	@RequestMapping(value="/upd_catid",method=RequestMethod.PUT)
 	public void upd_catid(@RequestBody Category category){
+		Category hasCategory=categoryService.getByCatid(category.getCatid());
+		if(!ValidUtil.isValid(hasCategory)){
+			return;
+		}
 		categoryService.updByCatid(category);
 	}
 

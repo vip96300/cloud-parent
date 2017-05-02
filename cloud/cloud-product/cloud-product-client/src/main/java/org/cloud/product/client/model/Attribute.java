@@ -62,7 +62,18 @@ public class Attribute{
 		this.time = time;
 	}
 
-	
+	/**
+	 * 文本
+	 */
+	public static final int T0=0;
+	/**
+	 * 单选
+	 */
+	public static final int T1=1;
+	/**
+	 * 多选
+	 */
+	public static final int T2=2;
 
 	
 }

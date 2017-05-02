@@ -15,13 +15,27 @@ public class BrandServiceBreaker implements BrandService{
 	
 	@Override
 	public List<Brand> listByCatid(long catid,int page,int size) {
-		logger.error("listByCatId error");
-		return null;
+		throw new RuntimeException();
 	}
 
 	@Override
 	public void add(Brand brand) {
-		logger.error("add error");
+		throw new RuntimeException();
+	}
+
+	@Override
+	public Brand getByBraid(long braid) {
+		throw new RuntimeException();
+	}
+
+	@Override
+	public void delByBraid(long braid) {
+		throw new RuntimeException();
+	}
+
+	@Override
+	public void updByBraid(Brand brand) {
+		throw new RuntimeException();
 	}
 
 }

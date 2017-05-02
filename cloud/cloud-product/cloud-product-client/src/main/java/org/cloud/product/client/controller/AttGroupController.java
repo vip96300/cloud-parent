@@ -10,9 +10,7 @@ import java.util.Map;
 import org.cloud.common.util.ValidUtil;
 import org.cloud.product.client.controller.dto.Result;
 import org.cloud.product.client.model.AttGroup;
-import org.cloud.product.client.model.Category;
 import org.cloud.product.client.service.AttGroupService;
-import org.cloud.product.client.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +25,6 @@ public class AttGroupController {
 	
 	@Autowired
 	private AttGroupService attGroupService;
-	@Autowired
-	private CategoryService categoryService;
 	
 	@ApiOperation(value="根据类目编号获取属性组及属性组以下的属性列表及属性值列表")
 	@ApiImplicitParams({@ApiImplicitParam(name="catid",value="类目编号",required=true,dataType="long")})
@@ -45,15 +41,6 @@ public class AttGroupController {
 	})
 	@RequestMapping(value="/add",method={RequestMethod.POST})
 	public Result<Object> add(@RequestParam(value="catid",required=true)long catid,@RequestParam(value="name",required=true)String name){
-		Category category=categoryService.getByCatid(catid);
-		if(!ValidUtil.isValid(category)){
-			//如果类目不存在
-			return null;
-		}
-		if(category.getIssku()==0){
-			//不是最小单元
-			return null;
-		}
 		AttGroup attGroup=new AttGroup();
 		attGroup.setCatid(catid);
 		attGroup.setName(name);

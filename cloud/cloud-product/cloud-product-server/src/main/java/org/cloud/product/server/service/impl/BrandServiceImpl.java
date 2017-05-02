@@ -14,13 +14,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BrandServiceImpl implements BrandService{
+	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	@Autowired
 	private BrandRepository brandRepository;
 	
 	@Override
 	public List<Brand> listByCatid(long catid,Pageable pageable) {
-		logger.debug(this.getClass().getName());
 		Page<Brand> brands=brandRepository.findByCatid(catid,pageable);
 		return brands.getContent();
 	}
@@ -29,6 +30,22 @@ public class BrandServiceImpl implements BrandService{
 	public void add(Brand brand) {
 		brand.setTime(System.currentTimeMillis());
 		brandRepository.save(brand);
+	}
+
+	@Override
+	public Brand getByBraid(long braid) {
+		Brand brand=brandRepository.getOne(braid);
+		return brand;
+	}
+
+	@Override
+	public void delByBraid(long braid) {
+		brandRepository.delete(braid);
+	}
+
+	@Override
+	public void updByBraid(Brand brand) {
+		brandRepository.saveAndFlush(brand);
 	}
 
 }

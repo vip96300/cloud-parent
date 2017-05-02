@@ -2,7 +2,9 @@ package org.cloud.product.server.controller;
 
 import java.util.List;
 
+import org.cloud.common.util.ValidUtil;
 import org.cloud.product.server.model.ProKeyword;
+import org.cloud.product.server.model.Product;
 import org.cloud.product.server.service.ProKeywordService;
 import org.cloud.product.server.service.ProductService;
 import org.slf4j.Logger;
@@ -27,9 +29,14 @@ public class ProKeywordController {
 	private ProKeywordService proKeywordService;
 	@Autowired
 	private ProductService productService;
+	
 	@Async
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public void add(@RequestParam(value="proKeywords",required=true)List<ProKeyword> proKeywords){
+		Product product=productService.getByProid(proKeywords.get(0).getProid());
+		if(!ValidUtil.isValid(product)){
+			return;
+		}
 		proKeywordService.add(proKeywords);
 	}
 	@Async

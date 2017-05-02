@@ -30,11 +30,19 @@ public class KeywordController {
 	@Async
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public void add(@RequestBody Keyword keyword){
+		Search search=searchService.getBySeaid(keyword.getSeaid());
+		if(!ValidUtil.isValid(search)){
+			return;
+		}
 		keywordService.add(keyword);
 	}
 	@Async
 	@RequestMapping(value="/upd_keyid",method=RequestMethod.PUT)
 	public void upd_keyid(@RequestBody Keyword keyword){
+		Keyword hasKeyword=keywordService.getByKeyid(keyword.getKeyid());
+		if(!ValidUtil.isValid(hasKeyword)){
+			return;
+		}
 		keywordService.updByKeyid(keyword);
 	}
 	@Async

@@ -27,18 +27,12 @@ public class ProKeywordController {
 	
 	@Autowired
 	private ProKeywordService proKeywordService;
-	@Autowired
-	private ProductService productService;
 	
 	@ApiOperation(value="添加产品关键字")
 	@ApiImplicitParams({@ApiImplicitParam(name="proid",value="产品编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="keywordids",value="关键字编号集合",required=true,dataType="List<long>")})
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public Result<Object> add(@RequestParam(value="keywordids",required=true)List<Long> keywordids,@RequestParam(value="proid",required=true)long proid){
-		Product product=productService.getByProid(proid);
-		if(!ValidUtil.isValid(product)){
-			return null;
-		}
 		List<ProKeyword> proKeywords=new ArrayList<ProKeyword>();
 		for(Long keywordid:keywordids){
 			ProKeyword proKeyword=new ProKeyword();

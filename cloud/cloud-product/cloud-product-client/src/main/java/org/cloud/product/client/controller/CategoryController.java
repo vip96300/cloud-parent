@@ -6,7 +6,6 @@ import io.swagger.annotations.ApiOperation;
 
 import java.util.List;
 
-import org.cloud.common.util.ValidUtil;
 import org.cloud.product.client.controller.dto.Result;
 import org.cloud.product.client.model.Category;
 import org.cloud.product.client.service.CategoryService;
@@ -25,8 +24,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class CategoryController {
 	
 	private final org.slf4j.Logger logger=LoggerFactory.getLogger(getClass());
+	
 	@Autowired
 	private CategoryService categoryService;
+	
 	@ApiOperation(value="根据类目编号获取子类目列表，顶级类目请传0")
 	@ApiImplicitParams({@ApiImplicitParam(name="pid",value="类目父编号",required=true,dataType="long")})
 	@RequestMapping(value="/list_pid",method=RequestMethod.POST)
@@ -42,15 +43,10 @@ public class CategoryController {
 		@ApiImplicitParam(name="name",value="类目名称",required=true,dataType="String")
 	})
 	@RequestMapping(value="/add",method={RequestMethod.POST})
-	public Result<Object> add(@RequestParam(value="pid",required=true)long pid, @RequestParam(value="issku",required=true)int issku, @RequestParam(value="name",required=true)String name){
-		Category category=null;
-		if(pid!=0){//如果不是顶层类目
-			category=categoryService.getByCatid(pid);
-			if(ValidUtil.isValid(category)){
-				return null;
-			}
-		}
-		category=new Category();
+	public Result<Object> add(@RequestParam(value="pid",required=true)long pid, 
+			@RequestParam(value="issku",required=true)int issku, 
+			@RequestParam(value="name",required=true)String name){
+		Category category=new Category();
 		category.setPid(pid);
 		category.setIssku(issku);
 		category.setName(name);
@@ -62,11 +58,6 @@ public class CategoryController {
 	@ApiImplicitParams({@ApiImplicitParam(name="catid",value="类目编号",required=true,dataType="long")})
 	@RequestMapping(value="/del_catid",method=RequestMethod.POST)
 	public Result<Object> del_catid(@RequestParam(value="catid",required=true)long catid){
-		List<Category> categorys=categoryService.listByPid(catid);
-		if(!categorys.isEmpty()){
-			logger.info("有子集，不能删除");
-			return null;
-		}
 		categoryService.delByCatid(catid);
 		return new Result<Object>(200,null,null);
 	}
@@ -75,11 +66,9 @@ public class CategoryController {
 	@ApiImplicitParams({@ApiImplicitParam(name="catid",value="类目编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="name",value="类目名称",required=true,dataType="String")})
 	@RequestMapping(value="/upd_catid",method=RequestMethod.POST)
-	public Result<Object> upd_catid(@RequestParam(value="catid",required=true)long catid,@RequestParam(value="name",required=true)String name){
-		Category category=categoryService.getByCatid(catid);
-		if(!ValidUtil.isValid(category)){
-			return null;
-		}
+	public Result<Object> upd_catid(@RequestParam(value="catid",required=true)long catid,
+			@RequestParam(value="name",required=true)String name){
+		Category category=new Category();
 		category.setName(name);
 		categoryService.updByCatid(category);
 		return new Result<Object>(200,null,null);

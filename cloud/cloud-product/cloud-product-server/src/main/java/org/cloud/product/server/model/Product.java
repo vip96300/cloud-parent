@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="product_product")
-public class Product implements Serializable{
+public class Product extends BaseModel implements Serializable{
 
 	private static final long serialVersionUID = 3864760169265940421L;
 	
@@ -20,11 +20,19 @@ public class Product implements Serializable{
 	@Column(nullable=false)
 	private Long braid;//品牌编号
 	@Column(nullable=false)
-	private Long catid;
+	private Long catid;//类目编号
 	@Column(nullable=false)
-	private String name;//名称
+	private String name;//产品名称
+	@Column(nullable=false)
+	private String braname;//品牌名称
+	@Column(nullable=false)
+	private Double discprice;//折扣价
+	@Column(nullable=false)
+	private Double sellprice;//销售价格
 	@Column(nullable=false)
 	private Long time;
+	@Column(nullable=false)
+	private Integer isDel;
 	public Long getProid() {
 		return proid;
 	}
@@ -49,12 +57,34 @@ public class Product implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getBraname() {
+		return braname;
+	}
+	public void setBraname(String braname) {
+		this.braname = braname;
+	}
+	public Double getDiscprice() {
+		return discprice;
+	}
+	public void setDiscprice(Double discprice) {
+		this.discprice = discprice;
+	}
+	public Double getSellprice() {
+		return sellprice;
+	}
+	public void setSellprice(Double sellprice) {
+		this.sellprice = sellprice;
+	}
 	public Long getTime() {
 		return time;
 	}
 	public void setTime(Long time) {
 		this.time = time;
 	}
-	
-
+	public Integer getIsDel() {
+		return isDel;
+	}
+	public void setIsDel(Integer isDel) {
+		this.isDel = isDel;
+	}
 }

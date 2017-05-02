@@ -5,7 +5,7 @@ import java.io.Serializable;
 import org.cloud.user.server.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Serializable>{
+public interface UserRepository extends JpaRepository<User, Long>{
 
 	User findByUseId(long useId);
 

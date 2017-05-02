@@ -16,8 +16,4 @@ public class FileUtil {
 		return suffix;
 	}
 	
-	public static void main(String[] orgs){
-		String fileName="123.jpg";
-		System.out.println(FileUtil.getSuffix(fileName));
-	}
 }

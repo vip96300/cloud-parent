@@ -3,8 +3,11 @@ package org.cloud.product.server.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.cloud.common.util.ValidUtil;
 import org.cloud.product.server.model.AttGroup;
+import org.cloud.product.server.model.Category;
 import org.cloud.product.server.service.AttGroupService;
+import org.cloud.product.server.service.CategoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +28,8 @@ public class AttGroupController {
 	
 	@Autowired
 	private AttGroupService attGroupService;
+	@Autowired
+	private CategoryService categoryService;
 	
 	@RequestMapping(value="/list_attributes_attValues_catid",method=RequestMethod.GET)
 	public List<Map<String,List<Object>>> list_attributes_attValues_catid(@RequestParam(value="catid",required=true) long catid){
@@ -35,6 +40,15 @@ public class AttGroupController {
 	@Async
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public void add(@RequestBody AttGroup attGroup){
+		Category category=categoryService.getByCatid(attGroup.getCatid());
+		if(!ValidUtil.isValid(category)){
+			//如果类目不存在
+			return;
+		}
+		if(category.getIssku()!=0){
+			//最小单元
+			return;
+		}
 		attGroupService.add(attGroup);
 	}
 	

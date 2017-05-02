@@ -1,9 +1,6 @@
 package org.cloud.gateway.zuul.filter;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.netflix.zuul.ZuulFilter;
-import com.netflix.zuul.context.RequestContext;
 /**
  * 访问权限拦截器
  * @author XiaoHuiHui
@@ -19,14 +16,6 @@ public class AccessFilter extends ZuulFilter{
 	@Override
 	public Object run() {
 		System.out.println("拦截器工作了0");
-        RequestContext ctx = RequestContext.getCurrentContext();
-        HttpServletRequest request = ctx.getRequest();
-        Object accessToken = request.getParameter("accessToken");
-        if(accessToken == null) {
-            ctx.setSendZuulResponse(false);
-            ctx.setResponseStatusCode(401);
-            return null;
-        }
 		return null;
 	}
 	@Override

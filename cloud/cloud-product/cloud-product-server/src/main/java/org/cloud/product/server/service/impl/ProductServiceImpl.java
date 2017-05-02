@@ -25,4 +25,21 @@ public class ProductServiceImpl implements ProductService{
 		Page<Product> products=productRepository.findByCatid(catid, pageable);
 		return products.getContent();
 	}
+
+	@Override
+	public Product getByProid(long proid) {
+		Product product=productRepository.getOne(proid);
+		return product;
+	}
+
+	@Override
+	public List<Product> listByProids(List<Long> proids) {
+		List<Product> products=productRepository.findByProids(proids);
+		return products;
+	}
+
+	@Override
+	public void add(Product product) {
+		productRepository.save(product);
+	}
 }

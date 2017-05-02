@@ -24,4 +24,16 @@ public interface CategoryService {
 	 * @return
 	 */
 	public Category getByCatid(long catid);
+	
+	/**
+	 * 根据类目编号删除类目
+	 * @param catid
+	 */
+	public void delByCatid(long catid);
+	
+	/**
+	 * 修改类目
+	 * @param category
+	 */
+	public void updByCatid(Category category);
 }

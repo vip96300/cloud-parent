@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="product_category_attgroup")
-public class AttGroup implements Serializable{
+public class AttGroup extends BaseModel implements Serializable{
 
 	private static final long serialVersionUID = -8871759945813635178L;
 	/**

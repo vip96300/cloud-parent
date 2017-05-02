@@ -7,8 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+
 @Entity
-public class User implements Serializable{
+public class User extends BaseModel implements Serializable{
 
 	/**
 	 * user

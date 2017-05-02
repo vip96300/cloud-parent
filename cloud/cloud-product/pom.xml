@@ -16,5 +16,6 @@
   <modules>
     <module>cloud-product-server</module>
     <module>cloud-product-client</module>
+    <module>cloud-product-admin</module>
   </modules>
 </project>
