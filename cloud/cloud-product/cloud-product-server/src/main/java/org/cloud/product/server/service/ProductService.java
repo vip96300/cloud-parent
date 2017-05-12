@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.cloud.product.server.model.Product;
 import org.springframework.data.domain.Pageable;
+import org.springframework.transaction.annotation.Transactional;
 
 public interface ProductService {
 	
@@ -11,6 +12,7 @@ public interface ProductService {
 	 * 添加产品
 	 * @param product
 	 */
+	@Transactional(rollbackFor=Exception.class)
 	public void add(Product product);
 	
 	/**
@@ -33,4 +35,14 @@ public interface ProductService {
 	 * @return
 	 */
 	public List<Product> listByProids(List<Long> proids);
+	/**
+	 * 修改产品
+	 * @param product
+	 */
+	public void updByProid(Product product);
+	/**
+	 * 删除产品
+	 * @param proid
+	 */
+	public void delByProid(long proid);
 }

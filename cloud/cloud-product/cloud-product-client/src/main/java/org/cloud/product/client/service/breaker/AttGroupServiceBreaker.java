@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.cloud.product.client.model.AttGroup;
+import org.cloud.product.client.model.Property;
 import org.cloud.product.client.service.AttGroupService;
 import org.springframework.stereotype.Component;
 
@@ -32,6 +33,16 @@ public class AttGroupServiceBreaker implements AttGroupService{
 
 	@Override
 	public void updByGroid(AttGroup attGroup) {
+		throw new RuntimeException();
+	}
+
+	@Override
+	public List<AttGroup> listByCatid(long catid) {
+		throw new RuntimeException();
+	}
+
+	@Override
+	public Map<String, List<Property>> listPropertysByProid(long proid) {
 		throw new RuntimeException();
 	}
 

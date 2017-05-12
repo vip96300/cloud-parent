@@ -19,7 +19,7 @@ public class CategoryServiceImpl implements CategoryService{
 	
 	@Override
 	public List<Category> listByPid(long pid) {
-		List<Category> categorys=categoryRepository.findByPid(pid);
+		List<Category> categorys=categoryRepository.findByPidAndIsdel(pid,0);
 		return categorys;
 	}
 
@@ -37,12 +37,20 @@ public class CategoryServiceImpl implements CategoryService{
 
 	@Override
 	public void delByCatid(long catid) {
-		categoryRepository.delete(catid);
+		Category category=categoryRepository.findOne(catid);
+		category.setIsdel(1);
+		categoryRepository.saveAndFlush(category);
 	}
 
 	@Override
 	public void updByCatid(Category category) {
 		categoryRepository.saveAndFlush(category);
+	}
+
+	@Override
+	public List<Category> listByCatids(List<Long> catids) {
+		List<Category> categorys=categoryRepository.findByCatids(catids,0);
+		return categorys;
 	}
 
 

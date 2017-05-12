@@ -16,6 +16,5 @@
   <modules>
     <module>cloud-packet-server</module>
     <module>cloud-packet-client</module>
-    <module>cloud-packet-admin</module>
   </modules>
 </project>

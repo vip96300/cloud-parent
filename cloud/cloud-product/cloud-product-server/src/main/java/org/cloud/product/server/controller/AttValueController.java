@@ -1,5 +1,7 @@
 package org.cloud.product.server.controller;
 
+import java.util.List;
+
 import org.cloud.common.util.ValidUtil;
 import org.cloud.product.server.model.AttValue;
 import org.cloud.product.server.model.Attribute;
@@ -36,6 +38,12 @@ public class AttValueController {
 		}
 		attValue.setCatid(attribute.getCatid());
 		attValueService.add(attValue);
+	}
+	
+	@RequestMapping(value="/list_attid",method=RequestMethod.GET)
+	public List<AttValue> list_attid(@RequestParam(value="attid",required=true)long attid) {
+		List<AttValue> attValues=attValueService.listByAttid(attid);
+		return attValues;
 	}
 	
 	@RequestMapping(value="/get_valid",method=RequestMethod.GET)

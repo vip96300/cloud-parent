@@ -1,5 +1,7 @@
 package org.cloud.product.client.service;
 
+import java.util.List;
+
 import org.cloud.product.client.model.Attribute;
 import org.cloud.product.client.service.breaker.AttributeServiceBreaker;
 import org.springframework.cloud.netflix.feign.FeignClient;
@@ -11,6 +13,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(value="cloud-product-server",fallback=AttributeServiceBreaker.class)
 public interface AttributeService {
+	
+	/**
+	 * 根据属性组编号获取属性集合
+	 * @param groid
+	 * @return
+	 */
+	@RequestMapping(value="/product/category/attribute/list_groid",method=RequestMethod.GET)
+	public List<Attribute> listByGroid(@RequestParam(value="groid",required=true)long groid);
+	/**
+	 * 根据类目编号获取属性集合
+	 * @param catid
+	 * @return
+	 */
+	@RequestMapping(value="/product/category/attribute/list_catid",method=RequestMethod.GET)
+	public List<Attribute> listByCatid(@RequestParam(value="catid",required=true)long catid);
 
 	/**
 	 * 添加属性

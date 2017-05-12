@@ -1,14 +1,18 @@
 package org.cloud.file.client.controller;
 
-import java.util.List;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import io.swagger.annotations.ApiOperation;
 
 import org.cloud.file.client.controller.dto.Result;
 import org.cloud.file.client.model.File;
 import org.cloud.file.client.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,13 +27,35 @@ public class FileController {
 	@Autowired
 	private FileService fileService;
 	
-	@RequestMapping(value="/upload_image",method=RequestMethod.GET)
-	public Result<List<File>> upload_image(HttpServletRequest request){
-		List<MultipartFile> files = ((MultipartHttpServletRequest) request).getFiles("file");
-		if(files.isEmpty()){
+	@ApiOperation(value="上传图片")
+	@RequestMapping(value="/upload_image",method=RequestMethod.POST)
+	public Result<File> upload_image(MultipartHttpServletRequest request){
+		MultipartFile multipartFile = request.getFile("file");
+		if(multipartFile.isEmpty()){
 			return null;
 		}
-		List<File> fileDirs=fileService.upload_image(files);
-		return new Result<List<File>>(200,null,fileDirs);
+		File file=fileService.upload_image(multipartFile);
+		return new Result<File>(200,null,file);
 	}
+	
+	/**
+	 * response.setHeader("content-type", "application/octet-stream");  
+     * response.setContentType("application/octet-stream"); 
+     * 设置为下载图片，而非显示
+	 * @param fileName
+	 * @param response
+	 * @throws IOException
+	 */
+	@RequestMapping(value="/image/{fileName}",method=RequestMethod.GET)
+	public void download_image(@PathVariable(value="fileName",required=true) String fileName,HttpServletResponse  response) throws IOException{
+		java.io.File file=fileService.download_image(fileName);
+		System.out.println(file.getAbsolutePath());
+		if(!file.exists()){
+			System.out.println("file not exist!");
+			return;
+		}
+		FileOutputStream fos=new FileOutputStream(file);  
+        fos.close();  
+	}
+
 }

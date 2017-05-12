@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name="product_product")
@@ -29,10 +30,13 @@ public class Product extends BaseModel implements Serializable{
 	private Double discprice;//折扣价
 	@Column(nullable=false)
 	private Double sellprice;//销售价格
+	@Pattern(regexp="^[^,](.*)[^,]$")
+	@Column(nullable=false)
+	private String keyword;//关键字
 	@Column(nullable=false)
 	private Long time;
 	@Column(nullable=false)
-	private Integer isDel;
+	private Integer isdel;
 	public Long getProid() {
 		return proid;
 	}
@@ -75,16 +79,23 @@ public class Product extends BaseModel implements Serializable{
 	public void setSellprice(Double sellprice) {
 		this.sellprice = sellprice;
 	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 	public Long getTime() {
 		return time;
 	}
 	public void setTime(Long time) {
 		this.time = time;
 	}
-	public Integer getIsDel() {
-		return isDel;
+	public Integer getIsdel() {
+		return isdel;
 	}
-	public void setIsDel(Integer isDel) {
-		this.isDel = isDel;
+	public void setIsdel(Integer isdel) {
+		this.isdel = isdel;
 	}
+
 }

@@ -23,7 +23,11 @@ public class Gift extends BaseModel implements Serializable{
 	@Column(nullable=false)
 	private String name;//礼物名称
 	@Column(nullable=false)
+	private Double sellprice;//销售价
+	@Column(nullable=false)
 	private Long time;//时间
+	@Column(nullable=false)
+	private Integer isdel;//是否删除
 	public Long getGifid() {
 		return gifid;
 	}
@@ -36,11 +40,23 @@ public class Gift extends BaseModel implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
+	public Double getSellprice() {
+		return sellprice;
+	}
+	public void setSellprice(Double sellprice) {
+		this.sellprice = sellprice;
+	}
 	public Long getTime() {
 		return time;
 	}
 	public void setTime(Long time) {
 		this.time = time;
+	}
+	public Integer getIsdel() {
+		return isdel;
+	}
+	public void setIsdel(Integer isdel) {
+		this.isdel = isdel;
 	}
 	
 	

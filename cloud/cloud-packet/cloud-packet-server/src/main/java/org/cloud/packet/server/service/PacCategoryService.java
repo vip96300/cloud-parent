@@ -11,4 +11,15 @@ public interface PacCategoryService {
 	public void delByCatid(long catid);
 	
 	public List<PacCategory> listByPacid(long pacid);
+	
+	/**
+	 * 根据类目编号获取优选包的类目
+	 * @param categoryid
+	 * @return
+	 */
+	public PacCategory getByCategoryid(long categoryid);
+	
+	public PacCategory getByCatid(long catid);
+	
+	public void updByCatid(PacCategory pacCategory);
 }

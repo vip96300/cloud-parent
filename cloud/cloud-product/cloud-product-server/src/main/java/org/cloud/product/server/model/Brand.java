@@ -8,17 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler","fieldHandler"}) 
 @Entity
 @Table(name="product_category_brand")
 public class Brand extends BaseModel implements Serializable{
 
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4257384493582045703L;
 	
 	@Id

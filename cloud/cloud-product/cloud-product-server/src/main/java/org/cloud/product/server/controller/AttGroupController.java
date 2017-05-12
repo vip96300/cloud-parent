@@ -6,6 +6,7 @@ import java.util.Map;
 import org.cloud.common.util.ValidUtil;
 import org.cloud.product.server.model.AttGroup;
 import org.cloud.product.server.model.Category;
+import org.cloud.product.server.model.Property;
 import org.cloud.product.server.service.AttGroupService;
 import org.cloud.product.server.service.CategoryService;
 import org.slf4j.Logger;
@@ -31,11 +32,21 @@ public class AttGroupController {
 	@Autowired
 	private CategoryService categoryService;
 	
+	@RequestMapping(value="/list_catid",method=RequestMethod.GET)
+	public List<AttGroup> list_catid(@RequestParam(value="catid",required=true)long catid) {
+		List<AttGroup> attGroups=attGroupService.listByCatid(catid);
+		return attGroups;
+	}
+	
 	@RequestMapping(value="/list_attributes_attValues_catid",method=RequestMethod.GET)
 	public List<Map<String,List<Object>>> list_attributes_attValues_catid(@RequestParam(value="catid",required=true) long catid){
 		List<Map<String,List<Object>>> attGroupsAttibutesAttValues=attGroupService.listAttributesAttValuesByCatid(catid);
-		logger.debug("list_attributes_attValues_catid");
 		return attGroupsAttibutesAttValues;
+	}
+	@RequestMapping(value="/list_propertys_proid",method=RequestMethod.GET)
+	public Map<String,List<Property>> listPropertysByProid(@RequestParam(value="proid",required=true)long proid) {
+		Map<String,List<Property>> attGroupPropertys=attGroupService.listPropertysByProid(proid);
+		return attGroupPropertys;
 	}
 	@Async
 	@RequestMapping(value="/add",method=RequestMethod.POST)
@@ -45,7 +56,7 @@ public class AttGroupController {
 			//如果类目不存在
 			return;
 		}
-		if(category.getIssku()!=0){
+		if(category.getIssku()==0){
 			//最小单元
 			return;
 		}

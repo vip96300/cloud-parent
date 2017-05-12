@@ -24,5 +24,15 @@ public class ProductServiceBreaker implements ProductService{
 		throw new RuntimeException();
 	}
 
+	@Override
+	public void updByProid(Product product) {
+		throw new RuntimeException();
+	}
+
+	@Override
+	public void delByProid(long proid) {
+		throw new RuntimeException();
+	}
+
 
 }

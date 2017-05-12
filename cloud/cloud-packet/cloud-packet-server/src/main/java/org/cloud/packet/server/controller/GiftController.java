@@ -28,7 +28,7 @@ public class GiftController {
 	 * @param gift
 	 */
 	@Async
-	@RequestMapping(value="/packet/gift/add",method=RequestMethod.POST)
+	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public void add(@RequestBody Gift gift) {
 		giftService.add(gift);
 	}
@@ -39,7 +39,7 @@ public class GiftController {
 	 * @param size
 	 * @return
 	 */
-	@RequestMapping(value="/packet/gift/list",method=RequestMethod.GET)
+	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public List<Gift> list(@RequestParam(value="page",required=true)int page,@RequestParam(value="size",required=true)int size) {
 		List<Gift> gifts=giftService.list(new PageRequest(page, size));
 		return gifts;
@@ -50,7 +50,7 @@ public class GiftController {
 	 * @param gifid
 	 */
 	@Async
-	@RequestMapping(value="/packet/gift/upd_gifid",method=RequestMethod.PUT)
+	@RequestMapping(value="/upd_gifid",method=RequestMethod.PUT)
 	public void upd_gifid(@RequestBody Gift gift) {
 		giftService.updByGifid(gift);
 	}
@@ -60,7 +60,7 @@ public class GiftController {
 	 * @param gifid
 	 * @return
 	 */
-	@RequestMapping(value="/packet/gift/get_gifid",method=RequestMethod.GET)
+	@RequestMapping(value="/get_gifid",method=RequestMethod.GET)
 	public Gift getByGifid(@RequestParam(value="gifid",required=true)long gifid) {
 		Gift gift=giftService.getByGifid(gifid);
 		return gift;
@@ -71,7 +71,8 @@ public class GiftController {
 	 * @param gifid
 	 */
 	@Async
-	@RequestMapping(value="/packet/gift/del_gifid",method=RequestMethod.DELETE)
+	@RequestMapping(value="/del_gifid",method=RequestMethod.DELETE)
 	public void delByGifid(@RequestParam(value="gifid",required=true)long gifid) {
+		giftService.delByGifid(gifid);
 	}
 }

@@ -21,4 +21,13 @@ public interface PacCategoryService {
 	
 	@RequestMapping(value="/packet/category/list_pacid",method=RequestMethod.GET)
 	public List<PacCategory> listByPacid(@RequestParam(value="pacid",required=true)long pacid);
+	
+	@RequestMapping(value="/packet/category/get_categoryid",method=RequestMethod.GET)
+	public PacCategory getByCategoryid(@RequestParam(value="categoryid",required=true)long categoryid);
+	
+	@RequestMapping(value="/packet/category/get_catid",method=RequestMethod.GET)
+	public PacCategory getByCatid(@RequestParam(value="catid",required=true)long catid);
+	
+	@RequestMapping(value="/packet/category/upd_catid",method=RequestMethod.PUT)
+	public void updByCatid(@RequestBody PacCategory pacCategory);
 }

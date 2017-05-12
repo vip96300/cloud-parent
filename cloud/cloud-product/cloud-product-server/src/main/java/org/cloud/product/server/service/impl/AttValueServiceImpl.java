@@ -1,5 +1,7 @@
 package org.cloud.product.server.service.impl;
 
+import java.util.List;
+
 import org.cloud.product.server.model.AttValue;
 import org.cloud.product.server.repository.AttValueRepository;
 import org.cloud.product.server.service.AttValueService;
@@ -18,6 +20,7 @@ public class AttValueServiceImpl implements AttValueService{
 	
 	@Override
 	public void add(AttValue attValue) {
+		attValue.setTime(System.currentTimeMillis());
 		attValueRepository.save(attValue);
 	}
 
@@ -35,5 +38,11 @@ public class AttValueServiceImpl implements AttValueService{
 	@Override
 	public void updByValid(AttValue attValue) {
 		attValueRepository.saveAndFlush(attValue);
+	}
+
+	@Override
+	public List<AttValue> listByAttid(long attid) {
+		List<AttValue> attValues=attValueRepository.findByAttid(attid);
+		return attValues;
 	}
 }

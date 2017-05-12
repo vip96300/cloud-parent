@@ -27,6 +27,18 @@ public class AttributeController {
 	private AttributeService attributeService;
 	@Autowired
 	private AttGroupService attGroupService;
+	
+	@RequestMapping(value="/list_groid",method=RequestMethod.GET)
+	public List<Attribute> list_groid(@RequestParam(value="groid",required=true)long groid) {
+		List<Attribute> attributes=attributeService.listByGroid(groid);
+		return attributes;
+	}
+	
+	@RequestMapping(value="/list_catid",method=RequestMethod.GET)
+	public List<Attribute> list_catid(@RequestParam(value="catid",required=true)long catid) {
+		List<Attribute> attributes=attributeService.listByCatid(catid);
+		return attributes;
+	}
 	@Async
     @RequestMapping(value="/add")
     public void add(@RequestBody Attribute attribute){

@@ -3,8 +3,8 @@ package org.cloud.file.client.model;
 public class File {
 	
 	private String name;
-	private String url;
-	private String time;
+	private String dir;
+	private long time;
 	private int width;
 	private int height;
 	
@@ -15,16 +15,16 @@ public class File {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getUrl() {
-		return url;
+	public String getDir() {
+		return dir;
 	}
-	public void setUrl(String url) {
-		this.url = url;
+	public void setDir(String dir) {
+		this.dir = dir;
 	}
-	public String getTime() {
+	public long getTime() {
 		return time;
 	}
-	public void setTime(String time) {
+	public void setTime(long time) {
 		this.time = time;
 	}
 	public int getWidth() {

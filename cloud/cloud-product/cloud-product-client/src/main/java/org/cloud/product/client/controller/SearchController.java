@@ -31,7 +31,7 @@ public class SearchController {
 	@ApiOperation(value="添加搜索标题")
 	@ApiImplicitParams({@ApiImplicitParam(name="catid",value="类目编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="name",value="名称",required=true,dataType="String")})
-	@RequestMapping(value="/add",method=RequestMethod.GET)
+	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public Result<Object> add(@RequestParam(value="catid",required=true)Long catid,@RequestParam(value="name",required=true)String name){
 		Search search=new Search();
 		search.setCatid(catid);
@@ -39,13 +39,19 @@ public class SearchController {
 		searchService.add(search);
 		return new Result<Object>(200,null,null);
 	}
-	
+	@ApiOperation(value="根据类目编号获取搜索集合")
+	@ApiImplicitParams({@ApiImplicitParam(name="catid",value="类目编号",required=true,dataType="long")})
+	@RequestMapping(value="/list_catid",method=RequestMethod.POST)
+	public Result<List<Search>> list_catid(@RequestParam(value="catid",required=true)long catid){
+		List<Search> searchs=searchService.listByCatid(catid);
+		return new Result<List<Search>>(200,null,searchs);
+	}
 	@ApiOperation(value="根据类目编号获取搜索标题及以下关键词集合")
 	@ApiImplicitParams({@ApiImplicitParam(name="catid",value="类目编号",required=true,dataType="long")})
 	@RequestMapping(value="/list_keywords_catid",method=RequestMethod.POST)
-	public Result<List<Map<Search,List<Keyword>>>> list_keywords_catid(@RequestParam(value="catid",required=true)long catid){
-		List<Map<String,List<Keyword>>> searchsKeywords=searchService.listKeywordsByCatid(catid);
-		return new Result<List<Map<Search,List<Keyword>>>>(200,null,searchsKeywords);
+	public Result<Map<Search,List<Keyword>>> list_keywords_catid(@RequestParam(value="catid",required=true)long catid){
+		Map<String,List<Keyword>> searchsKeywords=searchService.listKeywordsByCatid(catid);
+		return new Result<Map<Search,List<Keyword>>>(200,null,searchsKeywords);
 	}
 	
 	@ApiOperation(value="修改搜索标题")
@@ -53,8 +59,10 @@ public class SearchController {
 		@ApiImplicitParam(name="name",value="名称",required=true,dataType="String")})
 	@RequestMapping(value="/upd_seaid",method=RequestMethod.POST)
 	public Result<Object> upd_seaid(@RequestParam(value="seaid",required=true)long seaid,@RequestParam(value="name",required=true)String name){
-		Search search=new Search();
-		search.setSeaid(seaid);
+		Search search=searchService.getBySeaid(seaid);
+		if(!ValidUtil.isValid(search)){
+			return null;
+		}
 		search.setName(name);
 		searchService.updBySeaid(search);
 		return new Result<Object>(200,null,null);

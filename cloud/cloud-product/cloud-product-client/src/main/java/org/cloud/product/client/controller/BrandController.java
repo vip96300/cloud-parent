@@ -36,7 +36,9 @@ public class BrandController {
         @ApiImplicitParam(name = "size", value = "每页数量", required = true, dataType = "int")
     })
 	@RequestMapping(value="/list_catid",method=RequestMethod.POST)
-    public Result<List<Brand>> list_catid(@RequestParam(value="catid",required=true) long catid,@RequestParam(value="page",required=true) int page,@RequestParam(value="size",required=true) int size){
+    public Result<List<Brand>> list_catid(@RequestParam(value="catid",required=true) long catid,
+    		@RequestParam(value="page",required=true) int page,
+    		@RequestParam(value="size",required=true) int size){
     	List<Brand> brands=brandService.listByCatid(catid,page, size);
     	return new Result<List<Brand>>(200,null,brands);
     }
@@ -48,7 +50,9 @@ public class BrandController {
         @ApiImplicitParam(name = "logo", value = "logo地址", required = true, dataType = "String")
     })
 	@RequestMapping(value="/add",method={RequestMethod.POST})
-	public Result<Object> add(@RequestParam(value="catid",required=true)long catid,@RequestParam(value="name",required=true)String name,@RequestParam(value="logo",required=true)String logo){
+	public Result<Object> add(@RequestParam(value="catid",required=true)long catid,
+			@RequestParam(value="name",required=true)String name,
+			@RequestParam(value="logo",required=true)String logo){
 		Brand brand=new Brand();
 		brand.setCatid(catid);
 		brand.setName(name);

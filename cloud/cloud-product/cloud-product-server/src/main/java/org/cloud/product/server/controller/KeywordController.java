@@ -1,5 +1,7 @@
 package org.cloud.product.server.controller;
 
+import java.util.List;
+
 import org.cloud.common.util.ValidUtil;
 import org.cloud.product.server.model.Keyword;
 import org.cloud.product.server.model.Search;
@@ -34,15 +36,27 @@ public class KeywordController {
 		if(!ValidUtil.isValid(search)){
 			return;
 		}
+		keyword.setCatid(search.getCatid());
 		keywordService.add(keyword);
+	}
+	@RequestMapping(value="/get_keyid",method=RequestMethod.GET)
+	public Keyword get_keyid(@RequestParam(value="keyid",required=true)long keyid){
+		Keyword keyword=keywordService.getByKeyid(keyid);
+		return keyword;
+	}
+	@RequestMapping(value="/list_seaid",method=RequestMethod.GET)
+	public List<Keyword> list_seaid(@RequestParam(value="seaid",required=true)long seaid) {
+		List<Keyword> keywords=keywordService.listBySeaid(seaid);
+		return keywords;
+	}
+	@RequestMapping(value="/list_catid",method=RequestMethod.GET)
+	public List<Keyword> list_catid(@RequestParam(value="catid",required=true)long catid){
+		List<Keyword> keywords=keywordService.listByCatid(catid);
+		return keywords;
 	}
 	@Async
 	@RequestMapping(value="/upd_keyid",method=RequestMethod.PUT)
 	public void upd_keyid(@RequestBody Keyword keyword){
-		Keyword hasKeyword=keywordService.getByKeyid(keyword.getKeyid());
-		if(!ValidUtil.isValid(hasKeyword)){
-			return;
-		}
 		keywordService.updByKeyid(keyword);
 	}
 	@Async

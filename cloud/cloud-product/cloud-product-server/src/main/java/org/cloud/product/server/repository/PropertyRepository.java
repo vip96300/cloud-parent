@@ -1,5 +1,7 @@
 package org.cloud.product.server.repository;
 
+import java.util.List;
+
 import org.cloud.product.server.model.Property;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -16,4 +18,6 @@ public interface PropertyRepository extends JpaRepository<Property, Long>{
 	@Transactional
 	@Modifying
 	void deleteByAttid(long attid);
+	
+	List<Property> findByProductid(long productid);
 }

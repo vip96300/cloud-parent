@@ -1,5 +1,7 @@
 package org.cloud.packet.client.controller;
 
+import java.util.List;
+
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -7,6 +9,7 @@ import io.swagger.annotations.ApiOperation;
 import org.cloud.packet.client.controller.dto.Result;
 import org.cloud.packet.client.model.GifPicture;
 import org.cloud.packet.client.service.GifPictureService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value="/packet/gift/picture")
 public class GifPictureController {
 	
+	@Autowired
 	private GifPictureService gifPictureService;
 	
 	
@@ -35,6 +39,14 @@ public class GifPictureController {
 		gifPicture.setUrl(url);
 		gifPictureService.add(gifPicture);
 		return new Result<Object>(200,null,null);
+	}
+	
+	@ApiOperation(value="根据礼物编号获取礼物图片集合")
+	@ApiImplicitParams({@ApiImplicitParam(name="gifid",value="礼物编号",required=true,dataType="long")})
+	@RequestMapping(value="/list_gifid",method=RequestMethod.POST)
+	public Result<List<GifPicture>> list_gifid(@RequestParam(value="gifid",required=true)long gifid){
+		List<GifPicture> gifPictures=gifPictureService.listByGifid(gifid);
+		return new Result<List<GifPicture>>(200,null,gifPictures);
 	}
 	
 	@ApiOperation(value="删除礼物图片")

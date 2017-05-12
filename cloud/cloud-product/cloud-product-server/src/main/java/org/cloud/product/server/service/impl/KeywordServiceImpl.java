@@ -1,8 +1,9 @@
 package org.cloud.product.server.service.impl;
 
+import java.util.List;
+
 import org.cloud.product.server.model.Keyword;
 import org.cloud.product.server.repository.KeywordRepository;
-import org.cloud.product.server.repository.ProKeywordRepository;
 import org.cloud.product.server.service.KeywordService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,11 +16,10 @@ public class KeywordServiceImpl implements KeywordService{
 	
 	@Autowired
 	private KeywordRepository keywordRepository;
-	@Autowired
-	private ProKeywordRepository proKeywordRepository;
 	
 	@Override
 	public void add(Keyword keyword) {
+		keyword.setTime(System.currentTimeMillis());
 		keywordRepository.save(keyword);
 	}
 
@@ -37,7 +37,18 @@ public class KeywordServiceImpl implements KeywordService{
 	@Override
 	public void delByKeyid(long keyid) {
 		keywordRepository.delete(keyid);
-		proKeywordRepository.deleteByKeywordid(keyid);
+	}
+
+	@Override
+	public List<Keyword> listBySeaid(long seaid) {
+		List<Keyword> keywords=keywordRepository.findBySeaid(seaid);
+		return keywords;
+	}
+
+	@Override
+	public List<Keyword> listByCatid(long catid) {
+		List<Keyword> keywords=keywordRepository.findByCatid(catid);
+		return keywords;
 	}
 	
 }

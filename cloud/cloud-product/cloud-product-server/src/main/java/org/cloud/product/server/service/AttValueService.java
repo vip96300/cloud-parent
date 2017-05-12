@@ -1,5 +1,7 @@
 package org.cloud.product.server.service;
 
+import java.util.List;
+
 import org.cloud.product.server.model.AttValue;
 
 public interface AttValueService {
@@ -9,6 +11,12 @@ public interface AttValueService {
 	 * @param attValue
 	 */
 	public void add(AttValue attValue);
+	/**
+	 * 根据属性编号获取属性值列表
+	 * @param attid
+	 * @return
+	 */
+	public List<AttValue> listByAttid(long attid);
 	
 	/**
 	 * 根据编号获取属性值

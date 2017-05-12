@@ -1,18 +1,17 @@
 package org.cloud.product.client.controller;
 
+import java.util.List;
+
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
 import org.cloud.common.util.ValidUtil;
 import org.cloud.product.client.controller.dto.Result;
-import org.cloud.product.client.model.AttGroup;
 import org.cloud.product.client.model.Attribute;
-import org.cloud.product.client.service.AttGroupService;
 import org.cloud.product.client.service.AttributeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +24,14 @@ public class AttributeController {
 	
 	@Autowired
 	private AttributeService attributeService;
+	
+	@ApiOperation(value="根据属性组编号获取属性集合")
+	@ApiImplicitParams({@ApiImplicitParam(name="groid",value="属性组编号",required=true,dataType="long")})
+	@RequestMapping(value="list_groid",method=RequestMethod.POST)
+	public Result<List<Attribute>> list_groid(@RequestParam(value="groid",required=true)long groid){
+		List<Attribute> attributes=attributeService.listByGroid(groid);
+		return new Result<List<Attribute>>(200,null,attributes);
+	}
 
 	@ApiOperation(value="添加属性")
     @ApiImplicitParams({

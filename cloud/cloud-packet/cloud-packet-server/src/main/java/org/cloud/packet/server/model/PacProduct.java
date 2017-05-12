@@ -24,7 +24,7 @@ public class PacProduct extends BaseModel implements Serializable{
 	private Long catid;//类目编号
 	@Column(nullable=false)
 	private Long productid;//产品编号
-	@Column(nullable=false)
+	@Column
 	private Long gifid;//礼物编号
 	@Column(nullable=false)
 	private Long time;

@@ -24,11 +24,19 @@ public class Packet extends BaseModel implements Serializable{
 	@Column(nullable=false)
 	private String name;//名称
 	@Column(nullable=false)
+	private String title;//标题
+	@Column(nullable=false)
 	private String depict;//描述
+	@Column(nullable=false)
+	private String surface;//封面
+	@Column(nullable=false)
+	private String banner;//横幅
+	@Column(nullable=false)
+	private Integer ispk;//是否主要
 	@Column(nullable=false)
 	private Long time;//时间
 	@Column(nullable=false)
-	private Integer state=Packet.STATE1;//-1已删除，0:异常，1：正常，
+	private Integer isdel=0;//-1已删除，0:异常，1：正常，
 	public Long getPacid() {
 		return pacid;
 	}
@@ -41,11 +49,35 @@ public class Packet extends BaseModel implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	public String getDepict() {
 		return depict;
 	}
 	public void setDepict(String depict) {
 		this.depict = depict;
+	}
+	public String getSurface() {
+		return surface;
+	}
+	public void setSurface(String surface) {
+		this.surface = surface;
+	}
+	public String getBanner() {
+		return banner;
+	}
+	public void setBanner(String banner) {
+		this.banner = banner;
+	}
+	public Integer getIspk() {
+		return ispk;
+	}
+	public void setIspk(Integer ispk) {
+		this.ispk = ispk;
 	}
 	public Long getTime() {
 		return time;
@@ -53,25 +85,14 @@ public class Packet extends BaseModel implements Serializable{
 	public void setTime(Long time) {
 		this.time = time;
 	}
-	public Integer getState() {
-		return state;
+	public Integer getIsdel() {
+		return isdel;
 	}
-	public void setState(Integer state) {
-		this.state = state;
+	public void setIsdel(Integer isdel) {
+		this.isdel = isdel;
 	}
 
 
-	/**
-	 * 已删除
-	 */
-	public static final int STATE_1=-1;
-	/**
-	 * 异常
-	 */
-	public static final int STATE0=0;
-	/**
-	 * 正常
-	 */
-	public static final int STATE1=1;
+
 
 }

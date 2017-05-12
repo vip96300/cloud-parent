@@ -8,6 +8,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BrandRepository extends JpaRepository<Brand, Long>{
 	/**
+	 * 根据编号获取
+	 * @param braid
+	 * @return
+	 */
+	public Brand findByBraid(long braid);
+	/**
 	 * 根据类目编号获取品牌列表
 	 * @param catId
 	 * @return

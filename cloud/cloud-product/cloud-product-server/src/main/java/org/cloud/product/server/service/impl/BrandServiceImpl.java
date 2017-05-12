@@ -34,7 +34,7 @@ public class BrandServiceImpl implements BrandService{
 
 	@Override
 	public Brand getByBraid(long braid) {
-		Brand brand=brandRepository.getOne(braid);
+		Brand brand=brandRepository.findByBraid(braid);
 		return brand;
 	}
 

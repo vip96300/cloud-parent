@@ -25,6 +25,8 @@ public class Category extends BaseModel implements Serializable{
 	private String name;//名称
 	@Column(nullable=false)
 	private Long time;//创建时间
+	@Column(nullable=false)
+	private int isdel;//是否删除
 	
 	public Long getCatid() {
 		return catid;
@@ -55,6 +57,12 @@ public class Category extends BaseModel implements Serializable{
 	}
 	public void setTime(Long time) {
 		this.time = time;
+	}
+	public int getIsdel() {
+		return isdel;
+	}
+	public void setIsdel(int isdel) {
+		this.isdel = isdel;
 	}
 	
 }

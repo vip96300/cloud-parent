@@ -35,5 +35,19 @@ public interface ProductService {
 	 */
 	@RequestMapping(value="/product/product/get_proid",method=RequestMethod.GET)
 	public Product getByProid(@RequestParam(value="proid",required=true)long proid);
+	
+	/**
+	 * 修改产品
+	 * @param product
+	 */
+	@RequestMapping(value="/product/product/upd_proid",method=RequestMethod.PUT)
+	public void updByProid(@RequestBody Product product);
+	
+	/**
+	 * 删除产品
+	 * @param proid
+	 */
+	@RequestMapping(value="/product/product/del_proid",method=RequestMethod.DELETE)
+	public void delByProid(@RequestParam(value="proid",required=true)long proid);
 
 }

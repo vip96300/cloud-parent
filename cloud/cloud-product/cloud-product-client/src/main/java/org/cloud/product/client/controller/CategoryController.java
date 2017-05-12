@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiOperation;
 
 import java.util.List;
 
+import org.cloud.common.util.ValidUtil;
 import org.cloud.product.client.controller.dto.Result;
 import org.cloud.product.client.model.Category;
 import org.cloud.product.client.service.CategoryService;
@@ -68,7 +69,10 @@ public class CategoryController {
 	@RequestMapping(value="/upd_catid",method=RequestMethod.POST)
 	public Result<Object> upd_catid(@RequestParam(value="catid",required=true)long catid,
 			@RequestParam(value="name",required=true)String name){
-		Category category=new Category();
+		Category category=categoryService.getByCatid(catid);
+		if(!ValidUtil.isValid(category)){
+			return null;
+		}
 		category.setName(name);
 		categoryService.updByCatid(category);
 		return new Result<Object>(200,null,null);

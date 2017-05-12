@@ -1,5 +1,7 @@
 package org.cloud.product.server.service.impl;
 
+import java.util.List;
+
 import org.cloud.product.server.model.Attribute;
 import org.cloud.product.server.repository.AttValueRepository;
 import org.cloud.product.server.repository.AttributeRepository;
@@ -45,6 +47,18 @@ public class AttributeServiceImpl implements AttributeService{
 		attributeRepository.delete(attid);
 		attValueRepository.deleteByAttid(attid);
 		propertyRepository.deleteByAttid(attid);
+	}
+
+	@Override
+	public List<Attribute> listByGroid(long groid) {
+		List<Attribute> attributes=attributeRepository.findByGroid(groid);
+		return attributes;
+	}
+
+	@Override
+	public List<Attribute> listByCatid(long catid) {
+		List<Attribute> attributes=attributeRepository.findByCatid(catid);
+		return attributes;
 	}
 
 }

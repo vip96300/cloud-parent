@@ -8,10 +8,8 @@ import java.util.Map;
 import org.cloud.product.server.model.Keyword;
 import org.cloud.product.server.model.Search;
 import org.cloud.product.server.repository.KeywordRepository;
-import org.cloud.product.server.repository.ProKeywordRepository;
 import org.cloud.product.server.repository.SearchRepository;
 import org.cloud.product.server.service.SearchService;
-import org.codehaus.jettison.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +23,6 @@ public class SearchServiceImpl implements SearchService{
 	private SearchRepository searchRepository;
 	@Autowired
 	private KeywordRepository keywordRepository;
-	@Autowired
-	private ProKeywordRepository proKeywordRepository;
 	
 	@Override
 	public void add(Search search) {
@@ -35,14 +31,12 @@ public class SearchServiceImpl implements SearchService{
 	}
 
 	@Override
-	public List<Map<String, List<Keyword>>> listKeywordsByCatid(long catid) {
+	public Map<String, List<Keyword>> listKeywordsByCatid(long catid) {
 		List<Search> searchs=searchRepository.findByCatid(catid);
 		if(searchs.isEmpty()){
 			return null;
 		}
 		List<Keyword> keywords=keywordRepository.findByCatid(catid);
-		//集合<搜索：集合<关键字>>
-		List<Map<String,List<Keyword>>> searchsKeywords=new ArrayList<Map<String,List<Keyword>>>();
 		//搜索：集合<关键字>
 		Map<String,List<Keyword>> searchKeywordsMap=new HashMap<String,List<Keyword>>();
 		for(Search search:searchs){
@@ -53,9 +47,8 @@ public class SearchServiceImpl implements SearchService{
 				}
 			}
 			searchKeywordsMap.put(search.getName(), keywordsBySearch);
-			searchsKeywords.add(searchKeywordsMap);
 		}
-		return searchsKeywords;
+		return searchKeywordsMap;
 	}
 
 	@Override
@@ -74,9 +67,14 @@ public class SearchServiceImpl implements SearchService{
 		searchRepository.delete(seaid);
 		List<Keyword> keywords=keywordRepository.findBySeaid(seaid);
 		for(Keyword keyword:keywords){
-			proKeywordRepository.deleteBySeaid(seaid);
 			keywordRepository.delete(keyword);
 		}
+	}
+
+	@Override
+	public List<Search> listByCatid(long catid) {
+		List<Search> searchs=searchRepository.findByCatid(catid);
+		return searchs;
 	}
 	
 }

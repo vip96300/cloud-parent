@@ -30,6 +30,11 @@ public class CategoryController {
 		return categorys;
 		
 	}
+	@RequestMapping(value="/list_catid",method=RequestMethod.GET)
+	public List<Category> list_catids(@RequestParam(value="catids",required=true)List<Long> catids){
+		List<Category> categorys=categoryService.listByCatids(catids);
+		return categorys;
+	}
 	@Async
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public void add(@RequestBody Category category){
@@ -64,10 +69,6 @@ public class CategoryController {
 	@Async
 	@RequestMapping(value="/upd_catid",method=RequestMethod.PUT)
 	public void upd_catid(@RequestBody Category category){
-		Category hasCategory=categoryService.getByCatid(category.getCatid());
-		if(!ValidUtil.isValid(hasCategory)){
-			return;
-		}
 		categoryService.updByCatid(category);
 	}
 

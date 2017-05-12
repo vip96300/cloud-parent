@@ -26,11 +26,14 @@ public class GiftController {
 	private GiftService giftService;
 	
 	@ApiOperation(value="添加礼物")
-	@ApiImplicitParams({@ApiImplicitParam(name="name",required=true,dataType="String")})
+	@ApiImplicitParams({@ApiImplicitParam(name="name",value="名称",required=true,dataType="String"),
+		@ApiImplicitParam(name="sellprice",value="销售价",required=true,dataType="double")})
 	@RequestMapping(value="/add",method=RequestMethod.POST)
-	public Result<Object> add(@RequestParam(value="name",required=true)String name){
+	public Result<Object> add(@RequestParam(value="name",required=true)String name,
+			@RequestParam(value="sellprice",required=true)double sellprice){
 		Gift gift=new Gift();
 		gift.setName(name);
+		gift.setSellprice(sellprice);
 		giftService.add(gift);
 		return new Result<Object>(200,null,null);
 	}

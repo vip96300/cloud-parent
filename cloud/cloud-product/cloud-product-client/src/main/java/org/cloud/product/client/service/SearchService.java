@@ -25,12 +25,20 @@ public interface SearchService {
 	public void add(@RequestBody Search search);
 	
 	/**
+	 * 根据类目编号获取搜索集合
+	 * @param catid
+	 * @return
+	 */
+	@RequestMapping(value="/product/category/search/list_catid",method=RequestMethod.GET)
+	public List<Search> listByCatid(@RequestParam(value="catid",required=true)long catid);
+	
+	/**
 	 * 获取列表及以下关键字
 	 * @param catid
 	 * @return
 	 */
 	@RequestMapping(value="/product/category/search/list_keywords_catid",method=RequestMethod.GET)
-	public List<Map<String,List<Keyword>>> listKeywordsByCatid(@RequestParam(value="catid",required=true)long catid);
+	public Map<String,List<Keyword>> listKeywordsByCatid(@RequestParam(value="catid",required=true)long catid);
 	
 	/**
 	 * 根据编号获取

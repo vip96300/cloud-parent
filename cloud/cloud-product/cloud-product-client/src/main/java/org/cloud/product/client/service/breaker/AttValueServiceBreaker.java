@@ -1,5 +1,7 @@
 package org.cloud.product.client.service.breaker;
 
+import java.util.List;
+
 import org.cloud.product.client.model.AttValue;
 import org.cloud.product.client.service.AttValueService;
 import org.springframework.stereotype.Component;
@@ -24,6 +26,11 @@ public class AttValueServiceBreaker implements AttValueService{
 
 	@Override
 	public void updByValid(AttValue attValue) {
+		throw new RuntimeException();
+	}
+
+	@Override
+	public List<AttValue> listByAttid(long attid) {
 		throw new RuntimeException();
 	}
 

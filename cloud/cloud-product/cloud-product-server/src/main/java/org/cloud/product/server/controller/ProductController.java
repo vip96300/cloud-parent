@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.cloud.common.util.ValidUtil;
 import org.cloud.product.server.model.Brand;
-import org.cloud.product.server.model.Category;
 import org.cloud.product.server.model.Product;
 import org.cloud.product.server.service.BrandService;
 import org.cloud.product.server.service.CategoryService;
@@ -33,19 +32,13 @@ public class ProductController {
 	private BrandService brandService;
 	
 	@Async
-	@RequestMapping(value="/product/product/add",method=RequestMethod.POST)
+	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public void add(@RequestBody Product product) {
-		Category category=categoryService.getByCatid(product.getCatid());
-		if(!ValidUtil.isValid(category)){
-			return;
-		}
-		if(category.getIssku()!=0){
-			return;
-		}
 		Brand brand=brandService.getByBraid(product.getBraid());
 		if(!ValidUtil.isValid(brand)){
 			return;
 		}
+		product.setCatid(brand.getCatid());
 		product.setBraname(brand.getName());
 		productService.add(product);
 	}
@@ -66,5 +59,17 @@ public class ProductController {
 	public Product get_proid(@RequestParam(value="proid")long proid){
 		Product product=productService.getByProid(proid);
 		return product;
+	}
+	
+	@Async
+	@RequestMapping(value="/upd_proid",method=RequestMethod.PUT)
+	public void upd_proid(@RequestBody Product product) {
+		productService.updByProid(product);
+	}
+	
+	@Async
+	@RequestMapping(value="/del_proid",method=RequestMethod.DELETE)
+	public void del_proid(@RequestParam(value="proid",required=true)long proid){
+		
 	}
 }

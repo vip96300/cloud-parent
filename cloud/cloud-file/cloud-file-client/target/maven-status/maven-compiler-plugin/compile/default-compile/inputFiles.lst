@@ -1,1 +1,9 @@
-D:\git\cloud\cloud\cloud-file\cloud-file-client\src\main\java\org\cloud\file\client\App.java
+D:\git\cloud\cloud\cloud-file\cloud-file-client\src\main\java\org\cloud\file\client\controller\FileController.java
+D:\git\cloud\cloud\cloud-file\cloud-file-client\src\main\java\org\cloud\file\client\controller\dto\Result.java
+D:\git\cloud\cloud\cloud-file\cloud-file-client\src\main\java\org\cloud\file\client\feign\FeignMultipartSupportConfig.java
+D:\git\cloud\cloud\cloud-file\cloud-file-client\src\main\java\org\cloud\file\client\controller\swagger\SwaggerConfig.java
+D:\git\cloud\cloud\cloud-file\cloud-file-client\src\main\java\org\cloud\file\client\service\FileService.java
+D:\git\cloud\cloud\cloud-file\cloud-file-client\src\main\java\org\cloud\file\client\service\breaker\FileServiceBreaker.java
+D:\git\cloud\cloud\cloud-file\cloud-file-client\src\main\java\org\cloud\file\client\model\File.java
+D:\git\cloud\cloud\cloud-file\cloud-file-client\src\main\java\org\cloud\file\client\Application.java
+D:\git\cloud\cloud\cloud-file\cloud-file-client\src\main\java\org\cloud\file\client\controller\cors\CorsConfig.java

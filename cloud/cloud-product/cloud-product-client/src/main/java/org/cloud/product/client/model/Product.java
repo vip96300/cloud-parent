@@ -9,6 +9,9 @@ public class Product{
 	private String braname;//品牌名称
 	private Double discprice;//折扣价
 	private Double sellprice;//销售价格
+	private String keyword;//关键字
+	private int isdel;//是否删除
+	
 	private Long time;
 	public Long getProid() {
 		return proid;
@@ -58,5 +61,18 @@ public class Product{
 	public void setTime(Long time) {
 		this.time = time;
 	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	public int getIsdel() {
+		return isdel;
+	}
+	public void setIsdel(int isdel) {
+		this.isdel = isdel;
+	}
+	
 	
 }

@@ -14,9 +14,15 @@ public class PacCategory{
 	
 	private String name;//名称
 	
-	private Long ismush;//是否必须
-
+	private int ismust;//是否必须
+	
+	private String surface;//封面
+	
+	private long proid;//产品编号
+	
 	private Long time;
+	
+	private Product product;
 	public Long getCatid() {
 		return catid;
 	}
@@ -42,17 +48,35 @@ public class PacCategory{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Long getIsmush() {
-		return ismush;
+	public int getIsmust() {
+		return ismust;
 	}
-	public void setIsmush(Long ismush) {
-		this.ismush = ismush;
+	public void setIsmust(int ismust) {
+		this.ismust = ismust;
+	}
+	public String getSurface() {
+		return surface;
+	}
+	public void setSurface(String surface) {
+		this.surface = surface;
+	}
+	public long getProid() {
+		return proid;
+	}
+	public void setProid(long proid) {
+		this.proid = proid;
 	}
 	public Long getTime() {
 		return time;
 	}
 	public void setTime(Long time) {
 		this.time = time;
+	}
+	public Product getProduct() {
+		return product;
+	}
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 	
 	

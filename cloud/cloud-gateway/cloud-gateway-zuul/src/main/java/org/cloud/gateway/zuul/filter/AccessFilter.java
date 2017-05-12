@@ -15,24 +15,24 @@ public class AccessFilter extends ZuulFilter{
 	 */
 	@Override
 	public Object run() {
-		System.out.println("拦截器工作了0");
+		System.out.println("filter running...");
 		return null;
 	}
 	@Override
 	public boolean shouldFilter() {
-		System.out.println("拦截器工作了1");
+		System.out.println("filter shoulding...");
 		return false;
 	}
 
 	@Override
 	public int filterOrder() {
-		System.out.println("拦截器工作了2");
+		System.out.println("filter ordering...");
 		return 0;
 	}
 
 	@Override
 	public String filterType() {
-		System.out.println("拦截器工作了3");
+		System.out.println("filter typing");
 		return "pre";
 	}
 

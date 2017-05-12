@@ -1,5 +1,7 @@
 package org.cloud.packet.server.controller;
 
+import java.util.List;
+
 import org.cloud.packet.server.model.GifPicture;
 import org.cloud.packet.server.service.GifPictureService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +21,17 @@ public class GifPictureController {
 	@Autowired
 	private GifPictureService gifPictureService;
 	@Async
-	@RequestMapping(value="/packet/gift/picture/add",method=RequestMethod.POST)
+	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public void add(@RequestBody GifPicture gifPicture) {
 		gifPictureService.add(gifPicture);
 	}
+	@RequestMapping(value="/list_gifid",method=RequestMethod.GET)
+	public List<GifPicture> list_gifid(@RequestParam(value="gifid",required=true)long gifid) {
+		List<GifPicture> gifPictures=gifPictureService.listByGifid(gifid);
+		return gifPictures;
+	}
 	@Async
-	@RequestMapping(value="/packet/gift/picture/del_picid",method=RequestMethod.DELETE)
+	@RequestMapping(value="/del_picid",method=RequestMethod.DELETE)
 	public void delByPicid(@RequestParam(value="picid",required=true)long picid) {
 		gifPictureService.delByPicid(picid);
 	}

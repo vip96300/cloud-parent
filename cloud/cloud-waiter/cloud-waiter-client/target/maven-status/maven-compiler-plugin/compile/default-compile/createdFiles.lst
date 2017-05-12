@@ -1,0 +1,8 @@
+org\cloud\waiter\client\controller\swagger\SwaggerConfig.class
+org\cloud\waiter\client\service\breaker\WaiterServiceBreaker.class
+org\cloud\waiter\client\model\Waiter.class
+org\cloud\waiter\client\Application.class
+org\cloud\waiter\client\controller\dto\Result.class
+org\cloud\waiter\client\service\WaiterService.class
+org\cloud\waiter\client\controller\cors\CorsConfig.class
+org\cloud\waiter\client\controller\WaiterController.class

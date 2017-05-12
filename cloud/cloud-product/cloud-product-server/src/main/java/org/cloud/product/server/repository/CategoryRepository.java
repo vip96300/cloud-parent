@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.cloud.product.server.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 public interface CategoryRepository extends JpaRepository<Category, Long>{
 	/**
@@ -11,5 +12,12 @@ public interface CategoryRepository extends JpaRepository<Category, Long>{
 	 * @param pid
 	 * @return
 	 */
-	public List<Category> findByPid(long pid);
+	public List<Category> findByPidAndIsdel(long pid,int isdel);
+	/**
+	 * 根据类目编号集合获取类目集合
+	 * @param catids
+	 * @return
+	 */
+	@Query(value="select * from product_category o where o.catid in(?1) and o.isdel=?2",nativeQuery=true)
+	public List<Category> findByCatids(List<Long> catids,int isdel);
 }

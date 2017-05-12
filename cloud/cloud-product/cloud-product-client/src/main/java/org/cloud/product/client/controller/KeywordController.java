@@ -1,5 +1,7 @@
 package org.cloud.product.client.controller;
 
+import java.util.List;
+
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -23,6 +25,14 @@ public class KeywordController {
 	@Autowired
 	private KeywordService keywordService;
 	
+	@ApiOperation(value="根据搜索编号获取关键字集合")
+	@ApiImplicitParams({@ApiImplicitParam(name="seaid",value="搜索编号",required=true,dataType="long")})
+	@RequestMapping(value="/list_seaid",method=RequestMethod.POST)
+	public Result<List<Keyword>> list_seaid(long seaid){
+		List<Keyword> keywords=keywordService.listBySeaid(seaid);
+		return new Result<List<Keyword>>(200,null,keywords);
+	}
+	
 	@ApiOperation(value="添加关键字")
 	@ApiImplicitParams({@ApiImplicitParam(name="seaid",value="搜索编号",required=true,dataType="long"),
 		@ApiImplicitParam(name="name",value="关键字名称",required=true,dataType="String")})
@@ -42,7 +52,10 @@ public class KeywordController {
 	@RequestMapping(value="/upd_keyid",method=RequestMethod.POST)
 	public Result<Object> upd_keyid(@RequestParam(value="keyid",required=true)long keyid,
 			@RequestParam(value="name",required=true)String name){
-		Keyword keyword=new Keyword();
+		Keyword keyword=keywordService.getByKeyid(keyid);
+		if(!ValidUtil.isValid(keyword)){
+			return null;
+		}
 		keyword.setKeyid(keyid);
 		keyword.setName(name);
 		keywordService.updByKeyid(keyword);

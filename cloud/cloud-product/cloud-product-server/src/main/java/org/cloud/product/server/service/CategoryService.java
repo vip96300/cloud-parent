@@ -11,6 +11,12 @@ public interface CategoryService {
 	 * @return
 	 */
 	public List<Category> listByPid(long pid);
+	/**
+	 * 根据类目编号集合获取类目集合
+	 * @param catids
+	 * @return
+	 */
+	public List<Category> listByCatids(List<Long> catids);
 	
 	/**
 	 * 添加类目

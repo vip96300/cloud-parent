@@ -41,7 +41,11 @@ public class SearchController {
 		}
 		searchService.add(search);
 	}
-
+	@RequestMapping(value="/list_catid",method=RequestMethod.GET)
+	public List<Search> list_catid(@RequestParam(value="catid",required=true)long catid) {
+		List<Search> searchs=searchService.listByCatid(catid);
+		return searchs;
+	}
 	@RequestMapping(value="/get_seaid",method=RequestMethod.GET)
 	public Search get_seaid(@RequestParam(value="seaid",required=true)long seaid) {
 		Search search=searchService.getBySeaid(seaid);
@@ -49,17 +53,13 @@ public class SearchController {
 	}
 	
 	@RequestMapping(value="/list_keywords_catid",method=RequestMethod.GET)
-	public List<Map<String,List<Keyword>>> list_keywords_catid(@RequestParam(value="catid",required=true)long catid){
-		List<Map<String,List<Keyword>>> searchsKeywords=searchService.listKeywordsByCatid(catid);
+	public Map<String,List<Keyword>> list_keywords_catid(@RequestParam(value="catid",required=true)long catid){
+		Map<String,List<Keyword>> searchsKeywords=searchService.listKeywordsByCatid(catid);
 		return searchsKeywords;
 	}
 	@Async
 	@RequestMapping(value="/upd_seaid",method=RequestMethod.PUT)
 	public void upd_seaid(@RequestBody Search search){
-		Search hasSearch=searchService.getBySeaid(search.getSeaid());
-		if(!ValidUtil.isValid(hasSearch)){
-			return;
-		}
 		searchService.updBySeaid(search);
 	}
 	@Async

@@ -14,13 +14,19 @@ public interface SearchService {
 	 * @param name
 	 */
 	public void add(Search search);
+	/**
+	 * 根据类目编号获取搜索集合
+	 * @param catid
+	 * @return
+	 */
+	public List<Search> listByCatid(long catid);
 	
 	/**
 	 * 获取列表及以下关键字
 	 * @param catid
 	 * @return
 	 */
-	public List<Map<String,List<Keyword>>> listKeywordsByCatid(long catid);
+	public Map<String,List<Keyword>> listKeywordsByCatid(long catid);
 	
 	/**
 	 * 根据编号获取

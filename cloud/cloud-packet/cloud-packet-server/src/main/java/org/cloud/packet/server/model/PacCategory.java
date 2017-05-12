@@ -26,9 +26,13 @@ public class PacCategory extends BaseModel implements Serializable{
 	@Column(nullable=false)
 	private Long categoryid;//类目编号
 	@Column(nullable=false)
-	private Long name;//名称
+	private String name;//名称
 	@Column(nullable=false)
-	private Long ismush;//是否必须
+	private String surface;//封面
+	@Column(nullable=false)
+	private Integer ismust;//是否必须
+	@Column
+	private Long proid;//产品编号，如果为空代码非固定
 	@Column(nullable=false)
 	private Long time;
 	public Long getCatid() {
@@ -49,17 +53,29 @@ public class PacCategory extends BaseModel implements Serializable{
 	public void setCategoryid(Long categoryid) {
 		this.categoryid = categoryid;
 	}
-	public Long getName() {
+	public String getName() {
 		return name;
 	}
-	public void setName(Long name) {
+	public void setName(String name) {
 		this.name = name;
 	}
-	public Long getIsmush() {
-		return ismush;
+	public String getSurface() {
+		return surface;
 	}
-	public void setIsmush(Long ismush) {
-		this.ismush = ismush;
+	public void setSurface(String surface) {
+		this.surface = surface;
+	}
+	public Integer getIsmust() {
+		return ismust;
+	}
+	public void setIsmust(Integer ismust) {
+		this.ismust = ismust;
+	}
+	public Long getProid() {
+		return proid;
+	}
+	public void setProid(Long proid) {
+		this.proid = proid;
 	}
 	public Long getTime() {
 		return time;

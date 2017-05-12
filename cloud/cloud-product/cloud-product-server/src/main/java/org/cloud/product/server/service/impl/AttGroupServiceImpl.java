@@ -8,6 +8,7 @@ import java.util.Map;
 import org.cloud.product.server.model.AttGroup;
 import org.cloud.product.server.model.AttValue;
 import org.cloud.product.server.model.Attribute;
+import org.cloud.product.server.model.Property;
 import org.cloud.product.server.repository.AttGroupRepository;
 import org.cloud.product.server.repository.AttValueRepository;
 import org.cloud.product.server.repository.AttributeRepository;
@@ -98,5 +99,28 @@ public class AttGroupServiceImpl implements AttGroupService{
 	@Override
 	public void updByGroid(AttGroup attGroup) {
 		attGroupRepository.saveAndFlush(attGroup);
+	}
+
+	@Override
+	public List<AttGroup> listByCatid(long catid) {
+		List<AttGroup> attGroups=attGroupRepository.findByCatid(catid);
+		return attGroups;
+	}
+
+	@Override
+	public Map<String, List<Property>> listPropertysByProid(long proid) {
+		List<AttGroup> attGroups=attGroupRepository.findByProid(proid);
+		List<Property> propertys=propertyRepository.findByProductid(proid);
+		Map<String,List<Property>> attGroupPropertys=new HashMap<String,List<Property>>();
+		for(AttGroup attGroup:attGroups){
+			List<Property> propertyByAttGroup=new ArrayList<Property>();
+			for(Property property:propertys){
+				if(attGroup.getGroid()==property.getGroid()){
+					propertyByAttGroup.add(property);
+				}
+			}
+			attGroupPropertys.put(attGroup.getName(), propertyByAttGroup);
+		}
+		return attGroupPropertys;
 	}
 }

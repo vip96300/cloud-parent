@@ -29,6 +29,8 @@ public class Keyword extends BaseModel implements Serializable{
 	@Column(nullable=false)
 	private Long seaid;//搜索编号
 	@Column(nullable=false)
+	private Long catid;//类目编号
+	@Column(nullable=false)
 	private String name;//名称
 	@Column(nullable=false)
 	private Long time;
@@ -43,6 +45,12 @@ public class Keyword extends BaseModel implements Serializable{
 	}
 	public void setSeaid(Long seaid) {
 		this.seaid = seaid;
+	}
+	public Long getCatid() {
+		return catid;
+	}
+	public void setCatid(Long catid) {
+		this.catid = catid;
 	}
 	public String getName() {
 		return name;

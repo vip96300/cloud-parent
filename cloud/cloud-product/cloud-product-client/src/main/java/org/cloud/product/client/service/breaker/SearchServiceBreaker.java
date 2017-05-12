@@ -18,7 +18,7 @@ public class SearchServiceBreaker implements SearchService{
 	}
 
 	@Override
-	public List<Map<String, List<Keyword>>> listKeywordsByCatid(long catid) {
+	public Map<String, List<Keyword>> listKeywordsByCatid(long catid) {
 		throw new RuntimeException();
 	}
 
@@ -34,6 +34,11 @@ public class SearchServiceBreaker implements SearchService{
 
 	@Override
 	public void delBySeaid(long seaid) {
+		throw new RuntimeException();
+	}
+
+	@Override
+	public List<Search> listByCatid(long catid) {
 		throw new RuntimeException();
 	}
 

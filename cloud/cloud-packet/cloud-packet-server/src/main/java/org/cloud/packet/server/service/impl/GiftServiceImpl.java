@@ -17,12 +17,13 @@ public class GiftServiceImpl implements GiftService{
 	@Override
 	public void add(Gift gift) {
 		gift.setTime(System.currentTimeMillis());
+		gift.setIsdel(0);
 		giftRepository.save(gift);
 	}
 
 	@Override
 	public List<Gift> list(Pageable pageable) {
-		List<Gift> gifts=giftRepository.findAll(pageable).getContent();
+		List<Gift> gifts=giftRepository.findByIsdel(pageable,0);
 		return gifts;
 	}
 
@@ -39,7 +40,12 @@ public class GiftServiceImpl implements GiftService{
 
 	@Override
 	public void delByGifid(long gifid) {
-		giftRepository.delete(gifid);
+		Gift gift=giftRepository.findOne(gifid);
+		if(gift.getIsdel()==1){
+			return;
+		}
+		gift.setIsdel(1);
+		giftRepository.saveAndFlush(gift);
 	}
 
 

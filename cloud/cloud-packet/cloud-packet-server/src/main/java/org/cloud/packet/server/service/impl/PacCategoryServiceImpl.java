@@ -15,6 +15,7 @@ public class PacCategoryServiceImpl implements PacCategoryService{
 	
 	@Override
 	public void add(PacCategory pacCategory) {
+		pacCategory.setTime(System.currentTimeMillis());
 		pacCategoryRepository.save(pacCategory);
 	}
 
@@ -27,6 +28,23 @@ public class PacCategoryServiceImpl implements PacCategoryService{
 	public List<PacCategory> listByPacid(long pacid) {
 		List<PacCategory> pacCategory=pacCategoryRepository.findByPacid(pacid);
 		return pacCategory;
+	}
+
+	@Override
+	public PacCategory getByCategoryid(long categoryid) {
+		PacCategory pacCategory=pacCategoryRepository.findByCategoryid(categoryid);
+		return pacCategory;
+	}
+
+	@Override
+	public PacCategory getByCatid(long catid) {
+		PacCategory pacCateogyr=pacCategoryRepository.findOne(catid);
+		return pacCateogyr;
+	}
+
+	@Override
+	public void updByCatid(PacCategory pacCategory) {
+		pacCategoryRepository.saveAndFlush(pacCategory);
 	}
 
 }

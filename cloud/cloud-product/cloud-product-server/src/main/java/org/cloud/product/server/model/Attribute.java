@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name="product_category_attribute")
@@ -23,6 +24,7 @@ public class Attribute extends BaseModel implements Serializable{
 	private Long catid;//类目编号
 	@Column(nullable=false)
 	private String name;//属性名称
+	//@Pattern(regexp="^[0-3]$")
 	@Column(nullable=false)
 	private Integer type;//属性类型/0：输入框，1：单选框，2：多选框,3:多文本域
 	@Column(nullable=false)
